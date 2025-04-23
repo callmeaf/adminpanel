@@ -181,3 +181,97 @@ rootPages.forEach(({ stub, target, page }) => {
     console.log("✅ Successfully created", targetPath);
   }
 });
+
+const addTranslationEntry = () => {
+  const translationFilePath = path.join(
+    __dirname,
+    "../src/modules/Base/heleprs/translations.ts"
+  );
+  const content = fs.readFileSync(translationFilePath, "utf8");
+
+  const importMarkerStart = "// [IMPORT MODULE CONFIGS]";
+  const importMarkerEnd = "// [END IMPORT MODULE CONFIGS]";
+  const translationMarkerStart = "// [TRANSLATION ENTRIES]";
+  const translationMarkerEnd = "// [END TRANSLATION ENTRIES]";
+
+  const importLine = `import ${camelModuleName}ModuleConfig from "@/modules/${moduleName}/module.config";`;
+  const translationEntry = `    [${camelModuleName}ModuleConfig.name]: (await import(\`../../${moduleName}/messages/\${locale}.json\`)).default,`;
+
+  const updated = content
+    .replace(
+      new RegExp(`${importMarkerStart}([\\s\\S]*?)${importMarkerEnd}`),
+      (match, p1) => {
+        return `${importMarkerStart}\n${p1.trim()}\n${importLine}\n${importMarkerEnd}`;
+      }
+    )
+    .replace(
+      new RegExp(
+        `${translationMarkerStart}([\\s\\S]*?)${translationMarkerEnd}`
+      ),
+      (match, p1) => {
+        return `${translationMarkerStart}\n${p1.trim()}\n${translationEntry}\n${translationMarkerEnd}`;
+      }
+    );
+
+  fs.writeFileSync(translationFilePath, updated);
+  console.log("✅ translations.ts updated using markers.");
+};
+addTranslationEntry();
+
+const addRoutesEntry = () => {
+  const routesFilePath = path.join(
+    __dirname,
+    "../src/modules/Base/hooks/use-routes.tsx"
+  );
+  const content = fs.readFileSync(routesFilePath, "utf8");
+
+  const importMarkerStart = "// [IMPORT MODULE ROUTES]";
+  const importMarkerEnd = "// [END IMPORT MODULE ROUTES]";
+  const routesMarkerStart = "// [ROUTES ENTRIES]";
+  const routesMarkerEnd = "// [END ROUTES ENTRIES]";
+
+  const importLine = `import ${camelModuleName}Routes from "@/modules/${moduleName}/${kebabModuleName}";`;
+  const routesEntry = `   ...${camelModuleName}Routes(t)`;
+
+  const updated = content
+    .replace(
+      new RegExp(`${importMarkerStart}([\\s\\S]*?)${importMarkerEnd}`),
+      (match, p1) => {
+        return `${importMarkerStart}\n${p1.trim()}\n${importLine}\n${importMarkerEnd}`;
+      }
+    )
+    .replace(
+      new RegExp(`${routesMarkerStart}([\\s\\S]*?)${routesMarkerEnd}`),
+      (match, p1) => {
+        return `${routesMarkerStart}\n${p1.trim()}\n${routesEntry}\n${routesMarkerEnd}`;
+      }
+    );
+
+  fs.writeFileSync(routesFilePath, updated);
+  console.log("✅ use-routes.ts updated using markers.");
+};
+addRoutesEntry();
+
+const addEnumSourceEntry = () => {
+  const enumsFilePath = path.join(
+    __dirname,
+    "../src/modules/Base/helpers/local-storage-artisan.ts"
+  );
+  const content = fs.readFileSync(enumsFilePath, "utf8");
+
+  const enumsMarkerStart = "// [ENUM ENTRIES]";
+  const enumsMarkerEnd = "// [END ENUM ENTRIES]";
+
+  const routesEntry = `  ${upperSnakeModuleName} = "${snakeModuleName}",`;
+
+  const updated = content.replace(
+    new RegExp(`${enumsMarkerStart}([\\s\\S]*?)${enumsMarkerEnd}`),
+    (match, p1) => {
+      return `${enumsMarkerStart}\n${p1.trim()}\n${routesEntry}\n${enumsMarkerEnd}`;
+    }
+  );
+
+  fs.writeFileSync(enumsFilePath, updated);
+  console.log("✅ use-routes.ts updated using markers.");
+};
+addEnumSourceEntry();

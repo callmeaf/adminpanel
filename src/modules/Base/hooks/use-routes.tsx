@@ -1,9 +1,11 @@
+// [IMPORT MODULE ROUTES]
 import coinRoutes from "@/modules/Coin/routes/coin";
 import dashboardRoutes from "@/modules/Dashboard/routes/dashboard";
 import exchangeRoutes from "@/modules/Exchange/routes/exchange";
 import userRoutes from "@/modules/User/routes/user";
 import { useTranslations } from "next-intl";
 import { ReactNode, useEffect } from "react";
+// [END IMPORT MODULE ROUTES]
 
 interface IRoute {
   name: string;
@@ -36,10 +38,12 @@ const useRoutes: TUseRoutes = () => {
   const t = useTranslations();
 
   const routes: IRoutes = {
+    // [ROUTES ENTRIES]
     ...dashboardRoutes(t),
     ...userRoutes(t),
     ...exchangeRoutes(t),
     ...coinRoutes(t),
+    // [END ROUTES ENTRIES]
   };
 
   useEffect(() => {}, []);

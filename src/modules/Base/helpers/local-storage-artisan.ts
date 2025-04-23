@@ -4,9 +4,11 @@ import { jsonArtisan } from "./json-artisan";
 type TEnumsReturnType = Record<string, IOption[]>;
 
 export enum EnumSource {
+  // [ENUM ENTRIES]
   USER = "user",
   EXCHANGE = "exchange",
   COIN = "coin",
+  // [END ENUM ENTRIES]
 }
 
 interface ILocalStorageArtisan {
