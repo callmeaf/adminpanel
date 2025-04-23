@@ -1,0 +1,61 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "setting_info_label": "اطلاعات تنظیمات",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "example_inp_label": "تنظیمات"
+    },
+    "SettingsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeSetting": {
+      "success_message": "اطلاعات تنظیمات با موفقیت ذخیره شد."
+    },
+    "updateSetting": {
+      "success_message": "اطلاعات تنظیمات با موفقیت تغییر یافت."
+    },
+    "updateSettingPassword": {
+      "success_message": "رمزعبور تنظیمات با موفقیت تغییر یافت."
+    },
+    "deleteSetting": {
+      "success_message": "تنظیمات با موفقیت حذف شد."
+    },
+    "updateSettingStatus": {
+      "success_message": "وضعیت تنظیمات با موفقیت تغییر یافت"
+    },
+    "updateSettingType": {
+      "success_message": "نوع تنظیمات با موفقیت تغییر یافت"
+    },
+    "forceDeleteSetting": {
+      "success_message": "تنظیمات با موفقیت از زباله دان حذف شد."
+    },
+    "restoreSetting": {
+      "success_message": "تنظیمات با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportSettings": {
+      "success_message": "خروجی تنظیمات با موفقیت دانلود شد."
+    },
+    "importSettings": {
+      "success_message": "تنظیمات، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "تنظیمات",
+    "create": "ایجاد تنظیمات",
+    "edit": "ویرایش تنظیمات",
+    "trashed": "زباله دان تنظیمات",
+    "import_excel": "import تنظیمات"
+  }
+}

@@ -185,36 +185,62 @@ rootPages.forEach(({ stub, target, page }) => {
 const addTranslationEntry = () => {
   const translationFilePath = path.join(
     __dirname,
-    "../src/modules/Base/heleprs/translations.ts"
+    "../src/modules/Base/helpers/translations.ts"
   );
-  const content = fs.readFileSync(translationFilePath, "utf8");
+
+  if (!fs.existsSync(translationFilePath)) {
+    console.error("❌ translations.ts not found at:", translationFilePath);
+    return;
+  }
+
+  let content = fs.readFileSync(translationFilePath, "utf8");
 
   const importMarkerStart = "// [IMPORT MODULE CONFIGS]";
   const importMarkerEnd = "// [END IMPORT MODULE CONFIGS]";
   const translationMarkerStart = "// [TRANSLATION ENTRIES]";
   const translationMarkerEnd = "// [END TRANSLATION ENTRIES]";
 
-  const importLine = `import ${camelModuleName}ModuleConfig from "@/modules/${moduleName}/module.config";`;
-  const translationEntry = `    [${camelModuleName}ModuleConfig.name]: (await import(\`../../${moduleName}/messages/\${locale}.json\`)).default,`;
+  const importLine = `import ${camelModuleName}ModuleConfig from "@/modules/${moduleName}/module.config";\r\n`;
+  const translationEntry = `    [${camelModuleName}ModuleConfig.name]: (await import(\`../../${moduleName}/messages/\${locale}.json\`)).default,\r\n`;
 
-  const updated = content
-    .replace(
-      new RegExp(`${importMarkerStart}([\\s\\S]*?)${importMarkerEnd}`),
-      (match, p1) => {
-        return `${importMarkerStart}\n${p1.trim()}\n${importLine}\n${importMarkerEnd}`;
-      }
-    )
-    .replace(
-      new RegExp(
-        `${translationMarkerStart}([\\s\\S]*?)${translationMarkerEnd}`
-      ),
-      (match, p1) => {
-        return `${translationMarkerStart}\n${p1.trim()}\n${translationEntry}\n${translationMarkerEnd}`;
-      }
+  // بررسی و افزودن import
+  if (!content.includes(importLine)) {
+    const importEndIndex = content.indexOf(importMarkerEnd);
+    if (importEndIndex === -1) {
+      console.error("❌ Import marker not found in translations.ts");
+      return;
+    }
+    // افزودن importLine دقیقاً قبل از importMarkerEnd
+    content =
+      content.slice(0, importEndIndex) +
+      importLine +
+      content.slice(importEndIndex);
+    console.log(`✅ Added import for ${moduleName}`);
+  } else {
+    console.log(`⏩ Import for ${moduleName} already exists, skipping.`);
+  }
+
+  // بررسی و افزودن translation entry
+  if (!content.includes(translationEntry)) {
+    const translationEndIndex = content.indexOf(translationMarkerEnd);
+    if (translationEndIndex === -1) {
+      console.error("❌ Translation marker not found in translations.ts");
+      return;
+    }
+    // افزودن translationEntry دقیقاً قبل از translationMarkerEnd
+    content =
+      content.slice(0, translationEndIndex) +
+      translationEntry +
+      content.slice(translationEndIndex);
+    console.log(`✅ Added translation entry for ${moduleName}`);
+  } else {
+    console.log(
+      `⏩ Translation entry for ${moduleName} already exists, skipping.`
     );
+  }
 
-  fs.writeFileSync(translationFilePath, updated);
-  console.log("✅ translations.ts updated using markers.");
+  fs.writeFileSync(translationFilePath, content, { encoding: "utf8" });
+  console.log("✅ translations.ts updated successfully.");
 };
 addTranslationEntry();
 
@@ -223,32 +249,58 @@ const addRoutesEntry = () => {
     __dirname,
     "../src/modules/Base/hooks/use-routes.tsx"
   );
-  const content = fs.readFileSync(routesFilePath, "utf8");
+
+  if (!fs.existsSync(routesFilePath)) {
+    console.error("❌ use-routes.tsx not found at:", routesFilePath);
+    return;
+  }
+
+  let content = fs.readFileSync(routesFilePath, "utf8");
 
   const importMarkerStart = "// [IMPORT MODULE ROUTES]";
   const importMarkerEnd = "// [END IMPORT MODULE ROUTES]";
   const routesMarkerStart = "// [ROUTES ENTRIES]";
   const routesMarkerEnd = "// [END ROUTES ENTRIES]";
 
-  const importLine = `import ${camelModuleName}Routes from "@/modules/${moduleName}/${kebabModuleName}";`;
-  const routesEntry = `   ...${camelModuleName}Routes(t)`;
+  const importLine = `import ${camelModuleName}Routes from "@/modules/${moduleName}/routes/${kebabModuleName}";\r\n`;
+  const routesEntry = `    ...${camelModuleName}Routes(t),\r\n`;
 
-  const updated = content
-    .replace(
-      new RegExp(`${importMarkerStart}([\\s\\S]*?)${importMarkerEnd}`),
-      (match, p1) => {
-        return `${importMarkerStart}\n${p1.trim()}\n${importLine}\n${importMarkerEnd}`;
-      }
-    )
-    .replace(
-      new RegExp(`${routesMarkerStart}([\\s\\S]*?)${routesMarkerEnd}`),
-      (match, p1) => {
-        return `${routesMarkerStart}\n${p1.trim()}\n${routesEntry}\n${routesMarkerEnd}`;
-      }
-    );
+  // بررسی و افزودن import
+  if (!content.includes(importLine)) {
+    const importEndIndex = content.indexOf(importMarkerEnd);
+    if (importEndIndex === -1) {
+      console.error("❌ Import marker not found in use-routes.tsx");
+      return;
+    }
+    // افزودن importLine دقیقاً قبل از importMarkerEnd
+    content =
+      content.slice(0, importEndIndex) +
+      importLine +
+      content.slice(importEndIndex);
+    console.log(`✅ Added import for ${moduleName} routes`);
+  } else {
+    console.log(`⏩ Import for ${moduleName} routes already exists, skipping.`);
+  }
 
-  fs.writeFileSync(routesFilePath, updated);
-  console.log("✅ use-routes.ts updated using markers.");
+  // بررسی و افزودن routes entry
+  if (!content.includes(routesEntry)) {
+    const routesEndIndex = content.indexOf(routesMarkerEnd);
+    if (routesEndIndex === -1) {
+      console.error("❌ Routes marker not found in use-routes.tsx");
+      return;
+    }
+    // افزودن routesEntry دقیقاً قبل از routesMarkerEnd
+    content =
+      content.slice(0, routesEndIndex) +
+      routesEntry +
+      content.slice(routesEndIndex);
+    console.log(`✅ Added routes entry for ${moduleName}`);
+  } else {
+    console.log(`⏩ Routes entry for ${moduleName} already exists, skipping.`);
+  }
+
+  fs.writeFileSync(routesFilePath, content, { encoding: "utf8" });
+  console.log("✅ use-routes.tsx updated successfully.");
 };
 addRoutesEntry();
 
@@ -257,21 +309,35 @@ const addEnumSourceEntry = () => {
     __dirname,
     "../src/modules/Base/helpers/local-storage-artisan.ts"
   );
-  const content = fs.readFileSync(enumsFilePath, "utf8");
+
+  if (!fs.existsSync(enumsFilePath)) {
+    console.error("❌ local-storage-artisan.ts not found at:", enumsFilePath);
+    return;
+  }
+
+  let content = fs.readFileSync(enumsFilePath, "utf8");
 
   const enumsMarkerStart = "// [ENUM ENTRIES]";
   const enumsMarkerEnd = "// [END ENUM ENTRIES]";
 
-  const routesEntry = `  ${upperSnakeModuleName} = "${snakeModuleName}",`;
+  const enumEntry = `  ${upperSnakeModuleName} = "${snakeModuleName}",\r\n`;
 
-  const updated = content.replace(
-    new RegExp(`${enumsMarkerStart}([\\s\\S]*?)${enumsMarkerEnd}`),
-    (match, p1) => {
-      return `${enumsMarkerStart}\n${p1.trim()}\n${routesEntry}\n${enumsMarkerEnd}`;
+  // بررسی و افزودن enum entry
+  if (!content.includes(enumEntry)) {
+    const enumEndIndex = content.indexOf(enumsMarkerEnd);
+    if (enumEndIndex === -1) {
+      console.error("❌ Enum marker not found in local-storage-artisan.ts");
+      return;
     }
-  );
+    // افزودن enumEntry دقیقاً قبل از enumsMarkerEnd
+    content =
+      content.slice(0, enumEndIndex) + enumEntry + content.slice(enumEndIndex);
+    console.log(`✅ Added enum entry for ${moduleName}`);
+  } else {
+    console.log(`⏩ Enum entry for ${moduleName} already exists, skipping.`);
+  }
 
-  fs.writeFileSync(enumsFilePath, updated);
-  console.log("✅ use-routes.ts updated using markers.");
+  fs.writeFileSync(enumsFilePath, content, { encoding: "utf8" });
+  console.log("✅ local-storage-artisan.ts updated successfully.");
 };
 addEnumSourceEntry();

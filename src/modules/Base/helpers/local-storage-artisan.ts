@@ -8,6 +8,7 @@ export enum EnumSource {
   USER = "user",
   EXCHANGE = "exchange",
   COIN = "coin",
+  SETTING = "setting",
   // [END ENUM ENTRIES]
 }
 

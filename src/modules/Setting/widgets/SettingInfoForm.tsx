@@ -5,34 +5,38 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { I{{moduleName}}Model } from "../models/{{moduleName}}";
+import { ISettingModel } from "../models/Setting";
 import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
 import { validator } from "@/modules/Base/helpers/validator";
-import { EnumSource, localStorageArtisan } from "@/modules/Base/helpers/local-storage-artisan";
+import {
+  EnumSource,
+  localStorageArtisan,
+} from "@/modules/Base/helpers/local-storage-artisan";
 
-interface I{{moduleName}}FormProps extends IForm {
-  {{camelModuleName}}?: I{{moduleName}}Model;
+interface ISettingFormProps extends IForm {
+  setting?: ISettingModel;
 }
 
-const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
+const SettingForm: React.FC<ISettingFormProps> = ({
   onSubmit,
   loading,
-  {{camelModuleName}},
+  setting,
 }) => {
-  const t = useTranslations("{{moduleName}}.Widgets.Form");
+  const t = useTranslations("Setting.Widgets.Form");
 
- const {
-    statuses,
-    types,
-  } = localStorageArtisan.enums(EnumSource.{{upperSnakeModuleName}})
-
+  const { statuses, types } = localStorageArtisan.enums(EnumSource.SETTING);
+  console.log({ statuses, types });
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      example: yup
-        .string()
-        .required(v("required")),
-           status: yup.object().required(v('required')).test(validator.oneOf(statuses,v)),
-      type: yup.object().required(v('required')).test(validator.oneOf(types,v))
+      example: yup.string().required(v("required")),
+      status: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(statuses, v)),
+      type: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(types, v)),
     })
   );
 
@@ -43,10 +47,10 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-      defaultValues: {
-      example: {{camelModuleName}}.example,
-      status: {{camelModuleName}}?.statusObject(statuses),
-      type: {{camelModuleName}}?.typeObject(types),
+    defaultValues: {
+      example: setting.example,
+      status: setting?.statusObject(statuses),
+      type: setting?.typeObject(types),
     },
   });
 
@@ -54,7 +58,6 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
     onSubmit({
       ...data,
     });
-
 
   return (
     <Form onSubmit={handleSubmit(submitHandler)} loading={loading}>
@@ -64,7 +67,7 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
         error={errors.example}
         type={"example"}
       />
-         <Controller
+      <Controller
         control={control}
         name="status"
         render={({ field }) => (
@@ -76,7 +79,7 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
           />
         )}
       />
-         <Controller
+      <Controller
         control={control}
         name="type"
         render={({ field }) => (
@@ -92,4 +95,4 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
   );
 };
 
-export default {{moduleName}}Form;
+export default SettingForm;
