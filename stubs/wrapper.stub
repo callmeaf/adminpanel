@@ -75,7 +75,7 @@ const {{plurarModuleName}}Wrapper: React.FC<I{{plurarModuleName}}WrapperProps> =
   const { getRouteByName } = useRoutes();
   const router = useRouter();
   const handleEdit: TOnEdit<I{{moduleName}}Model> = ({{camelModuleName}}) => {
-    const {{camelModuleName}}EditRoute = getRouteByName("{{snakeModuleName}}_edit", {
+    const {{camelModuleName}}EditRoute = getRouteByName("{{plurarSnakeModuleName}}_edit", {
       {{camelModuleName}}Id: {{camelModuleName}}.id,
     });
     if ({{camelModuleName}}EditRoute) {

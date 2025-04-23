@@ -1,0 +1,3 @@
+import {{page}} from "@/modules/{{moduleName}}/pages/{{page}}";
+
+export default {{page}};

@@ -113,24 +113,6 @@ export const update{{moduleName}}: TThunk<
   return api.post(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}`, formData);
 };
 
-export const update{{moduleName}}Password: TThunk<
-  {
-    password: string;
-    password_confirmation: string;
-  },
-  {
-    {{camelModuleName}}Id: string;
-  },
-  I{{moduleName}}PasswordUpdateResponse
-> = (api, data, extra) => {
-  const formData = new FormData();
-  formData.append("_method", "PATCH");
-  formData.append("password", data.password);
-  formData.append("password_confirmation", data.password_confirmation);
-
-  return api.post(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}/password`, formData);
-};
-
 export const delete{{moduleName}}: TThunk<
   {},
   {

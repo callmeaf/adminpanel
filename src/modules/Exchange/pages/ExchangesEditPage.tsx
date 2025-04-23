@@ -1,6 +1,6 @@
 "use client";
 
-import ExchangesForm from "../widgets/ExchangesForm";
+import ExchangeForms from "../widgets/ExchangeForms";
 import * as React from "react";
 import DashboardLayout from "@/modules/Dashboard/widgets/DashboardLayout";
 import usePage from "@/modules/Base/hooks/use-page";
@@ -18,17 +18,16 @@ const ExchangeEditPage: React.FC<IExchangeEditPageProps> = ({}) => {
   usePage(moduleConfig);
 
   const params = useParams();
-  const [exchange, setExchange] = React.useState<IExchangeModel | undefined>(undefined);
+  const [exchange, setExchange] = React.useState<IExchangeModel | undefined>(
+    undefined
+  );
 
-  const { handle: handleGetExchangeByKey, loading: loadingGetExchangeByKey } = useHttp(
-    moduleConfig,
-    getExchangeByKey,
-    {
+  const { handle: handleGetExchangeByKey, loading: loadingGetExchangeByKey } =
+    useHttp(moduleConfig, getExchangeByKey, {
       onSuccess: (res) => {
         setExchange(toExchange(res.data));
       },
-    }
-  );
+    });
   React.useEffect(() => {
     handleGetExchangeByKey(
       {},
@@ -42,7 +41,7 @@ const ExchangeEditPage: React.FC<IExchangeEditPageProps> = ({}) => {
     <DashboardLayout>
       <Show when={!!exchange}>
         <Show.When>
-          <ExchangesForm exchangeModel={exchange} />
+          <ExchangeForms exchangeModel={exchange} />
         </Show.When>
         <Show.Else>
           <FormLoading open={loadingGetExchangeByKey} />

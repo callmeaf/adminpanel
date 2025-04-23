@@ -22,10 +22,7 @@ export const getExchanges: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
-    first_name?: string;
-    last_name?: string;
-    mobile?: string;
-    email?: string;
+    name?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -42,10 +39,7 @@ export const getExchanges: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            mobile: data.mobile,
-            email: data.email,
+            name: data.name,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -95,10 +89,12 @@ export const updateExchange: TThunk<
   {
     status: string;
     type: string;
-    first_name: string;
-    last_name: string;
-    mobile: string;
-    email: string;
+    name: string;
+    site_url: string;
+    api_url: string;
+    maker_fee_percent: string;
+    taker_fee_percent: string;
+    content: string;
   },
   {
     exchangeId: string;
@@ -109,30 +105,14 @@ export const updateExchange: TThunk<
   formData.append("_method", "PATCH");
   formData.append("status", data.status);
   formData.append("type", data.type);
-  formData.append("first_name", data.first_name);
-  formData.append("last_name", data.last_name);
-  formData.append("mobile", data.mobile);
-  formData.append("email", data.email);
+  formData.append("name", data.name);
+  formData.append("site_url", data.site_url);
+  formData.append("api_url", data.api_url);
+  formData.append("maker_fee_percent", data.maker_fee_percent);
+  formData.append("taker_fee_percent", data.taker_fee_percent);
+  formData.append("content", data.content);
 
   return api.post(`exchanges/${extra.exchangeId}`, formData);
-};
-
-export const updateExchangePassword: TThunk<
-  {
-    password: string;
-    password_confirmation: string;
-  },
-  {
-    exchangeId: string;
-  },
-  IExchangePasswordUpdateResponse
-> = (api, data, extra) => {
-  const formData = new FormData();
-  formData.append("_method", "PATCH");
-  formData.append("password", data.password);
-  formData.append("password_confirmation", data.password_confirmation);
-
-  return api.post(`exchanges/${extra.exchangeId}/password`, formData);
 };
 
 export const deleteExchange: TThunk<

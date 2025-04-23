@@ -77,7 +77,7 @@ const ExchangesWrapper: React.FC<IExchangesWrapperProps> = ({
   const { getRouteByName } = useRoutes();
   const router = useRouter();
   const handleEdit: TOnEdit<IExchangeModel> = (exchange) => {
-    const exchangeEditRoute = getRouteByName("exchange_edit", {
+    const exchangeEditRoute = getRouteByName("exchanges_edit", {
       exchangeId: exchange.id,
     });
     if (exchangeEditRoute) {

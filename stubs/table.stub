@@ -190,6 +190,9 @@ const {{plurarModuleName}}Table: React.FC<I{{plurarModuleName}}TableProps> = ({
                   disabled={trashed}
                 />
               </TableCell>
+              <TableCell>
+                { {{camelModuleName}}.createdAtText }
+              </TableCell>
               <TableCell width={300}>
                 <TableAction
                   model={{{camelModuleName}}}

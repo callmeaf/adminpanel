@@ -4,10 +4,12 @@
       "no_label": "#",
       "status_label": "وضعیت",
       "type_label": "نوع",
+      "name_label": "نام",
       "created_at_label": "تاریخ ایجاد",
       "action_label": "عملیات"
     },
     "Form": {
+      "exchange_info_label": "اطلاعات صرافی",
       "status_inp_label": "وضعیت",
       "type_inp_label": "نوع",
       "name_inp_label": "صرافی",

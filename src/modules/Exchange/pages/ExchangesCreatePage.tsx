@@ -9,7 +9,7 @@ import toExchange, { IExchangeModel } from "../models/Exchange";
 import useHttp from "@/modules/Base/hooks/use-http";
 import { storeExchange, updateExchange } from "../requests/exchange-requests";
 import { SET_SNACKBAR } from "@/modules/UI/context/action-types";
-import ExchangesForm from "../widgets/ExchangesForm";
+import ExchangeForms from "../widgets/ExchangeForms";
 
 interface IExchangeCreatePageProps {}
 
@@ -40,7 +40,7 @@ const ExchangeCreatePage: React.FC<IExchangeCreatePageProps> = ({}) => {
 
   return (
     <DashboardLayout>
-      <ExchangesForm
+      <ExchangeForms
         loading={loadingStoreExchange}
         onSubmit={storeExchangeHandler}
         exchange={exchange}

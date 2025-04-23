@@ -21,8 +21,6 @@ export interface I{{moduleName}}StoreResponse extends I{{moduleName}}Response {}
 
 export interface I{{moduleName}}GetByKeyResponse extends I{{moduleName}}Response {}
 
-export interface I{{moduleName}}PasswordUpdateResponse extends I{{moduleName}}Response {}
-
 export interface I{{moduleName}}StatusUpdateResponse extends I{{moduleName}}Response {}
 
 export interface I{{moduleName}}TypeUpdateResponse extends I{{moduleName}}Response {}

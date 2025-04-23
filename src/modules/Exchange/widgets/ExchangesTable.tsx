@@ -87,7 +87,8 @@ const ExchangesTable: React.FC<IExchangesTableProps> = ({
   }
 
   const config = localStorageArtisan.get(tableId, true) ?? {};
-  const { statuses, types } = localStorageArtisan.enums(EnumSource.EXCHANGE) ?? {};
+  const { statuses, types } =
+    localStorageArtisan.enums(EnumSource.EXCHANGE) ?? {};
 
   return (
     <Table
@@ -96,6 +97,10 @@ const ExchangesTable: React.FC<IExchangesTableProps> = ({
         {
           id: "no",
           label: t("no_label"),
+        },
+        {
+          id: "name",
+          label: t("name_label"),
         },
         {
           id: "status",
@@ -118,10 +123,10 @@ const ExchangesTable: React.FC<IExchangesTableProps> = ({
         <TableSearch
           onSearch={onSearch}
           params={[
-          // {
-          //   key: "key",
-          //   label: t("key_label"),
-          // },
+            {
+              key: "name",
+              label: t("name_label"),
+            },
           ]}
           tableId={tableId}
           defaultValue={config.term}
@@ -170,6 +175,7 @@ const ExchangesTable: React.FC<IExchangesTableProps> = ({
           {exchanges.map((exchange, index) => (
             <TableRow key={exchange.id}>
               <TableCell>{paginate.from + index}</TableCell>
+              <TableCell>{exchange.name}</TableCell>
               <TableCell>
                 <TableSelectOptionColumnAction
                   name="status"
@@ -190,6 +196,7 @@ const ExchangesTable: React.FC<IExchangesTableProps> = ({
                   disabled={trashed}
                 />
               </TableCell>
+              <TableCell>{exchange.createdAtText}</TableCell>
               <TableCell width={300}>
                 <TableAction
                   model={exchange}

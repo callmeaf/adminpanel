@@ -63,7 +63,11 @@ const files = [
   },
   {
     stub: "form.stub",
-    target: `widgets/${plurarModuleName}Form.tsx`,
+    target: `widgets/${moduleName}Forms.tsx`,
+  },
+  {
+    stub: "form.info.stub",
+    target: `widgets/${moduleName}InfoForm.tsx`,
   },
   {
     stub: "import.stub",
@@ -88,7 +92,7 @@ const files = [
 ];
 
 // تبدیل محتوای stub به متن نهایی
-function renderStub(content: string): string {
+function renderStub(content: string, page?: string = ""): string {
   return content
     .replace(/{{moduleName}}/g, moduleName)
     .replace(/{{lowerModuleName}}/g, lowerModuleName)
@@ -98,7 +102,8 @@ function renderStub(content: string): string {
     .replace(/{{upperSnakeModuleName}}/g, upperSnakeModuleName)
     .replace(/{{snakeModuleName}}/g, snakeModuleName)
     .replace(/{{camelModuleName}}/g, camelModuleName)
-    .replace(/{{kebabModuleName}}/g, kebabModuleName);
+    .replace(/{{kebabModuleName}}/g, kebabModuleName)
+    .replace(/{{page}}/g, page);
 }
 
 // اطمینان از اینکه پوشه‌ها وجود دارن
@@ -128,6 +133,49 @@ files.forEach(({ stub, target }) => {
   if (ensureTargetPathDoesNotExists(targetPath)) {
     const stubContent = fs.readFileSync(stubPath, "utf8");
     const finalContent = renderStub(stubContent);
+
+    fs.writeFileSync(targetPath, finalContent);
+    console.log("✅ Successfully created", targetPath);
+  }
+});
+
+const rootPagesDir = path.join(
+  __dirname,
+  "../src/app/[locale]",
+  plurarSnakeModuleName
+);
+const rootPages = [
+  {
+    stub: "page.root.stub",
+    target: "page.tsx",
+    page: `${plurarModuleName}Page`,
+  },
+  {
+    stub: "page.root.stub",
+    target: "create/page.tsx",
+    page: `${plurarModuleName}CreatePage`,
+  },
+  {
+    stub: "page.root.stub",
+    target: "trashed/page.tsx",
+    page: `${plurarModuleName}TrashedPage`,
+  },
+  {
+    stub: "page.root.stub",
+    target: `[${camelModuleName}Id]/edit/page.tsx`,
+    page: `${plurarModuleName}EditPage`,
+  },
+];
+
+rootPages.forEach(({ stub, target, page }) => {
+  const stubPath = path.join(stubDir, stub);
+  const targetPath = path.join(rootPagesDir, target);
+
+  ensureDirExists(path.dirname(targetPath));
+
+  if (ensureTargetPathDoesNotExists(targetPath)) {
+    const stubContent = fs.readFileSync(stubPath, "utf8");
+    const finalContent = renderStub(stubContent, page);
 
     fs.writeFileSync(targetPath, finalContent);
     console.log("✅ Successfully created", targetPath);
