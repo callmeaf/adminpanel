@@ -92,7 +92,7 @@ const files = [
 ];
 
 // تبدیل محتوای stub به متن نهایی
-function renderStub(content: string, page?: string = ""): string {
+function renderStub(content: string, page: string = ""): string {
   return content
     .replace(/{{moduleName}}/g, moduleName)
     .replace(/{{lowerModuleName}}/g, lowerModuleName)

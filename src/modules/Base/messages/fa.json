@@ -12,12 +12,14 @@
     "only_digits": "فقط عدد قابل قبول میباشد.",
     "min_length": "نباید کمتر از {value} کاراکتر باشد.",
     "email": "ایمیل معتبر وارد نمایید.",
-    "one_of": "باید یکی از این ها باشد. {options}"
+    "one_of": "باید یکی از این ها باشد. {options}",
+    "uppercase": "باید با حروف بزرگ و انگلیسی باشد"
   },
   "Components": {
     "Stepper": {
       "optional_label": "اختیاری",
       "all_steps_completed_label": "فرایند تکمیل شد.",
+      "go_to_edit_btn_label": "ویرایش",
       "reset_btn_label": "بارگذاری مجدد",
       "go_to_list_btn_label": "رفتن به لیست",
       "back_btn_label": "بازگشت",

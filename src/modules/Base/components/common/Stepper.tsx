@@ -17,6 +17,7 @@ interface IStepper {
   handleBackStep: VoidFunction;
   handleResetStep: VoidFunction;
   handleGoToList?: VoidFunction;
+  handleGoToEdit?: VoidFunction;
   handleGoStep: THandleGoStep;
   clickableStep?: boolean;
 }
@@ -31,6 +32,7 @@ const Stepper: React.FC<React.PropsWithChildren<IStepper>> = ({
   handleBackStep,
   handleResetStep,
   handleGoToList,
+  handleGoToEdit,
   handleGoStep,
   clickableStep = false,
 }) => {
@@ -71,9 +73,18 @@ const Stepper: React.FC<React.PropsWithChildren<IStepper>> = ({
                 {t("all_steps_completed_label")}
               </Typography>
               {handleGoToList && (
-                <Button onClick={handleGoToList} variant="contained">
-                  {t("go_to_list_btn_label")}
-                </Button>
+                <Box component={"div"}>
+                  <Button onClick={handleGoToList} variant="contained">
+                    {t("go_to_list_btn_label")}
+                  </Button>
+                  <Button
+                    onClick={handleGoToEdit}
+                    variant="contained"
+                    color="success"
+                  >
+                    {t("go_to_edit_btn_label")}
+                  </Button>
+                </Box>
               )}
             </Box>
 

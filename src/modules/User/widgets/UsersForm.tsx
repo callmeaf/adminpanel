@@ -30,7 +30,7 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
     handleNextStep,
     handleBackStep,
     handleResetStep,
-    handleGoToList,
+    handleGoToRoute,
     handleGoStep,
   } = useStepper([
     {
@@ -110,7 +110,14 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
       handleNextStep={handleNextStep}
       handleBackStep={handleBackStep}
       handleResetStep={handleResetStep}
-      handleGoToList={handleGoToList.bind(null, "users_index")}
+      handleGoToList={handleGoToRoute.bind(null, "users_index")}
+      handleGoToEdit={
+        user
+          ? handleGoToRoute.bind(null, "users_edit", {
+              userId: user.id,
+            })
+          : undefined
+      }
       handleGoStep={handleGoStep}
       clickableStep={!!user}
     >

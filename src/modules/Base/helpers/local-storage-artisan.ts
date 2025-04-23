@@ -6,6 +6,7 @@ type TEnumsReturnType = Record<string, IOption[]>;
 export enum EnumSource {
   USER = "user",
   EXCHANGE = "exchange",
+  COIN = "coin",
 }
 
 interface ILocalStorageArtisan {

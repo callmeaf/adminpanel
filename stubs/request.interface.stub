@@ -11,10 +11,7 @@ import {
  */
 
 export interface I{{moduleName}}Response extends IDataResponse {
-  first_name: string;
-  last_name: string;
-  email: string;
-  mobile: string;
+  example: string;
 }
 
 export interface I{{moduleName}}StoreResponse extends I{{moduleName}}Response {}

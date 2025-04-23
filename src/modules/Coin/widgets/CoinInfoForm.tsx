@@ -4,35 +4,34 @@ import useValidation from "@/modules/Base/hooks/use-validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import * as React from "react";
-import { useForm } from "react-hook-form";
-import { I{{moduleName}}Model } from "../models/{{moduleName}}";
-import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
+import { Controller, useForm } from "react-hook-form";
+import { ICoinModel } from "../models/Coin";
 import { validator } from "@/modules/Base/helpers/validator";
-import { EnumSource, localStorageArtisan } from "@/modules/Base/helpers/local-storage-artisan";
+import {
+  EnumSource,
+  localStorageArtisan,
+} from "@/modules/Base/helpers/local-storage-artisan";
+import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
 
-interface I{{moduleName}}FormProps extends IForm {
-  {{camelModuleName}}?: I{{moduleName}}Model;
+interface ICoinFormProps extends IForm {
+  coin?: ICoinModel;
 }
 
-const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
-  onSubmit,
-  loading,
-  {{camelModuleName}},
-}) => {
-  const t = useTranslations("{{moduleName}}.Widgets.Form");
-
- const {
-    statuses,
-    types,
-  } = localStorageArtisan.enums(EnumSource.COIN)
+const CoinForm: React.FC<ICoinFormProps> = ({ onSubmit, loading, coin }) => {
+  const t = useTranslations("Coin.Widgets.Form");
+  const { statuses, types } = localStorageArtisan.enums(EnumSource.COIN);
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      example: yup
-        .string()
-        .required(v("required")),
-           status: yup.object().required(v('required')).test(validator.oneOf(statuses,v)),
-      type: yup.object().required(v('required')).test(validator.oneOf(types,v))
+      symbol: yup.string().required(v("required")).test(validator.uppercase(v)),
+      status: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(statuses, v)),
+      type: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(types, v)),
     })
   );
 
@@ -43,8 +42,8 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-      defaultValues: {
-      example: coin.example,
+    defaultValues: {
+      symbol: coin?.symbol,
       status: coin?.statusObject(statuses),
       type: coin?.typeObject(types),
     },
@@ -53,18 +52,19 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
   const submitHandler = (data: any) =>
     onSubmit({
       ...data,
+      status: data.status.value,
+      type: data.type.value,
     });
-
 
   return (
     <Form onSubmit={handleSubmit(submitHandler)} loading={loading}>
       <Input
-        {...register("example")}
-        label={t("example_inp_label")}
-        error={errors.example}
-        type={"example"}
+        {...register("symbol")}
+        label={t("symbol_inp_label")}
+        error={errors.symbol}
+        type={"symbol"}
       />
-         <Controller
+      <Controller
         control={control}
         name="status"
         render={({ field }) => (
@@ -76,7 +76,7 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
           />
         )}
       />
-         <Controller
+      <Controller
         control={control}
         name="type"
         render={({ field }) => (
@@ -92,4 +92,4 @@ const {{moduleName}}Form: React.FC<I{{moduleName}}FormProps> = ({
   );
 };
 
-export default {{moduleName}}Form;
+export default CoinForm;

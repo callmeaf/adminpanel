@@ -54,7 +54,7 @@ const TablePagination: React.FC<ITablePaginationProps> = ({
   paginate,
   onPageChange,
   onPerPageChange,
-  perPageValue,
+  perPageValue = "",
 }) => {
   const theme = useTheme();
   const isDesktopDevice = useMediaQuery(theme.breakpoints.up("sm"));

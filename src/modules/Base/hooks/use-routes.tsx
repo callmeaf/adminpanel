@@ -1,3 +1,4 @@
+import coinRoutes from "@/modules/Coin/routes/coin";
 import dashboardRoutes from "@/modules/Dashboard/routes/dashboard";
 import exchangeRoutes from "@/modules/Exchange/routes/exchange";
 import userRoutes from "@/modules/User/routes/user";
@@ -17,11 +18,13 @@ export interface IRoutes {
 }
 export type TRoute = (t: ReturnType<typeof useTranslations>) => IRoutes;
 
+export interface IRouteParams {
+  [key: string]: string | number;
+}
+
 type TGetRouteByName = (
   name: string,
-  params?: {
-    [key: string]: string | number;
-  }
+  params?: IRouteParams
 ) => undefined | IRoute;
 
 type TUseRoutes = () => {
@@ -36,6 +39,7 @@ const useRoutes: TUseRoutes = () => {
     ...dashboardRoutes(t),
     ...userRoutes(t),
     ...exchangeRoutes(t),
+    ...coinRoutes(t),
   };
 
   useEffect(() => {}, []);

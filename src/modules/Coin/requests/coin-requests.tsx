@@ -1,35 +1,36 @@
 import { TThunk } from "@/modules/Base/interfaces/request-interface";
 import {
-  I{{moduleName}}DeleteResponse,
-  I{{moduleName}}GetByKeyResponse,
-  I{{plurarModuleName}}Response,
-  I{{moduleName}}StoreResponse,
-  I{{moduleName}}StatusUpdateResponse,
-  I{{moduleName}}TypeUpdateResponse,
-  I{{plurarModuleName}}ExportResponse,
-  I{{plurarModuleName}}ImportResponse,
-  I{{plurarModuleName}}TrashedResponse,
-  I{{moduleName}}RestoreResponse,
-  I{{moduleName}}ForceDeleteResponse,
+  ICoinDeleteResponse,
+  ICoinGetByKeyResponse,
+  ICoinsResponse,
+  ICoinStoreResponse,
+  ICoinStatusUpdateResponse,
+  ICoinTypeUpdateResponse,
+  ICoinsExportResponse,
+  ICoinsImportResponse,
+  ICoinsTrashedResponse,
+  ICoinRestoreResponse,
+  ICoinForceDeleteResponse,
 } from "../interfaces/request-interface";
 import { ExportType } from "@/modules/Base/components/tables/TableExport";
 import { ImportType } from "@/modules/Base/components/imports/ImportWrapper";
 
-export const get{{plurarModuleName}}: TThunk<
+export const getCoins: TThunk<
   {
     page?: number;
     per_page?: number;
     status?: string;
     type?: string;
+    symbol?: string;
     created_from?: string;
     created_to?: string;
   },
   {},
-  I{{plurarModuleName}}Response[],
+  ICoinsResponse[],
   true
 > = (api, data, extra) => {
   return api.get(
-    "{{plurarSnakeModuleName}}",
+    "coins",
     data
       ? {
           params: {
@@ -37,6 +38,7 @@ export const get{{plurarModuleName}}: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            symbol: data.symbol,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -45,102 +47,107 @@ export const get{{plurarModuleName}}: TThunk<
   );
 };
 
-export const store{{moduleName}}: TThunk<
+export const storeCoin: TThunk<
   {
     status: string;
     type: string;
+    symbol: string;
   },
   {},
-  I{{moduleName}}StoreResponse
+  ICoinStoreResponse
 > = async (api, data, extra) => {
   const formData = new FormData();
   formData.append("status", data.status);
   formData.append("type", data.type);
+  formData.append("symbol", data.symbol);
 
-  return api.post("{{plurarSnakeModuleName}}", formData);
+  return api.post("coins", formData);
 };
 
-export const get{{moduleName}}ByKey: TThunk<
+export const getCoinByKey: TThunk<
   {},
   {
     key: string;
   },
-  I{{moduleName}}GetByKeyResponse
+  ICoinGetByKeyResponse
 > = async (api, data, extra) => {
-  return api.get(`{{plurarSnakeModuleName}}/${extra.key}`);
+  return api.get(`coins/${extra.key}`);
 };
 
-export const update{{moduleName}}: TThunk<
+export const updateCoin: TThunk<
   {
     status: string;
     type: string;
+    symbol: string;
   },
   {
-    {{camelModuleName}}Id: string;
+    coinId: string;
   },
-  I{{moduleName}}StoreResponse
+  ICoinStoreResponse
 > = async (api, data, extra) => {
   const formData = new FormData();
   formData.append("_method", "PATCH");
   formData.append("status", data.status);
   formData.append("type", data.type);
+  formData.append("symbol", data.symbol);
 
-  return api.post(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}`, formData);
+  return api.post(`coins/${extra.coinId}`, formData);
 };
 
-export const delete{{moduleName}}: TThunk<
+export const deleteCoin: TThunk<
   {},
   {
-    {{camelModuleName}}Id: string;
+    coinId: string;
   },
-  I{{moduleName}}DeleteResponse
+  ICoinDeleteResponse
 > = (api, data, extra) => {
-  return api.delete(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}`);
+  return api.delete(`coins/${extra.coinId}`);
 };
 
-export const update{{moduleName}}Status: TThunk<
+export const updateCoinStatus: TThunk<
   {
     status: string;
   },
-  { {{camelModuleName}}Id: string },
-  I{{moduleName}}StatusUpdateResponse
+  { coinId: string },
+  ICoinStatusUpdateResponse
 > = (api, data, extra) => {
   const formData = new FormData();
   formData.append("_method", "PATCH");
   formData.append("status", data.status);
 
-  return api.post(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}/status`, formData);
+  return api.post(`coins/${extra.coinId}/status`, formData);
 };
 
-export const update{{moduleName}}Type: TThunk<
+export const updateCoinType: TThunk<
   {
     type: string;
   },
-  { {{camelModuleName}}Id: string },
-  I{{moduleName}}TypeUpdateResponse
+  { coinId: string },
+  ICoinTypeUpdateResponse
 > = (api, data, extra) => {
   const formData = new FormData();
   formData.append("_method", "PATCH");
   formData.append("type", data.type);
 
-  return api.post(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}/type`, formData);
+  return api.post(`coins/${extra.coinId}/type`, formData);
 };
 
-export const get{{plurarModuleName}}Trashed: TThunk<
+export const getCoinsTrashed: TThunk<
   {
     page?: number;
     per_page?: number;
     status?: string;
     type?: string;
+    symbol?: string;
     created_from?: string;
     created_to?: string;
   },
   {},
-  I{{plurarModuleName}}TrashedResponse[],
+  ICoinsTrashedResponse[],
   true
 > = (api, data, extra) => {
   return api.get(
-    "{{plurarSnakeModuleName}}/trashed/list",
+    "coins/trashed/list",
     data
       ? {
           params: {
@@ -148,6 +155,7 @@ export const get{{plurarModuleName}}Trashed: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            symbol: data.symbol,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -156,32 +164,33 @@ export const get{{plurarModuleName}}Trashed: TThunk<
   );
 };
 
-export const restore{{moduleName}}: TThunk<
+export const restoreCoin: TThunk<
   {},
   {
-    {{camelModuleName}}Id: string;
+    coinId: string;
   },
-  I{{moduleName}}RestoreResponse
+  ICoinRestoreResponse
 > = (api, data, extra) => {
-  return api.patch(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}/restore`);
+  return api.patch(`coins/${extra.coinId}/restore`);
 };
 
-export const forceDelete{{moduleName}}: TThunk<
+export const forceDeleteCoin: TThunk<
   {},
   {
-    {{camelModuleName}}Id: string;
+    coinId: string;
   },
-  I{{moduleName}}ForceDeleteResponse
+  ICoinForceDeleteResponse
 > = (api, data, extra) => {
-  return api.delete(`{{plurarSnakeModuleName}}/${extra.{{camelModuleName}}Id}/force`);
+  return api.delete(`coins/${extra.coinId}/force`);
 };
 
-export const export{{plurarModuleName}}: TThunk<
+export const exportCoins: TThunk<
   {
     page?: number;
     per_page?: number;
     status?: string;
     type?: string;
+    symbol?: string;
     created_from?: string;
     created_to?: string;
     trashed: boolean;
@@ -189,15 +198,16 @@ export const export{{plurarModuleName}}: TThunk<
   {
     type: ExportType;
   },
-  I{{plurarModuleName}}ExportResponse
+  ICoinsExportResponse
 > = async (api, data, extra) => {
-  const response = await api.get(`{{plurarSnakeModuleName}}/export/${extra.type}`, {
+  const response = await api.get(`coins/export/${extra.type}`, {
     responseType: "blob",
     params: {
       page: data.page,
       per_page: data.per_page,
       status: data.status,
       type: data.type,
+      symbol: data.symbol,
       created_from: data.created_from,
       created_to: data.created_to,
       trashed: data.trashed,
@@ -208,7 +218,7 @@ export const export{{plurarModuleName}}: TThunk<
     type: response.headers["content-type"],
   });
 
-  let fileName = "{{plurarSnakeModuleName}}.xlsx";
+  let fileName = "coins.xlsx";
   const fileNameFromServer = response.headers["content-disposition"];
 
   if (fileNameFromServer) {
@@ -230,17 +240,17 @@ export const export{{plurarModuleName}}: TThunk<
   return response;
 };
 
-export const import{{plurarModuleName}}: TThunk<
+export const importCoins: TThunk<
   {
     file: File;
   },
   {
     type: ImportType;
   },
-  I{{plurarModuleName}}ImportResponse
+  ICoinsImportResponse
 > = (api, data, extra) => {
   const formData = new FormData();
 
   formData.append("file", data.file);
-  return api.post(`{{plurarSnakeModuleName}}/import/${extra.type}`, formData);
+  return api.post(`coins/import/${extra.type}`, formData);
 };

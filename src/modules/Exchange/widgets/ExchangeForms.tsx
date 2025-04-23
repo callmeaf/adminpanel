@@ -27,7 +27,7 @@ const ExchangeForms: React.FC<IExchangeFormsProps> = ({ exchangeModel }) => {
     handleNextStep,
     handleBackStep,
     handleResetStep,
-    handleGoToList,
+    handleGoToRoute,
     handleGoStep,
   } = useStepper([
     {
@@ -70,6 +70,28 @@ const ExchangeForms: React.FC<IExchangeFormsProps> = ({ exchangeModel }) => {
   const updateExchangeHandler = (data: any) =>
     handleUpdateExchange(data, { exchangeId: exchange?.id! });
 
+  const resetStepHandler = () => {
+    if (exchangeModel) {
+      handleGoToRoute("exchanges_create");
+    } else {
+      handleResetStep();
+      setExchange(undefined);
+    }
+  };
+
+  const goToListRouteHandler = () => {
+    handleGoToRoute("exchanges_index");
+  };
+
+  const goToEditRouteHandler = () => {
+    if (exchangeModel) {
+      handleResetStep();
+    } else if (exchange) {
+      handleGoToRoute("exchanges_edit", {
+        exchangeId: exchange.id,
+      });
+    }
+  };
   return (
     <Stepper
       steps={steps}
@@ -78,8 +100,9 @@ const ExchangeForms: React.FC<IExchangeFormsProps> = ({ exchangeModel }) => {
       completed={completed}
       handleNextStep={handleNextStep}
       handleBackStep={handleBackStep}
-      handleResetStep={handleResetStep}
-      handleGoToList={handleGoToList.bind(null, "exchanges_index")}
+      handleResetStep={resetStepHandler}
+      handleGoToList={goToListRouteHandler}
+      handleGoToEdit={goToEditRouteHandler}
       handleGoStep={handleGoStep}
       clickableStep={!!exchange}
     >

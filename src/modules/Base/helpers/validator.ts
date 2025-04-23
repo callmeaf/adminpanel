@@ -13,6 +13,7 @@ interface IValidator {
   startsWith: TValidation<string>;
   onlyDigits: TValidationWithoutValue;
   oneOf: TValidation<IOption[]>;
+  uppercase: TValidationWithoutValue;
 }
 
 export const validator: IValidator = {
@@ -38,5 +39,10 @@ export const validator: IValidator = {
     }),
     test: (v) =>
       options.findIndex((val) => val?.toString() === v?.toString()) > -1,
+  }),
+  uppercase: (t) => ({
+    name: "uppercase",
+    message: t("uppercase"),
+    test: (v) => String(v) === String(v).toUpperCase(),
   }),
 };

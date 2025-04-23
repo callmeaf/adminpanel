@@ -28,16 +28,12 @@ const {{moduleName}}Forms: React.FC<I{{moduleName}}FormsProps> = ({ {{camelModul
     handleNextStep,
     handleBackStep,
     handleResetStep,
-    handleGoToList,
+    handleGoToRoute,
     handleGoStep,
   } = useStepper([
     {
       id: "{{snakeModuleName}}_info",
       label: t("{{snakeModuleName}}_info_label"),
-    },
-    {
-      id: "{{snakeModuleName}}_password",
-      label: t("{{snakeModuleName}}_password_label"),
     },
   ]);
 
@@ -81,6 +77,29 @@ const {{moduleName}}Forms: React.FC<I{{moduleName}}FormsProps> = ({ {{camelModul
   const update{{moduleName}}Handler = (data: any) =>
     handleUpdate{{moduleName}}(data, { {{camelModuleName}}Id: {{camelModuleName}}?.id! });
 
+ const resetStepHandler = () => {
+    if ({{camelModuleName}}Model) {
+      handleGoToRoute("{{plurarSnakeModuleName}}_create");
+    } else {
+      handleResetStep();
+      set{{moduleName}}(undefined);
+    }
+  };
+
+  const goToListRouteHandler = () => {
+    handleGoToRoute("{{plurarSnakeModuleName}}_index");
+  };
+
+  const goToEditRouteHandler = () => {
+    if ({{camelModuleName}}Model) {
+      handleResetStep();
+    } else if ({{camelModuleName}}) {
+      handleGoToRoute("{{plurarSnakeModuleName}}_edit", {
+        {{camelModuleName}}Id: {{camelModuleName}}.id,
+      });
+    }
+  };
+
   return (
     <Stepper
       steps={steps}
@@ -89,8 +108,9 @@ const {{moduleName}}Forms: React.FC<I{{moduleName}}FormsProps> = ({ {{camelModul
       completed={completed}
       handleNextStep={handleNextStep}
       handleBackStep={handleBackStep}
-      handleResetStep={handleResetStep}
-      handleGoToList={handleGoToList.bind(null, "{{camelModuleName}}s_index")}
+      handleResetStep={resetStepHandler}
+      handleGoToList={goToListRouteHandler}
+      handleGoToEdit={goToEditRouteHandler}
       handleGoStep={handleGoStep}
       clickableStep={!!{{camelModuleName}}}
     >

@@ -8,6 +8,7 @@
       "action_label": "عملیات"
     },
     "Form": {
+      "{{snakeModuleName}}_info_label": "اطلاعات نمونه",
       "status_inp_label": "وضعیت",
       "type_inp_label": "نوع",
       "example_inp_label": "نمونه"

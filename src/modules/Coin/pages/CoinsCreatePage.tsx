@@ -1,21 +1,21 @@
 "use client";
 
-import {{moduleName}}Forms from "../widgets/{{moduleName}}Forms";
+import CoinForms from "../widgets/CoinForms";
 import * as React from "react";
 import DashboardLayout from "@/modules/Dashboard/widgets/DashboardLayout";
 import usePage from "@/modules/Base/hooks/use-page";
 import moduleConfig from "../module.config";
 
-interface I{{moduleName}}CreatePageProps {}
+interface ICoinCreatePageProps {}
 
-const {{moduleName}}CreatePage: React.FC<I{{moduleName}}CreatePageProps> = ({}) => {
+const CoinCreatePage: React.FC<ICoinCreatePageProps> = ({}) => {
   usePage(moduleConfig);
 
   return (
     <DashboardLayout>
-      <{{moduleName}}Forms />
+      <CoinForms />
     </DashboardLayout>
   );
 };
 
-export default {{moduleName}}CreatePage;
+export default CoinCreatePage;

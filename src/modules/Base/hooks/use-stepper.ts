@@ -1,7 +1,7 @@
 import { useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import useRoutes from "./use-routes";
+import useRoutes, { IRouteParams } from "./use-routes";
 
 export interface IStep {
   id: string;
@@ -19,7 +19,7 @@ type TUseStepper = (initialSteps: IStep[]) => {
   handleNextStep: VoidFunction;
   handleBackStep: VoidFunction;
   handleResetStep: VoidFunction;
-  handleGoToList: (routeName: string) => void;
+  handleGoToRoute: (routeName: string, params?: IRouteParams) => void;
   handleGoStep: THandleGoStep;
 };
 
@@ -61,8 +61,8 @@ const useStepper: TUseStepper = (initialSteps) => {
     setActiveStep(steps[0]);
   };
 
-  const handleGoToList = (routeName: string) => {
-    const currentRoute = getRouteByName(routeName);
+  const handleGoToRoute = (routeName: string, params?: IRouteParams) => {
+    const currentRoute = getRouteByName(routeName, params);
     if (currentRoute) {
       router.push(currentRoute.href);
     }
@@ -88,7 +88,7 @@ const useStepper: TUseStepper = (initialSteps) => {
     handleNextStep,
     handleBackStep,
     handleResetStep,
-    handleGoToList,
+    handleGoToRoute,
     handleGoStep,
   };
 };
