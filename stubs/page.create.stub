@@ -1,0 +1,21 @@
+"use client";
+
+import {{plurarModuleName}}Form from "../widgets/{{plurarModuleName}}Form";
+import * as React from "react";
+import DashboardLayout from "@/modules/Dashboard/widgets/DashboardLayout";
+import usePage from "@/modules/Base/hooks/use-page";
+import moduleConfig from "../module.config";
+
+interface I{{moduleName}}CreatePageProps {}
+
+const {{moduleName}}CreatePage: React.FC<I{{moduleName}}CreatePageProps> = ({}) => {
+  usePage(moduleConfig);
+
+  return (
+    <DashboardLayout>
+      <{{plurarModuleName}}Form />
+    </DashboardLayout>
+  );
+};
+
+export default {{moduleName}}CreatePage;

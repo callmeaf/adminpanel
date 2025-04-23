@@ -1,0 +1,60 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "example_inp_label": "نمونه"
+    },
+    "ProductCategoriesImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeProductCategory": {
+      "success_message": "اطلاعات نمونه با موفقیت ذخیره شد."
+    },
+    "updateProductCategory": {
+      "success_message": "اطلاعات نمونه با موفقیت تغییر یافت."
+    },
+    "updateProductCategoryPassword": {
+      "success_message": "رمزعبور نمونه با موفقیت تغییر یافت."
+    },
+    "deleteProductCategory": {
+      "success_message": "نمونه با موفقیت حذف شد."
+    },
+    "updateProductCategoryStatus": {
+      "success_message": "وضعیت نمونه با موفقیت تغییر یافت"
+    },
+    "updateProductCategoryType": {
+      "success_message": "نوع نمونه با موفقیت تغییر یافت"
+    },
+    "forceDeleteProductCategory": {
+      "success_message": "نمونه با موفقیت از زباله دان حذف شد."
+    },
+    "restoreProductCategory": {
+      "success_message": "نمونه با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportProductCategories": {
+      "success_message": "خروجی نمونه ها با موفقیت دانلود شد."
+    },
+    "importProductCategories": {
+      "success_message": "نمونه ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "نمونه ها",
+    "create": "ایجاد نمونه",
+    "edit": "ویرایش نمونه",
+    "trashed": "زباله دان نمونه ها",
+    "import_excel": "import نمونه ها"
+  }
+}

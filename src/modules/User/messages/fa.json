@@ -1,0 +1,76 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "full_name_label": "نام و نام خانوادگی",
+      "first_name_label": "نام",
+      "last_name_label": "نام خانوادگی",
+      "mobile_label": "موبایل",
+      "email_label": "ایمیل",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "user_info_label": "اطلاعات اولیه کاربر",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "first_name_inp_label": "نام",
+      "last_name_inp_label": "نام خانوادگی",
+      "mobile_inp_label": "شماره موبایل",
+      "email_inp_label": "ایمیل",
+      "user_password_label": "رمز حساب کاربر",
+      "password_inp_label": "رمز عبور",
+      "password_confirmation_inp_label": "تایید رمزعبور"
+    },
+    "UsersImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد.",
+      "first_name_desc": "باید {type} باشد.",
+      "last_name_desc": "باید {type} باشد.",
+      "mobile_desc": "باید {type} باشد. مثال {example}",
+      "email_desc": "باید {type} باشد. مثال {example}"
+    }
+  },
+  "Requests": {
+    "storeUser": {
+      "success_message": "اطلاعات کاربر با موفقیت ذخیره شد."
+    },
+    "updateUser": {
+      "success_message": "اطلاعات کاربر با موفقیت تغییر یافت."
+    },
+    "updateUserPassword": {
+      "success_message": "رمزعبور کاربر با موفقیت تغییر یافت."
+    },
+    "deleteUser": {
+      "success_message": "کاربر با موفقیت حذف شد."
+    },
+    "updateUserStatus": {
+      "success_message": "وضعیت کاربر با موفقیت تغییر یافت"
+    },
+    "updateUserType": {
+      "success_message": "نوع کاربر با موفقیت تغییر یافت"
+    },
+    "forceDeleteUser": {
+      "success_message": "کاربر با موفقیت از زباله دان حذف شد."
+    },
+    "restoreUser": {
+      "success_message": "کاربر با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportUsers": {
+      "success_message": "خروجی کاربران با موفقیت دانلود شد."
+    },
+    "importUsers": {
+      "success_message": "کاربران، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "کاربران",
+    "create": "ایجاد کاربر",
+    "edit": "ویرایش کاربر",
+    "trashed": "زباله دان کاربران",
+    "import_excel": "import کاربران"
+  }
+}

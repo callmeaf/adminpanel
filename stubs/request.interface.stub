@@ -1,0 +1,42 @@
+import {
+  IDataResponse,
+  IExporterResponse,
+  IImporterResponse,
+} from "@/modules/Base/interfaces/request-interface";
+
+/**
+ * =============================
+ * {{moduleName}}
+ * =============================
+ */
+
+export interface I{{moduleName}}Response extends IDataResponse {
+  first_name: string;
+  last_name: string;
+  email: string;
+  mobile: string;
+}
+
+export interface I{{moduleName}}StoreResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}GetByKeyResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}PasswordUpdateResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}StatusUpdateResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}TypeUpdateResponse extends I{{moduleName}}Response {}
+
+export interface I{{plurarModuleName}}Response extends I{{moduleName}}Response {}
+
+export interface I{{plurarModuleName}}TrashedResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}DeleteResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}RestoreResponse extends I{{moduleName}}Response {}
+
+export interface I{{moduleName}}ForceDeleteResponse extends I{{moduleName}}Response {}
+
+export interface I{{plurarModuleName}}ExportResponse extends IExporterResponse {}
+
+export interface I{{plurarModuleName}}ImportResponse extends IImporterResponse {}

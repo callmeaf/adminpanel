@@ -1,0 +1,55 @@
+"use client";
+
+import {{plurarModuleName}}Form from "../widgets/{{plurarModuleName}}Form";
+import * as React from "react";
+import DashboardLayout from "@/modules/Dashboard/widgets/DashboardLayout";
+import usePage from "@/modules/Base/hooks/use-page";
+import moduleConfig from "../module.config";
+import { useParams } from "next/navigation";
+import to{{moduleName}}, { I{{moduleName}}Model } from "../models/{{moduleName}}";
+import useHttp from "@/modules/Base/hooks/use-http";
+import { get{{moduleName}}ByKey } from "../requests/{{kebabModuleName}}-requests";
+import Show from "@/modules/Base/components/common/Show";
+import FormLoading from "@/modules/Base/components/Loading/FormLoading";
+
+interface I{{moduleName}}EditPageProps {}
+
+const {{moduleName}}EditPage: React.FC<I{{moduleName}}EditPageProps> = ({}) => {
+  usePage(moduleConfig);
+
+  const params = useParams();
+  const [{{camelModuleName}}, set{{moduleName}}] = React.useState<I{{moduleName}}Model | undefined>(undefined);
+
+  const { handle: handleGet{{moduleName}}ByKey, loading: loadingGet{{moduleName}}ByKey } = useHttp(
+    moduleConfig,
+    get{{moduleName}}ByKey,
+    {
+      onSuccess: (res) => {
+        set{{moduleName}}(to{{moduleName}}(res.data));
+      },
+    }
+  );
+  React.useEffect(() => {
+    handleGet{{moduleName}}ByKey(
+      {},
+      {
+        key: params.{{camelModuleName}}Id,
+      }
+    );
+  }, [params.{{camelModuleName}}Id]);
+
+  return (
+    <DashboardLayout>
+      <Show when={!!{{camelModuleName}}}>
+        <Show.When>
+          <{{plurarModuleName}}Form {{camelModuleName}}Model={{{camelModuleName}}} />
+        </Show.When>
+        <Show.Else>
+          <FormLoading open={loadingGet{{moduleName}}ByKey} />
+        </Show.Else>
+      </Show>
+    </DashboardLayout>
+  );
+};
+
+export default {{moduleName}}EditPage;

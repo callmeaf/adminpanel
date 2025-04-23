@@ -1,0 +1,46 @@
+import { TRoute } from "@/modules/Base/hooks/use-routes";
+import {
+  Person as PersonIcon,
+  PersonAdd as PersonAddIcon,
+  Publish as PublishIcon,
+} from "@mui/icons-material";
+import moduleConfig from "../module.config";
+
+const {{camelModuleName}}Routes: TRoute = (t) => ({
+  {{snakeModuleName}}: moduleConfig.enabled
+    ? [
+        {
+          name: "{{snakeModuleName}}_index",
+          label: t("{{moduleName}}.Routes.index"),
+          href: "/{{snakeModuleName}}",
+          icon: <PersonIcon />,
+        },
+        {
+          name: "{{snakeModuleName}}_create",
+          label: t("{{moduleName}}.Routes.create"),
+          href: "/{{snakeModuleName}}/create",
+          icon: <PersonAddIcon />,
+        },
+        {
+          name: "{{snakeModuleName}}_edit",
+          label: t("{{moduleName}}.Routes.edit"),
+          href: "/{{snakeModuleName}}/:{{camelModuleName}}Id/edit",
+          showInNavbar: false,
+        },
+        {
+          name: "{{snakeModuleName}}_trashed",
+          label: t("{{moduleName}}.Routes.trashed"),
+          href: "/{{snakeModuleName}}/trashed",
+          icon: <PersonIcon />,
+        },
+        {
+          name: "{{snakeModuleName}}_import_excel",
+          label: t("{{moduleName}}.Routes.import_excel"),
+          href: "/{{snakeModuleName}}/import/excel",
+          icon: <PublishIcon />,
+        },
+      ]
+    : [],
+});
+
+export default {{camelModuleName}}Routes;

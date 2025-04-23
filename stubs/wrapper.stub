@@ -1,0 +1,254 @@
+import * as React from "react";
+import {{plurarModuleName}}Table from "./{{plurarModuleName}}Table";
+import useHttp from "@/modules/Base/hooks/use-http";
+import {
+  delete{{moduleName}},
+  export{{plurarModuleName}},
+  forceDelete{{moduleName}},
+  get{{plurarModuleName}},
+  get{{plurarModuleName}}Trashed,
+  restore{{moduleName}},
+  update{{moduleName}}Status,
+  update{{moduleName}}Type,
+} from "@/modules/{{moduleName}}/requests/{{kebabModuleName}}-requests";
+import to{{moduleName}}, { I{{moduleName}}Model } from "../models/{{moduleName}}";
+import toPaginate from "@/modules/Base/models/Paginate";
+import { localStorageArtisan } from "@/modules/Base/helpers/local-storage-artisan";
+import { TOnDatesChange } from "@/modules/Base/components/tables/TableDates";
+import moduleConfig from "../module.config";
+import { TOnFilter } from "@/modules/Base/components/tables/TableFilter";
+import { TOnEdit } from "@/modules/Base/components/tables/actions/TableEditAction";
+import { TOnDelete } from "@/modules/Base/components/tables/actions/TableDeleteAction";
+import { SET_SNACKBAR } from "@/modules/UI/context/action-types";
+import { useRouter } from "@/i18n/routing";
+import useRoutes from "@/modules/Base/hooks/use-routes";
+import { TOnUpdate } from "@/modules/Base/components/tables/actions/TableSelectOptionColumnAction";
+import {
+  ExportType,
+  TOnExport,
+} from "@/modules/Base/components/tables/TableExport";
+import { TOnRestore } from "@/modules/Base/components/tables/actions/TableRestoreAction";
+
+let TABLE_ID: string;
+
+interface I{{plurarModuleName}}WrapperProps {
+  trashed?: boolean;
+}
+
+const {{plurarModuleName}}Wrapper: React.FC<I{{plurarModuleName}}WrapperProps> = ({ trashed = false }) => {
+  if (trashed) {
+    TABLE_ID = "{{snakeModuleName}}_trashed_table";
+  } else {
+    TABLE_ID = "{{snakeModuleName}}_list_table";
+  }
+
+  const {
+    handle: handleGet{{plurarModuleName}},
+    response: responseGet{{plurarModuleName}},
+    loading: loadingGet{{plurarModuleName}},
+  } = useHttp(moduleConfig, trashed ? get{{plurarModuleName}}Trashed : get{{plurarModuleName}});
+
+  const handlePageChange = (page: number) =>
+    handleGet{{plurarModuleName}}(localStorageArtisan.get(TABLE_ID, true));
+  const handlePerPageChange = (perPage: number) =>
+    handleGet{{plurarModuleName}}(localStorageArtisan.get(TABLE_ID, true));
+  const handleSearch = (term: string) =>
+    handleGet{{plurarModuleName}}(
+      Object.fromEntries(
+        Object.entries(localStorageArtisan.get(TABLE_ID, true) ?? {}).filter(
+          ([key, value]) => !!String(value).trim()
+        )
+      )
+    );
+  const handleDateChange: TOnDatesChange = (e) =>
+    handleGet{{plurarModuleName}}(localStorageArtisan.get(TABLE_ID, true));
+
+  const handleFilter: TOnFilter = () =>
+    handleGet{{plurarModuleName}}(
+      Object.fromEntries(
+        Object.entries(localStorageArtisan.get(TABLE_ID, true) ?? {}).filter(
+          ([key, value]) => !!String(value).trim()
+        )
+      )
+    );
+
+  const { getRouteByName } = useRoutes();
+  const router = useRouter();
+  const handleEdit: TOnEdit<I{{moduleName}}Model> = ({{camelModuleName}}) => {
+    const {{camelModuleName}}EditRoute = getRouteByName("{{snakeModuleName}}_edit", {
+      {{camelModuleName}}Id: {{camelModuleName}}.id,
+    });
+    if ({{camelModuleName}}EditRoute) {
+      router.push({{camelModuleName}}EditRoute.href);
+    }
+  };
+
+  const { handle: handleDelete{{moduleName}}, loading: loadingDelete{{moduleName}} } = useHttp(
+    moduleConfig,
+    trashed ? forceDelete{{moduleName}} : delete{{moduleName}},
+    {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: trashed
+              ? tr("forceDelete{{moduleName}}.success_message")
+              : tr("delete{{moduleName}}.success_message"),
+          },
+        });
+      },
+    }
+  );
+  const handleDelete: TOnDelete<I{{moduleName}}Model> = async ({{camelModuleName}}) => {
+    await handleDelete{{moduleName}}(
+      {},
+      {
+        {{camelModuleName}}Id: {{camelModuleName}}.id,
+      }
+    );
+    handleGet{{plurarModuleName}}();
+  };
+
+  const { handle: handleRestore{{moduleName}}, loading: loadingRestore{{moduleName}} } = useHttp(
+    moduleConfig,
+    restore{{moduleName}},
+    {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: tr("restore{{moduleName}}.success_message"),
+          },
+        });
+      },
+    }
+  );
+
+  const handleRestore: TOnRestore<I{{moduleName}}Model> = async (model) => {
+    await handleRestore{{moduleName}}(
+      {},
+      {
+        {{camelModuleName}}Id: model.id,
+      }
+    );
+    handleGet{{plurarModuleName}}();
+  };
+
+  React.useEffect(() => {
+    handleGet{{plurarModuleName}}(localStorageArtisan.get(TABLE_ID, true));
+  }, []);
+
+  const { handle: handleUpdate{{moduleName}}Status } = useHttp(
+    moduleConfig,
+    update{{moduleName}}Status,
+    {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: tr("update{{moduleName}}Status.success_message"),
+          },
+        });
+      },
+    }
+  );
+
+  const { handle: handleUpdate{{moduleName}}Type } = useHttp(
+    moduleConfig,
+    update{{moduleName}}Type,
+    {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: tr("update{{moduleName}}Type.success_message"),
+          },
+        });
+      },
+    }
+  );
+
+  const handleUpdate: TOnUpdate<I{{moduleName}}Model> = (model, target) => {
+    if (target.name === "status") {
+      handleUpdate{{moduleName}}Status(
+        {
+          status: target.value,
+        },
+        {
+          {{camelModuleName}}Id: model.id,
+        }
+      );
+    } else {
+      handleUpdate{{moduleName}}Type(
+        {
+          type: target.value,
+        },
+        {
+          {{camelModuleName}}Id: model.id,
+        }
+      );
+    }
+  };
+
+  const { handle: handleExport{{plurarModuleName}} } = useHttp(moduleConfig, export{{plurarModuleName}}, {
+    onSuccess: (res, { uiDispatch, tr }) => {
+      uiDispatch({
+        type: SET_SNACKBAR,
+        payload: {
+          type: "success",
+          message: tr("export{{plurarModuleName}}.success_message"),
+        },
+      });
+    },
+  });
+  const handleExport: TOnExport = (type, data) => {
+    data = {
+      ...(localStorageArtisan.get(TABLE_ID, true) ?? {}),
+      page: data.page,
+      trashed,
+    };
+    switch (type) {
+      case ExportType.EXCEL: {
+        handleExport{{plurarModuleName}}(data, {
+          type,
+        });
+        break;
+      }
+      default: {
+        console.warn(`No export type find for ( ${type} )`);
+      }
+    }
+  };
+
+  return (
+    <{{plurarModuleName}}Table
+      tableId={TABLE_ID}
+      {{camelModuleName}}={responseGet{{plurarModuleName}}?.data.map((item) => to{{moduleName}}(item)) ?? []}
+      paginate={toPaginate({
+        links: responseGet{{plurarModuleName}}?.links,
+        meta: responseGet{{plurarModuleName}}?.meta,
+      })}
+      onPageChange={handlePageChange}
+      onPerPageChange={handlePerPageChange}
+      onSearch={handleSearch}
+      onDateChange={handleDateChange}
+      onFilter={handleFilter}
+      loading={loadingGet{{plurarModuleName}}}
+      onEdit={handleEdit}
+      onDelete={handleDelete}
+      loadingDelete={loadingDelete{{moduleName}}}
+      onRestore={handleRestore}
+      loadingRestore={loadingRestore{{moduleName}}}
+      onStatusUpdate={handleUpdate}
+      onTypeUpdate={handleUpdate}
+      onExport={handleExport}
+      trashed={trashed}
+    />
+  );
+};
+
+export default {{plurarModuleName}}Wrapper;

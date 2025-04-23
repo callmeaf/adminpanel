@@ -1,0 +1,60 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "example_inp_label": "نمونه"
+    },
+    "{{plurarModuleName}}Import": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "store{{moduleName}}": {
+      "success_message": "اطلاعات نمونه با موفقیت ذخیره شد."
+    },
+    "update{{moduleName}}": {
+      "success_message": "اطلاعات نمونه با موفقیت تغییر یافت."
+    },
+    "update{{moduleName}}Password": {
+      "success_message": "رمزعبور نمونه با موفقیت تغییر یافت."
+    },
+    "delete{{moduleName}}": {
+      "success_message": "نمونه با موفقیت حذف شد."
+    },
+    "update{{moduleName}}Status": {
+      "success_message": "وضعیت نمونه با موفقیت تغییر یافت"
+    },
+    "update{{moduleName}}Type": {
+      "success_message": "نوع نمونه با موفقیت تغییر یافت"
+    },
+    "forceDelete{{moduleName}}": {
+      "success_message": "نمونه با موفقیت از زباله دان حذف شد."
+    },
+    "restore{{moduleName}}": {
+      "success_message": "نمونه با موفقیت از زباله دان بازگردانی شد."
+    },
+    "export{{plurarModuleName}}": {
+      "success_message": "خروجی نمونه ها با موفقیت دانلود شد."
+    },
+    "import{{plurarModuleName}}": {
+      "success_message": "نمونه ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "نمونه ها",
+    "create": "ایجاد نمونه",
+    "edit": "ویرایش نمونه",
+    "trashed": "زباله دان نمونه ها",
+    "import_excel": "import نمونه ها"
+  }
+}

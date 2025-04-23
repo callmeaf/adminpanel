@@ -1,0 +1,28 @@
+{
+  "Form": {
+    "identifier_inp_label": "شماره موبایل",
+    "login_btn_label": "ارسال کد یکبار مصرف",
+    "code_inp_label": "کد",
+    "verify_otp_btn_label": "تایید کد یکبار مصرف"
+  },
+  "Requests": {
+    "sendOtp": {
+      "success_message": "کد یکبار مصرف با موفقیت ارسال شد."
+    },
+    "loginWithVerifyOtp": {
+      "success_message": "با موفقیت وارد حساب کاربری شدید."
+    },
+    "logout": {
+      "success_message": "با موفقیت از حساب کاربری خارج شدید."
+    }
+  },
+  "Wrappers": {
+    "Login": {
+      "title": "ورود به حساب کاربری",
+      "resend_otp_btn_tooltip": "ارسال مجدد کد یکبار مصرف"
+    }
+  },
+  "Errors": {
+    "auth_token_expired": "لطفا مجددا وارد حساب کاربری خود بشوید."
+  }
+}

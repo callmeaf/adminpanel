@@ -1,0 +1,78 @@
+{
+  "Forms": {
+    "Form": {
+      "submit_btn_label": "ثبت",
+      "stepper_submit_btn_label": "بعدی"
+    }
+  },
+  "Validations": {
+    "required": "اجباریست.",
+    "length": "باید {length} کاراکتر باشد.",
+    "starts_with": "باید با {value} شروع شود.",
+    "only_digits": "فقط عدد قابل قبول میباشد.",
+    "min_length": "نباید کمتر از {value} کاراکتر باشد.",
+    "email": "ایمیل معتبر وارد نمایید.",
+    "one_of": "باید یکی از این ها باشد. {options}"
+  },
+  "Components": {
+    "Stepper": {
+      "optional_label": "اختیاری",
+      "all_steps_completed_label": "فرایند تکمیل شد.",
+      "reset_btn_label": "بارگذاری مجدد",
+      "go_to_list_btn_label": "رفتن به لیست",
+      "back_btn_label": "بازگشت",
+      "skip_btn_label": "رد شدن",
+      "next_btn_label": "بعدی",
+      "finish_btn_label": "پایان",
+      "final_step_label": "تکمیل فرایند"
+    },
+    "AutoComplete": {
+      "loading_label": "در حال بارگذاری ...",
+      "no_options": "انتخابی وجود ندارد."
+    },
+    "Select": {
+      "choose_option_label": "انتخاب کنید..."
+    },
+    "Table": {
+      "edit_btn_tooltip": "ویرایش",
+      "delete_btn_tooltip": "حذف",
+      "restore_btn_tooltip": "بازگردانی",
+      "force_delete_btn_tooltip": "حذف از زباله دان",
+      "per_page_label": "تعداد",
+      "search_label": "جستجو بر اساس",
+      "created_from": "از تاریخ",
+      "created_to": "تا تاریخ",
+      "filter_btn_label": "فیلتر",
+      "clean_filter_btn_label": "حذف فیلتر",
+      "accept_action_label": "تایید",
+      "cancel_action_label": "انصراف",
+      "no_data_text": "داده ای یافت نشد.",
+      "data_filtered_tooltip": "داده های نمایش داده شده فیلتر شده اند.",
+      "export_data_tooltip": "خروجی داده ها",
+      "excel_btn_label": "اکسل",
+      "export_all_pages_tooltip": "خروجی {type} از تمام صفحات",
+      "export_current_page_tooltip": "خروجی {type} از صفحه {page}"
+    },
+    "ImportWrapper": {
+      "upload_file_label": "آپلود فایل {type}",
+      "upload_file_desc": "فایل {type} خود را انتخاب یا اینجا بکشید و رها کنید",
+      "choose_file_btn_label": "انتخاب فایل {type}",
+      "upload_guide_label": "راهنمای آپلود فایل {type}",
+      "upload_guide_desc": "فایل باید فرمت ( {extenstions} ) داشته باشد.",
+      "upload_file_size_label": "حداکثر حجم فایل: {size} مگابایت.",
+      "uploaded_success_message": "تعداد کل داده های ایمپورت شده: {success}",
+      "total_imported_data": "تعداد کل داده های شناسایی شده: {total}",
+      "upload_file_same_column_label": "هدرهای فایل باید هم اسم Column باشند.",
+      "export_sample_file_btn_label": "نمونه فایل"
+    }
+  },
+  "Widgets": {
+    "Menu": {
+      "profile_label": "حساب کاربری",
+      "logout_label": "خروج",
+      "notifications_label": "اطلاع رسانی"
+    }
+  },
+  "Requests": {},
+  "Errors": {}
+}
