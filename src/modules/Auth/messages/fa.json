@@ -1,6 +1,6 @@
 {
   "Form": {
-    "identifier_inp_label": "شماره موبایل",
+    "identifier_inp_label": "ایمیل",
     "login_btn_label": "ارسال کد یکبار مصرف",
     "code_inp_label": "کد",
     "verify_otp_btn_label": "تایید کد یکبار مصرف"

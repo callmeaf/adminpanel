@@ -63,7 +63,7 @@ const files = [
   },
   {
     stub: "form.stub",
-    target: `widgets/${moduleName}Form.tsx`,
+    target: `widgets/${plurarModuleName}Form.tsx`,
   },
   {
     stub: "import.stub",

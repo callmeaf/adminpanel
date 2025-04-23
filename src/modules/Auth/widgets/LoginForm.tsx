@@ -15,11 +15,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit, loading }) => {
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      identifier: yup
-        .string()
-        .required(v("required"))
-        .test(validator.startsWith("09", v))
-        .test(validator.length(11, v)),
+      identifier: yup.string().required(v("required")).email(v("email")),
     })
   );
 

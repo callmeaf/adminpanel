@@ -227,7 +227,7 @@ const {{plurarModuleName}}Wrapper: React.FC<I{{plurarModuleName}}WrapperProps> =
   return (
     <{{plurarModuleName}}Table
       tableId={TABLE_ID}
-      {{camelModuleName}}={responseGet{{plurarModuleName}}?.data.map((item) => to{{moduleName}}(item)) ?? []}
+      {{plurarCamelModuleName}}={responseGet{{plurarModuleName}}?.data.map((item) => to{{moduleName}}(item)) ?? []}
       paginate={toPaginate({
         links: responseGet{{plurarModuleName}}?.links,
         meta: responseGet{{plurarModuleName}}?.meta,

@@ -1,4 +1,5 @@
 import dashboardRoutes from "@/modules/Dashboard/routes/dashboard";
+import exchangeRoutes from "@/modules/Exchange/routes/exchange";
 import userRoutes from "@/modules/User/routes/user";
 import { useTranslations } from "next-intl";
 import { ReactNode, useEffect } from "react";
@@ -34,6 +35,7 @@ const useRoutes: TUseRoutes = () => {
   const routes: IRoutes = {
     ...dashboardRoutes(t),
     ...userRoutes(t),
+    ...exchangeRoutes(t),
   };
 
   useEffect(() => {}, []);

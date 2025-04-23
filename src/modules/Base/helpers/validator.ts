@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { TestConfig } from "yup";
+import { IOption } from "../components/forms/AutoComplete";
 
 type TTranslate = ReturnType<typeof useTranslations>;
 
@@ -11,7 +12,7 @@ interface IValidator {
   length: TValidation<number>;
   startsWith: TValidation<string>;
   onlyDigits: TValidationWithoutValue;
-  oneOf: TValidation<any[]>;
+  oneOf: TValidation<IOption[]>;
 }
 
 export const validator: IValidator = {
@@ -32,8 +33,10 @@ export const validator: IValidator = {
   }),
   oneOf: (options, t) => ({
     name: "oneOf",
-    message: t("one_of", { options: options.join(", ") }),
+    message: t("one_of", {
+      options: options.map((item) => item.label).join(", "),
+    }),
     test: (v) =>
-      options.findIndex((val) => val.toString() === v.toString()) > -1,
+      options.findIndex((val) => val?.toString() === v?.toString()) > -1,
   }),
 };

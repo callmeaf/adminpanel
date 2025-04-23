@@ -7,36 +7,36 @@ import {
 import moduleConfig from "../module.config";
 
 const {{camelModuleName}}Routes: TRoute = (t) => ({
-  {{snakeModuleName}}: moduleConfig.enabled
+  {{plurarSnakeModuleName}}: moduleConfig.enabled
     ? [
         {
-          name: "{{snakeModuleName}}_index",
+          name: "{{plurarSnakeModuleName}}_index",
           label: t("{{moduleName}}.Routes.index"),
-          href: "/{{snakeModuleName}}",
+          href: "/{{plurarSnakeModuleName}}",
           icon: <PersonIcon />,
         },
         {
-          name: "{{snakeModuleName}}_create",
+          name: "{{plurarSnakeModuleName}}_create",
           label: t("{{moduleName}}.Routes.create"),
-          href: "/{{snakeModuleName}}/create",
+          href: "/{{plurarSnakeModuleName}}/create",
           icon: <PersonAddIcon />,
         },
         {
-          name: "{{snakeModuleName}}_edit",
+          name: "{{plurarSnakeModuleName}}_edit",
           label: t("{{moduleName}}.Routes.edit"),
-          href: "/{{snakeModuleName}}/:{{camelModuleName}}Id/edit",
+          href: "/{{plurarSnakeModuleName}}/:{{camelModuleName}}Id/edit",
           showInNavbar: false,
         },
         {
-          name: "{{snakeModuleName}}_trashed",
+          name: "{{plurarSnakeModuleName}}_trashed",
           label: t("{{moduleName}}.Routes.trashed"),
-          href: "/{{snakeModuleName}}/trashed",
+          href: "/{{plurarSnakeModuleName}}/trashed",
           icon: <PersonIcon />,
         },
         {
-          name: "{{snakeModuleName}}_import_excel",
+          name: "{{plurarSnakeModuleName}}_import_excel",
           label: t("{{moduleName}}.Routes.import_excel"),
-          href: "/{{snakeModuleName}}/import/excel",
+          href: "/{{plurarSnakeModuleName}}/import/excel",
           icon: <PublishIcon />,
         },
       ]

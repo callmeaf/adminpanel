@@ -1,0 +1,65 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "name_inp_label": "صرافی",
+      "site_url_inp_label": "آدرس سایت",
+      "api_url_inp_label": "آدرس api",
+      "maker_fee_percent_inp_label": "کارمزد maker",
+      "taker_fee_percent_inp_label": "کارمزد taker",
+      "content_inp_label": "محتوا"
+    },
+    "ExchangesImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeExchange": {
+      "success_message": "اطلاعات صرافی با موفقیت ذخیره شد."
+    },
+    "updateExchange": {
+      "success_message": "اطلاعات صرافی با موفقیت تغییر یافت."
+    },
+    "updateExchangePassword": {
+      "success_message": "رمزعبور صرافی با موفقیت تغییر یافت."
+    },
+    "deleteExchange": {
+      "success_message": "صرافی با موفقیت حذف شد."
+    },
+    "updateExchangeStatus": {
+      "success_message": "وضعیت صرافی با موفقیت تغییر یافت"
+    },
+    "updateExchangeType": {
+      "success_message": "نوع صرافی با موفقیت تغییر یافت"
+    },
+    "forceDeleteExchange": {
+      "success_message": "صرافی با موفقیت از زباله دان حذف شد."
+    },
+    "restoreExchange": {
+      "success_message": "صرافی با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportExchanges": {
+      "success_message": "خروجی صرافی ها با موفقیت دانلود شد."
+    },
+    "importExchanges": {
+      "success_message": "صرافی ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "صرافی ها",
+    "create": "ایجاد صرافی",
+    "edit": "ویرایش صرافی",
+    "trashed": "زباله دان صرافی ها",
+    "import_excel": "import صرافی ها"
+  }
+}

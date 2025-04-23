@@ -49,7 +49,7 @@ const Select: React.FC<TSelectProps> = ({
         {hasEmptyOption && (
           <MenuItem value={""}>{t("choose_option_label")}</MenuItem>
         )}
-        {options.map((option) => (
+        {options?.map((option) => (
           <MenuItem key={option.id} value={option.value}>
             {option.label}
           </MenuItem>

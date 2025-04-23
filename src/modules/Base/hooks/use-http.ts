@@ -90,6 +90,7 @@ const useHttp: TUseHttp = (moduleConfig, request, options) => {
 
       const result = await request(api(), ...args);
 
+      console.log({ result });
       setResponse(result.data);
 
       if (options?.onSuccess) {
