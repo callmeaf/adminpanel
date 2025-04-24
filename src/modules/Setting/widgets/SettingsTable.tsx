@@ -87,7 +87,8 @@ const SettingsTable: React.FC<ISettingsTableProps> = ({
   }
 
   const config = localStorageArtisan.get(tableId, true) ?? {};
-  const { statuses, types } = localStorageArtisan.enums(EnumSource.SETTING) ?? {};
+  const { statuses, types } =
+    localStorageArtisan.enums(EnumSource.SETTING) ?? {};
 
   return (
     <Table
@@ -98,13 +99,17 @@ const SettingsTable: React.FC<ISettingsTableProps> = ({
           label: t("no_label"),
         },
         {
-          id: "status",
-          label: t("status_label"),
+          id: "key",
+          label: t("key_label"),
         },
-        {
-          id: "type",
-          label: t("type_label"),
-        },
+        // {
+        //   id: "status",
+        //   label: t("status_label"),
+        // },
+        // {
+        //   id: "type",
+        //   label: t("type_label"),
+        // },
         {
           id: "created_at",
           label: t("created_at_label"),
@@ -118,10 +123,10 @@ const SettingsTable: React.FC<ISettingsTableProps> = ({
         <TableSearch
           onSearch={onSearch}
           params={[
-          // {
-          //   key: "key",
-          //   label: t("key_label"),
-          // },
+            {
+              key: "key",
+              label: t("key_label"),
+            },
           ]}
           tableId={tableId}
           defaultValue={config.term}
@@ -170,7 +175,8 @@ const SettingsTable: React.FC<ISettingsTableProps> = ({
           {settings.map((setting, index) => (
             <TableRow key={setting.id}>
               <TableCell>{paginate.from + index}</TableCell>
-              <TableCell>
+              <TableCell>{setting.key}</TableCell>
+              {/* <TableCell>
                 <TableSelectOptionColumnAction
                   name="status"
                   defaultValue={setting.status}
@@ -189,10 +195,8 @@ const SettingsTable: React.FC<ISettingsTableProps> = ({
                   model={setting}
                   disabled={trashed}
                 />
-              </TableCell>
-              <TableCell>
-                { setting.createdAtText }
-              </TableCell>
+              </TableCell> */}
+              <TableCell>{setting.createdAtText}</TableCell>
               <TableCell width={300}>
                 <TableAction
                   model={setting}

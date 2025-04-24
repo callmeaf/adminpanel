@@ -31,7 +31,7 @@ const SettingsTableFilter: React.FC<ISettingsTableFilterProps> = ({
   );
   return (
     <Grid2 container spacing={2}>
-      <Grid2 size={12}>
+      {/* <Grid2 size={12}>
         <Select
           label={t("status_label")}
           name="status"
@@ -46,7 +46,7 @@ const SettingsTableFilter: React.FC<ISettingsTableFilterProps> = ({
           options={types}
           defaultValue={storedDefaultTypeValue}
         />
-      </Grid2>
+      </Grid2> */}
     </Grid2>
   );
 };

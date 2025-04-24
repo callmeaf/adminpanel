@@ -3,6 +3,7 @@ import {
   IExporterResponse,
   IImporterResponse,
 } from "@/modules/Base/interfaces/request-interface";
+import { SettingKey, ISettingValues } from "../models/Setting";
 
 /**
  * =============================
@@ -11,7 +12,8 @@ import {
  */
 
 export interface ISettingResponse extends IDataResponse {
-  example: string;
+  key: SettingKey;
+  values: ISettingValues;
 }
 
 export interface ISettingStoreResponse extends ISettingResponse {}

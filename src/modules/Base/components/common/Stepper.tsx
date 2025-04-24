@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useTranslations } from "next-intl";
 import { IStep, THandleGoStep } from "@/modules/Base/hooks/use-stepper";
+import { Tooltip } from "@mui/material";
+import { Edit as EditIcon, PlusOne as PlusOneIcon } from "@mui/icons-material";
 
 interface IStepper {
   steps: IStep[];
@@ -73,24 +75,29 @@ const Stepper: React.FC<React.PropsWithChildren<IStepper>> = ({
                 {t("all_steps_completed_label")}
               </Typography>
               {handleGoToList && (
-                <Box component={"div"}>
+                <Box component={"div"} sx={{ display: "flex", gap: 2 }}>
                   <Button onClick={handleGoToList} variant="contained">
                     {t("go_to_list_btn_label")}
                   </Button>
-                  <Button
-                    onClick={handleGoToEdit}
-                    variant="contained"
-                    color="success"
-                  >
-                    {t("go_to_edit_btn_label")}
-                  </Button>
+                  <Tooltip title={t("go_to_edit_btn_label")}>
+                    <Button
+                      onClick={handleGoToEdit}
+                      variant="contained"
+                      color="success"
+                    >
+                      <EditIcon />
+                    </Button>
+                  </Tooltip>
                 </Box>
               )}
             </Box>
 
             <Box sx={{ flex: "1 1 auto" }} />
-
-            <Button onClick={handleResetStep}>{t("reset_btn_label")}</Button>
+            <Tooltip title={t("reset_btn_label")}>
+              <Button onClick={handleResetStep}>
+                <PlusOneIcon />
+              </Button>
+            </Tooltip>
           </Box>
         </React.Fragment>
       ) : (

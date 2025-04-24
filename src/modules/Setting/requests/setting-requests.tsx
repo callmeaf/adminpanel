@@ -14,13 +14,13 @@ import {
 } from "../interfaces/request-interface";
 import { ExportType } from "@/modules/Base/components/tables/TableExport";
 import { ImportType } from "@/modules/Base/components/imports/ImportWrapper";
+import { SettingKey, ISettingValues } from "../models/Setting";
 
 export const getSettings: TThunk<
   {
     page?: number;
     per_page?: number;
-    status?: string;
-    type?: string;
+    key?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -35,8 +35,7 @@ export const getSettings: TThunk<
           params: {
             page: data.page,
             per_page: data.per_page,
-            status: data.status,
-            type: data.type,
+            key: data.key,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -47,15 +46,18 @@ export const getSettings: TThunk<
 
 export const storeSetting: TThunk<
   {
-    status: string;
-    type: string;
+    key: string;
+    values: ISettingValues;
   },
   {},
   ISettingStoreResponse
 > = async (api, data, extra) => {
   const formData = new FormData();
-  formData.append("status", data.status);
-  formData.append("type", data.type);
+  formData.append("key", data.key);
+
+  for (const key in data.values) {
+    formData.append(`values[${key}]`, data.values[key]);
+  }
 
   return api.post("settings", formData);
 };
@@ -72,8 +74,8 @@ export const getSettingByKey: TThunk<
 
 export const updateSetting: TThunk<
   {
-    status: string;
-    type: string;
+    key: string;
+    values: ISettingValues;
   },
   {
     settingId: string;
@@ -82,8 +84,9 @@ export const updateSetting: TThunk<
 > = async (api, data, extra) => {
   const formData = new FormData();
   formData.append("_method", "PATCH");
-  formData.append("status", data.status);
-  formData.append("type", data.type);
+  for (const key in data.values) {
+    formData.append(`values[${key}]`, data.values[key]);
+  }
 
   return api.post(`settings/${extra.settingId}`, formData);
 };

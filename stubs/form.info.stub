@@ -4,7 +4,7 @@ import useValidation from "@/modules/Base/hooks/use-validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import * as React from "react";
-import { useForm } from "react-hook-form";
+import { Controller,useForm } from "react-hook-form";
 import { I{{moduleName}}Model } from "../models/{{moduleName}}";
 import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
 import { validator } from "@/modules/Base/helpers/validator";

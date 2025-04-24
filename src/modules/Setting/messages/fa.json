@@ -2,6 +2,7 @@
   "Widgets": {
     "Table": {
       "no_label": "#",
+      "key_label": "کلید",
       "status_label": "وضعیت",
       "type_label": "نوع",
       "created_at_label": "تاریخ ایجاد",
@@ -9,8 +10,7 @@
     },
     "Form": {
       "setting_info_label": "اطلاعات تنظیمات",
-      "status_inp_label": "وضعیت",
-      "type_inp_label": "نوع",
+      "key_inp_label": "کلید",
       "example_inp_label": "تنظیمات"
     },
     "SettingsImport": {

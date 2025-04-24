@@ -30,6 +30,7 @@ interface IAutoCompleteProps {
   multiple?: boolean;
   onScroll?: (searchValue: string) => void;
   onSearch?: (searchValue: string) => void;
+  disabled?: boolean;
 }
 type TAutoCompleteProps = IAutoCompleteProps & Omit<TInputProps, "error">;
 
@@ -107,6 +108,7 @@ const AutoComplete: React.FC<TAutoCompleteProps> = ({
   onBlur,
   ref,
   name,
+  disabled = false,
 }) => {
   const t = useTranslations("Base.Components.AutoComplete");
   const [searchValue, setSearchValue] = React.useState("");
@@ -174,6 +176,8 @@ const AutoComplete: React.FC<TAutoCompleteProps> = ({
       multiple={multiple}
       disableCloseOnSelect={multiple}
       ref={ref}
+      getOptionDisabled={() => disabled}
+      disableClearable={disabled}
       onChange={(e, onChangeValue, reason) => {
         setChangeReason(reason);
         if (onChange) {
