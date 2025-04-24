@@ -14,7 +14,7 @@ import {
 } from "../interfaces/request-interface";
 import { ExportType } from "@/modules/Base/components/tables/TableExport";
 import { ImportType } from "@/modules/Base/components/imports/ImportWrapper";
-import { SettingKey, ISettingValues } from "../models/Setting";
+import { ISettingValues } from "../models/Setting";
 
 export const getSettings: TThunk<
   {
