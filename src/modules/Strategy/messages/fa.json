@@ -1,0 +1,64 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "position_direction_label": "جهت پوزیشن",
+      "position_type_label": "نوع پوزیشن",
+      "name_label": "نام",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "strategy_info_label": "اطلاعات استراتژی",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "example_inp_label": "استراتژی"
+    },
+    "StrategiesImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeStrategy": {
+      "success_message": "اطلاعات استراتژی با موفقیت ذخیره شد."
+    },
+    "updateStrategy": {
+      "success_message": "اطلاعات استراتژی با موفقیت تغییر یافت."
+    },
+    "updateStrategyPassword": {
+      "success_message": "رمزعبور استراتژی با موفقیت تغییر یافت."
+    },
+    "deleteStrategy": {
+      "success_message": "استراتژی با موفقیت حذف شد."
+    },
+    "updateStrategyStatus": {
+      "success_message": "وضعیت استراتژی با موفقیت تغییر یافت"
+    },
+    "updateStrategyType": {
+      "success_message": "نوع استراتژی با موفقیت تغییر یافت"
+    },
+    "forceDeleteStrategy": {
+      "success_message": "استراتژی با موفقیت از زباله دان حذف شد."
+    },
+    "restoreStrategy": {
+      "success_message": "استراتژی با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportStrategies": {
+      "success_message": "خروجی استراتژی ها با موفقیت دانلود شد."
+    },
+    "importStrategies": {
+      "success_message": "استراتژی ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "استراتژی ها",
+    "create": "ایجاد استراتژی",
+    "edit": "ویرایش استراتژی",
+    "trashed": "زباله دان استراتژی ها",
+    "import_excel": "import استراتژی ها"
+  }
+}

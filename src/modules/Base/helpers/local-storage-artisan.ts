@@ -9,7 +9,9 @@ export enum EnumSource {
   EXCHANGE = "exchange",
   COIN = "coin",
   SETTING = "setting",
-  // [END ENUM ENTRIES]
+    ACCOUNT = "account",
+  STRATEGY = "strategy",
+// [END ENUM ENTRIES]
 }
 
 interface ILocalStorageArtisan {

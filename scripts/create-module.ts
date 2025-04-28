@@ -46,6 +46,10 @@ const files = [
     target: `pages/${plurarModuleName}EditPage.tsx`,
   },
   {
+    stub: "page.trashed.stub",
+    target: `pages/${plurarModuleName}TrashedPage.tsx`,
+  },
+  {
     stub: "page.import.excel.stub",
     target: `pages/${plurarModuleName}ImportExcelPage.tsx`,
   },

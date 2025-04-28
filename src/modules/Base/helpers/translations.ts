@@ -6,6 +6,8 @@ import dashboardModuleConfig from "@/modules/Dashboard/module.config";
 import exchangeModuleConfig from "@/modules/Exchange/module.config";
 import coinModuleConfig from "@/modules/Coin/module.config";
 import settingModuleConfig from "@/modules/Setting/module.config";
+import accountModuleConfig from "@/modules/Account/module.config";
+import strategyModuleConfig from "@/modules/Strategy/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -30,6 +32,8 @@ const translations = async (locale: string) => {
       await import(`../../Setting/messages/${locale}.json`)
     ).default,
         [settingModuleConfig.name]: (await import(`../../Setting/messages/${locale}.json`)).default,
+    [accountModuleConfig.name]: (await import(`../../Account/messages/${locale}.json`)).default,
+    [strategyModuleConfig.name]: (await import(`../../Strategy/messages/${locale}.json`)).default,
 // [END TRANSLATION ENTRIES]
   };
 };

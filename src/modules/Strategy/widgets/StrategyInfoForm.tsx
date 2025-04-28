@@ -5,26 +5,26 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 import { Controller,useForm } from "react-hook-form";
-import { I{{moduleName}}Model } from "../models/{{moduleName}}";
+import { IStrategyModel } from "../models/Strategy";
 import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
 import { validator } from "@/modules/Base/helpers/validator";
 import { EnumSource, localStorageArtisan } from "@/modules/Base/helpers/local-storage-artisan";
 
-interface I{{moduleName}}InfoFormProps extends IForm {
-  {{camelModuleName}}?: I{{moduleName}}Model;
+interface IStrategyInfoFormProps extends IForm {
+  strategy?: IStrategyModel;
 }
 
-const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
+const StrategyInfoForm: React.FC<IStrategyInfoFormProps> = ({
   onSubmit,
   loading,
-  {{camelModuleName}},
+  strategy,
 }) => {
-  const t = useTranslations("{{moduleName}}.Widgets.Form");
+  const t = useTranslations("Strategy.Widgets.Form");
 
  const {
     statuses,
     types,
-  } = localStorageArtisan.enums(EnumSource.{{upperSnakeModuleName}})
+  } = localStorageArtisan.enums(EnumSource.STRATEGY)
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
@@ -44,9 +44,9 @@ const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
   } = useForm({
     resolver: yupResolver(schema),
       defaultValues: {
-      example: {{camelModuleName}}.example,
-      status: {{camelModuleName}}?.statusObject(statuses),
-      type: {{camelModuleName}}?.typeObject(types),
+      example: strategy.example,
+      status: strategy?.statusObject(statuses),
+      type: strategy?.typeObject(types),
     },
   });
 
@@ -93,4 +93,4 @@ const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
   );
 };
 
-export default {{moduleName}}InfoForm;
+export default StrategyInfoForm;

@@ -6,6 +6,8 @@ import userRoutes from "@/modules/User/routes/user";
 import { useTranslations } from "next-intl";
 import { ReactNode, useEffect } from "react";
 import settingRoutes from "@/modules/Setting/routes/setting";
+import accountRoutes from "@/modules/Account/routes/account";
+import strategyRoutes from "@/modules/Strategy/routes/strategy";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -45,6 +47,8 @@ const useRoutes: TUseRoutes = () => {
     ...exchangeRoutes(t),
     ...coinRoutes(t),
         ...settingRoutes(t),
+    ...accountRoutes(t),
+    ...strategyRoutes(t),
 // [END ROUTES ENTRIES]
   };
 
