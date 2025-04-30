@@ -4,11 +4,14 @@ import useValidation from "@/modules/Base/hooks/use-validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import * as React from "react";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { IAccountModel } from "../models/Account";
 import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
 import { validator } from "@/modules/Base/helpers/validator";
-import { EnumSource, localStorageArtisan } from "@/modules/Base/helpers/local-storage-artisan";
+import {
+  EnumSource,
+  localStorageArtisan,
+} from "@/modules/Base/helpers/local-storage-artisan";
 
 interface IAccountInfoFormProps extends IForm {
   account?: IAccountModel;
@@ -21,18 +24,19 @@ const AccountInfoForm: React.FC<IAccountInfoFormProps> = ({
 }) => {
   const t = useTranslations("Account.Widgets.Form");
 
- const {
-    statuses,
-    types,
-  } = localStorageArtisan.enums(EnumSource.ACCOUNT)
+  const { statuses, types } = localStorageArtisan.enums(EnumSource.ACCOUNT);
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      example: yup
-        .string()
-        .required(v("required")),
-           status: yup.object().required(v('required')).test(validator.oneOf(statuses,v)),
-      type: yup.object().required(v('required')).test(validator.oneOf(types,v))
+      example: yup.string().required(v("required")),
+      status: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(statuses, v)),
+      type: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(types, v)),
     })
   );
 
@@ -43,8 +47,8 @@ const AccountInfoForm: React.FC<IAccountInfoFormProps> = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-      defaultValues: {
-      example: account.example,
+    defaultValues: {
+      example: account?.example,
       status: account?.statusObject(statuses),
       type: account?.typeObject(types),
     },
@@ -55,7 +59,6 @@ const AccountInfoForm: React.FC<IAccountInfoFormProps> = ({
       ...data,
     });
 
-
   return (
     <Form onSubmit={handleSubmit(submitHandler)} loading={loading}>
       <Input
@@ -63,11 +66,11 @@ const AccountInfoForm: React.FC<IAccountInfoFormProps> = ({
         label={t("example_inp_label")}
         error={errors.example}
       />
-         <Controller
+      <Controller
         control={control}
         name="status"
         render={({ field }) => (
-                    // @ts-ignore
+          // @ts-ignore
           <AutoComplete
             {...field}
             label={t("status_inp_label")}
@@ -76,11 +79,11 @@ const AccountInfoForm: React.FC<IAccountInfoFormProps> = ({
           />
         )}
       />
-         <Controller
+      <Controller
         control={control}
         name="type"
         render={({ field }) => (
-                    // @ts-ignore
+          // @ts-ignore
           <AutoComplete
             {...field}
             label={t("type_inp_label")}
