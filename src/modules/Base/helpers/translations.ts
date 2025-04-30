@@ -11,31 +11,42 @@ import strategyModuleConfig from "@/modules/Strategy/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
-  return {
-    // [TRANSLATION ENTRIES]
-    [baseModuleConfig.name]: (
-      await import(`../../Base/messages/${locale}.json`)
-    ).default,
-    [userModuleConfig.name]: (
-      await import(`../../User/messages/${locale}.json`)
-    ).default,
-    [authModuleConfig.name]: (await import(`../../Auth/${locale}.json`))
-      .default,
-    [dashboardModuleConfig.name]: (
-      await import(`../../Dashboard/${locale}.json`)
-    ).default,
-    [exchangeModuleConfig.name]: (await import(`../../Exchange/${locale}.json`))
-      .default,
-    [coinModuleConfig.name]: (await import(`../../Coin/${locale}.json`))
-      .default,
-    [settingModuleConfig.name]: (
-      await import(`../../Setting/messages/${locale}.json`)
-    ).default,
-        [settingModuleConfig.name]: (await import(`../../Setting/messages/${locale}.json`)).default,
-    [accountModuleConfig.name]: (await import(`../../Account/messages/${locale}.json`)).default,
-    [strategyModuleConfig.name]: (await import(`../../Strategy/messages/${locale}.json`)).default,
-// [END TRANSLATION ENTRIES]
-  };
+  try {
+    return {
+      // [TRANSLATION ENTRIES]
+      [baseModuleConfig.name]: (
+        await import(`@/modules/Base/messages/${locale}.json`)
+      ).default,
+      [userModuleConfig.name]: (
+        await import(`@/modules/User/messages/${locale}.json`)
+      ).default,
+      [authModuleConfig.name]: (
+        await import(`@/modules/Auth/messages/${locale}.json`)
+      ).default,
+      [dashboardModuleConfig.name]: (
+        await import(`@/modules/Dashboard/messages/${locale}.json`)
+      ).default,
+      [exchangeModuleConfig.name]: (
+        await import(`@/modules/Exchange/messages/${locale}.json`)
+      ).default,
+      [coinModuleConfig.name]: (
+        await import(`@/modules/Coin/messages/${locale}.json`)
+      ).default,
+      [settingModuleConfig.name]: (
+        await import(`@/modules/Setting/messages/${locale}.json`)
+      ).default,
+      [accountModuleConfig.name]: (
+        await import(`@/modules/Account/messages/${locale}.json`)
+      ).default,
+      [strategyModuleConfig.name]: (
+        await import(`@/modules/Strategy/messages/${locale}.json`)
+      ).default,
+      // [END TRANSLATION ENTRIES]
+    };
+  } catch (error) {
+    console.error(`Error loading translations for locale "${locale}":`, error);
+    throw new Error(`Failed to load translations for locale "${locale}"`);
+  }
 };
 
 export default translations;
