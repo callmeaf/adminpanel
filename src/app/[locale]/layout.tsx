@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import {
-  geistMono,
-  geistSans,
+  // geistMono,
+  // geistSans,
   IRANYekanFont,
 } from "@/modules/Theme/helpers/font";
 import ThemeLayout from "@/modules/Theme/widgets/ThemeLayout";

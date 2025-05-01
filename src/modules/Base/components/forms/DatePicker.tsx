@@ -5,11 +5,11 @@ import { DatePicker as MUIDatePicker } from "@mui/x-date-pickers/DatePicker";
 import moment, { Moment } from "moment-jalaali";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 // @ts-ignore
-import fa from "moment/src/locale/fa";
+import fa from "moment/locale/fa";
 import { TextFieldProps } from "@mui/material";
 import { digitsFaToEn } from "@persian-tools/persian-tools";
 
-moment.locale("fa", fa);
+moment.updateLocale("fa", fa);
 moment.loadPersian({
   usePersianDigits: true,
 });

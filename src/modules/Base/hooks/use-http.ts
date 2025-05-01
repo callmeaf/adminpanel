@@ -5,10 +5,11 @@ import AuthTokenExpiredError from "@/modules/Auth/errors/AuthTokenExpiredError";
 import api from "@/modules/Base/helpers/api";
 import { useRouter } from "@/i18n/routing";
 import { AxiosError, AxiosInstance, AxiosResponse } from "axios";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { NextRouter } from "next/router";
 import { Dispatch, useContext, useState } from "react";
 import { IModuleConfig } from "../module.config";
+import { usePathname } from "next/navigation";
 
 interface IPaginateResponse {
   links: {
@@ -73,6 +74,8 @@ type TUseHttp = <R>(
 const useHttp: TUseHttp = (moduleConfig, request, options) => {
   // @ts-ignore
   const router: NextRouter = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
   const { dispatch: uiDispatch } = useContext(UiContext);
   // translation requests
   const tr = useTranslations(`${moduleConfig.name}.Requests`);
@@ -134,8 +137,12 @@ const useHttp: TUseHttp = (moduleConfig, request, options) => {
           message: errorMessage,
         },
       });
-      if (err instanceof AuthTokenExpiredError) {
-        router.replace(process.env.NEXT_PUBLIC_GUEST_REDIRECT_URL as string);
+      if (
+        err instanceof AuthTokenExpiredError &&
+        typeof window != "undefined" &&
+        !pathname.includes(process.env.NEXT_PUBLIC_GUEST_REDIRECT_URL as string)
+      ) {
+        window.location.href = `/${locale}/${process.env.NEXT_PUBLIC_GUEST_REDIRECT_URL}`;
       }
     } finally {
       setLoading(false);
