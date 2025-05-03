@@ -8,6 +8,8 @@ import coinModuleConfig from "@/modules/Coin/module.config";
 import settingModuleConfig from "@/modules/Setting/module.config";
 import accountModuleConfig from "@/modules/Account/module.config";
 import strategyModuleConfig from "@/modules/Strategy/module.config";
+import accountStrategyModuleConfig from "@/modules/AccountStrategy/module.config";
+import accountStrategyCoinModuleConfig from "@/modules/AccountStrategyCoin/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -41,7 +43,9 @@ const translations = async (locale: string) => {
       [strategyModuleConfig.name]: (
         await import(`@/modules/Strategy/messages/${locale}.json`)
       ).default,
-      // [END TRANSLATION ENTRIES]
+          [accountStrategyModuleConfig.name]: (await import(`../../AccountStrategy/messages/${locale}.json`)).default,
+    [accountStrategyCoinModuleConfig.name]: (await import(`../../AccountStrategyCoin/messages/${locale}.json`)).default,
+// [END TRANSLATION ENTRIES]
     };
   } catch (error) {
     console.error(`Error loading translations for locale "${locale}":`, error);

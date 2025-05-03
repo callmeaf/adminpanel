@@ -8,6 +8,8 @@ import { ReactNode, useEffect } from "react";
 import settingRoutes from "@/modules/Setting/routes/setting";
 import accountRoutes from "@/modules/Account/routes/account";
 import strategyRoutes from "@/modules/Strategy/routes/strategy";
+import accountStrategyRoutes from "@/modules/AccountStrategy/routes/account-strategy";
+import accountStrategyCoinRoutes from "@/modules/AccountStrategyCoin/routes/account-strategy-coin";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -49,6 +51,8 @@ const useRoutes: TUseRoutes = () => {
         ...settingRoutes(t),
     ...accountRoutes(t),
     ...strategyRoutes(t),
+    ...accountStrategyRoutes(t),
+    ...accountStrategyCoinRoutes(t),
 // [END ROUTES ENTRIES]
   };
 

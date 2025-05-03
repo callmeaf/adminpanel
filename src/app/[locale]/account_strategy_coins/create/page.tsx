@@ -1,0 +1,3 @@
+import AccountStrategyCoinsCreatePage from "@/modules/AccountStrategyCoin/pages/AccountStrategyCoinsCreatePage";
+
+export default AccountStrategyCoinsCreatePage;
