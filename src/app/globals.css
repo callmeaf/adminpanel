@@ -27,3 +27,13 @@ img {
 * {
   box-sizing: border-box;
 }
+
+.number-inputs-without-spinners input::-webkit-outer-spin-button,
+.number-inputs-without-spinners input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-inputs-without-spinners input {
+  -moz-appearance: textfield;
+}

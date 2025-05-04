@@ -52,6 +52,8 @@ const OtpForm: React.FC<IOtpFormProps> = ({
           {...register("code")}
           label={t("code_inp_label")}
           error={errors.code}
+          type="number"
+          className="number-inputs-without-spinners"
         />
       </Grid2>
     </Form>
