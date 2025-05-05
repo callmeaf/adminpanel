@@ -1,0 +1,173 @@
+/* TextEditor.css */
+
+/* اطمینان از خنثی‌سازی ریست‌های Tailwind برای عناصر HTML */
+.ProseMirror {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 200px;
+  direction: rtl;
+  text-align: right;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+  /* font-family: Arial, sans-serif; */
+}
+
+.ProseMirror:focus {
+  border-color: #1976d2; /* MUI primary color */
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+}
+
+.ProseMirror :first-child {
+  margin-top: 0;
+}
+
+/* بازگرداندن استایل‌های پیش‌فرض برای ul و ol */
+.ProseMirror ul,
+.ProseMirror ol {
+  padding: 0 1rem;
+  margin: 1.25rem 1rem 1.25rem 0.4rem;
+  list-style: disc outside; /* نقطه‌های پیش‌فرض برای ul */
+}
+
+.ProseMirror ol {
+  list-style: decimal outside; /* شماره‌های پیش‌فرض برای ol */
+}
+
+.ProseMirror ul li,
+.ProseMirror ol li {
+  margin: 0.5rem 0;
+  padding: 0;
+  list-style: inherit; /* اطمینان از ارث‌بری list-style */
+}
+
+.ProseMirror ul li p,
+.ProseMirror ol li p {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* اطمینان از حفظ حاشیه‌های پیش‌فرض برای پاراگراف‌ها */
+.ProseMirror p {
+  margin: 1rem 0;
+}
+
+/* استایل‌های heading */
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  line-height: 1.1;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-wrap: pretty;
+  font-weight: bold; /* خنثی‌سازی ریست Tailwind */
+}
+
+.ProseMirror h1,
+.ProseMirror h2 {
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ProseMirror h1 {
+  font-size: 1.4rem;
+}
+
+.ProseMirror h2 {
+  font-size: 1.2rem;
+}
+
+.ProseMirror h3 {
+  font-size: 1.1rem;
+}
+
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  font-size: 1rem;
+}
+
+/* استایل‌های کد */
+.ProseMirror code {
+  background-color: #f3e8ff;
+  border-radius: 0.4rem;
+  color: #000000;
+  font-size: 0.85rem;
+  padding: 0.25em 0.3em;
+  /* font-family: 'JetBrainsMono', monospace;  */
+  /* خنثی‌سازی ریست Tailwind */
+}
+
+.ProseMirror pre {
+  background: #000000;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-family: "JetBrainsMono", monospace;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  overflow-x: auto; /* برای کدهای طولانی */
+}
+
+.ProseMirror pre code {
+  background: none;
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+/* استایل blockquote */
+.ProseMirror blockquote {
+  border-left: 3px solid #d1d5db;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  /* font-style: italic; */
+  /* خنثی‌سازی ریست Tailwind */
+}
+
+/* استایل hr */
+.ProseMirror hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2rem 0;
+}
+
+/* MenuBar styles using MUI theme colors */
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.button-group button {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #212121;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.button-group button:hover {
+  background-color: #e0e0e0;
+}
+
+.button-group button.is-active {
+  background-color: #1976d2; /* MUI primary color */
+  color: #ffffff;
+  border-color: #1976d2;
+}
+
+.button-group button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

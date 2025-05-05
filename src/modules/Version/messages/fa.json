@@ -1,0 +1,63 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "id_label": "ورژن",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "version_info_label": "اطلاعات ورژن",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "content_inp_label": "محتوا",
+      "id_inp_label": "ورژن"
+    },
+    "VersionsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeVersion": {
+      "success_message": "اطلاعات ورژن با موفقیت ذخیره شد."
+    },
+    "updateVersion": {
+      "success_message": "اطلاعات ورژن با موفقیت تغییر یافت."
+    },
+    "updateVersionPassword": {
+      "success_message": "رمزعبور ورژن با موفقیت تغییر یافت."
+    },
+    "deleteVersion": {
+      "success_message": "ورژن با موفقیت حذف شد."
+    },
+    "updateVersionStatus": {
+      "success_message": "وضعیت ورژن با موفقیت تغییر یافت"
+    },
+    "updateVersionType": {
+      "success_message": "نوع ورژن با موفقیت تغییر یافت"
+    },
+    "forceDeleteVersion": {
+      "success_message": "ورژن با موفقیت از زباله دان حذف شد."
+    },
+    "restoreVersion": {
+      "success_message": "ورژن با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportVersions": {
+      "success_message": "خروجی ورژن ها با موفقیت دانلود شد."
+    },
+    "importVersions": {
+      "success_message": "ورژن ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "ورژن ها",
+    "create": "ایجاد ورژن",
+    "edit": "ویرایش ورژن",
+    "trashed": "زباله دان ورژن ها",
+    "import_excel": "import ورژن ها"
+  }
+}

@@ -10,6 +10,7 @@ import accountModuleConfig from "@/modules/Account/module.config";
 import strategyModuleConfig from "@/modules/Strategy/module.config";
 import accountStrategyModuleConfig from "@/modules/AccountStrategy/module.config";
 import accountStrategyCoinModuleConfig from "@/modules/AccountStrategyCoin/module.config";
+import versionModuleConfig from "@/modules/Version/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -45,6 +46,7 @@ const translations = async (locale: string) => {
       ).default,
           [accountStrategyModuleConfig.name]: (await import(`../../AccountStrategy/messages/${locale}.json`)).default,
     [accountStrategyCoinModuleConfig.name]: (await import(`../../AccountStrategyCoin/messages/${locale}.json`)).default,
+    [versionModuleConfig.name]: (await import(`../../Version/messages/${locale}.json`)).default,
 // [END TRANSLATION ENTRIES]
     };
   } catch (error) {

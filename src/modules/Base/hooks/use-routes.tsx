@@ -10,6 +10,7 @@ import accountRoutes from "@/modules/Account/routes/account";
 import strategyRoutes from "@/modules/Strategy/routes/strategy";
 import accountStrategyRoutes from "@/modules/AccountStrategy/routes/account-strategy";
 import accountStrategyCoinRoutes from "@/modules/AccountStrategyCoin/routes/account-strategy-coin";
+import versionRoutes from "@/modules/Version/routes/version";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -53,6 +54,7 @@ const useRoutes: TUseRoutes = () => {
     ...strategyRoutes(t),
     ...accountStrategyRoutes(t),
     ...accountStrategyCoinRoutes(t),
+    ...versionRoutes(t),
 // [END ROUTES ENTRIES]
   };
 
