@@ -7,6 +7,7 @@ export interface ISocialBotModel extends IModel {
   name: string;
   token: string;
   footer: string;
+  footer_text: string;
   socialIdObject?: (statuses: IOption[]) => undefined | IOption;
 }
 
@@ -17,7 +18,8 @@ const toSocialBot = <T extends ISocialBotResponse>(
   social_id: data.social_id,
   name: data.name,
   token: data.token,
-  footer: data.footer?.replace(/\n/g, "\\n"),
+  footer: data.footer,
+  footer_text: data.footer_text,
   status: data.status,
   statusText: data.status_text,
   statusObject: (statuses) =>

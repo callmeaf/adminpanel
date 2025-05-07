@@ -15,6 +15,7 @@ export interface ISocialBotResponse extends IDataResponse {
   name: string;
   token: string;
   footer: string;
+  footer_text: string;
 }
 
 export interface ISocialBotStoreResponse extends ISocialBotResponse {}
