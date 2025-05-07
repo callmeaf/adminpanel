@@ -21,6 +21,7 @@ export const getSocialBots: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
+    name?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -37,6 +38,7 @@ export const getSocialBots: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            name: data.name,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -148,6 +150,7 @@ export const getSocialBotsTrashed: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
+    name?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -164,6 +167,7 @@ export const getSocialBotsTrashed: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            name: data.name,
             created_from: data.created_from,
             created_to: data.created_to,
           },

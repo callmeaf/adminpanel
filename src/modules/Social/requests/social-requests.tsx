@@ -138,6 +138,7 @@ export const getSocialsTrashed: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
+    chat_id?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -154,6 +155,7 @@ export const getSocialsTrashed: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            chat_id: data.chat_id,
             created_from: data.created_from,
             created_to: data.created_to,
           },
