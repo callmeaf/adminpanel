@@ -15,6 +15,8 @@ export enum EnumSource {
     ACCOUNT_STRATEGY = "account_strategy",
   ACCOUNT_STRATEGY_COIN = "account_strategy_coin",
   VERSION = "version",
+  SOCIAL = "social",
+  SOCIAL_BOT = "social_bot",
 // [END ENUM ENTRIES]
 }
 

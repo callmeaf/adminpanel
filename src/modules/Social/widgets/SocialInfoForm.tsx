@@ -4,35 +4,39 @@ import useValidation from "@/modules/Base/hooks/use-validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslations } from "next-intl";
 import * as React from "react";
-import { Controller,useForm } from "react-hook-form";
-import { I{{moduleName}}Model } from "../models/{{moduleName}}";
+import { Controller, useForm } from "react-hook-form";
+import { ISocialModel } from "../models/Social";
 import AutoComplete from "@/modules/Base/components/forms/AutoComplete";
 import { validator } from "@/modules/Base/helpers/validator";
-import { EnumSource, localStorageArtisan } from "@/modules/Base/helpers/local-storage-artisan";
+import {
+  EnumSource,
+  localStorageArtisan,
+} from "@/modules/Base/helpers/local-storage-artisan";
 
-interface I{{moduleName}}InfoFormProps extends IForm {
-  {{camelModuleName}}?: I{{moduleName}}Model;
+interface ISocialInfoFormProps extends IForm {
+  social?: ISocialModel;
 }
 
-const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
+const SocialInfoForm: React.FC<ISocialInfoFormProps> = ({
   onSubmit,
   loading,
-  {{camelModuleName}},
+  social,
 }) => {
-  const t = useTranslations("{{moduleName}}.Widgets.Form");
+  const t = useTranslations("Social.Widgets.Form");
 
- const {
-    statuses,
-    types,
-  } = localStorageArtisan.enums(EnumSource.{{upperSnakeModuleName}})
+  const { statuses, types } = localStorageArtisan.enums(EnumSource.SOCIAL);
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      example: yup
-        .string()
-        .required(v("required")),
-           status: yup.object().required(v('required')).test(validator.oneOf(statuses,v)),
-      type: yup.object().required(v('required')).test(validator.oneOf(types,v))
+      chat_id: yup.string().required(v("required")),
+      status: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(statuses, v)),
+      type: yup
+        .object()
+        .required(v("required"))
+        .test(validator.oneOf(types, v)),
     })
   );
 
@@ -43,10 +47,10 @@ const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-      defaultValues: {
-      example: {{camelModuleName}}?.example,
-      status: {{camelModuleName}}?.statusObject(statuses),
-      type: {{camelModuleName}}?.typeObject(types),
+    defaultValues: {
+      chat_id: social?.chat_id,
+      status: social?.statusObject(statuses),
+      type: social?.typeObject(types),
     },
   });
 
@@ -57,19 +61,18 @@ const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
       type: data.type.value,
     });
 
-
   return (
     <Form onSubmit={handleSubmit(submitHandler)} loading={loading}>
       <Input
-        {...register("example")}
-        label={t("example_inp_label")}
-        error={errors.example}
+        {...register("chat_id")}
+        label={t("chat_id_inp_label")}
+        error={errors.chat_id}
       />
-         <Controller
+      <Controller
         control={control}
         name="status"
         render={({ field }) => (
-                    // @ts-ignore
+          // @ts-ignore
           <AutoComplete
             {...field}
             label={t("status_inp_label")}
@@ -78,11 +81,11 @@ const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
           />
         )}
       />
-         <Controller
+      <Controller
         control={control}
         name="type"
         render={({ field }) => (
-                    // @ts-ignore
+          // @ts-ignore
           <AutoComplete
             {...field}
             label={t("type_inp_label")}
@@ -95,4 +98,4 @@ const {{moduleName}}InfoForm: React.FC<I{{moduleName}}InfoFormProps> = ({
   );
 };
 
-export default {{moduleName}}InfoForm;
+export default SocialInfoForm;

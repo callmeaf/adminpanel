@@ -1,5 +1,11 @@
 import { IOption } from "../components/forms/AutoComplete";
 
+export enum ModelStatus {
+  ACTIVE = "active",
+  INACTIVE = "inactive",
+  PENDING = "pending",
+}
+
 export interface IModel {
   id: string;
   status?: string;

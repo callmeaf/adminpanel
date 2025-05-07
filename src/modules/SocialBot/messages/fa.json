@@ -1,0 +1,65 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "name_label": "نام",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "social_bot_info_label": "اطلاعات ربات شبکه اجتماعی",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "social_id_inp_label": "شبکه اجتماعی",
+      "name_inp_label": "نام",
+      "token_inp_label": "توکن",
+      "footer_inp_label": "متن فوتر"
+    },
+    "SocialBotsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeSocialBot": {
+      "success_message": "اطلاعات ربات شبکه اجتماعی با موفقیت ذخیره شد."
+    },
+    "updateSocialBot": {
+      "success_message": "اطلاعات ربات شبکه اجتماعی با موفقیت تغییر یافت."
+    },
+    "updateSocialBotPassword": {
+      "success_message": "رمزعبور ربات شبکه اجتماعی با موفقیت تغییر یافت."
+    },
+    "deleteSocialBot": {
+      "success_message": "ربات شبکه اجتماعی با موفقیت حذف شد."
+    },
+    "updateSocialBotStatus": {
+      "success_message": "وضعیت ربات شبکه اجتماعی با موفقیت تغییر یافت"
+    },
+    "updateSocialBotType": {
+      "success_message": "نوع ربات شبکه اجتماعی با موفقیت تغییر یافت"
+    },
+    "forceDeleteSocialBot": {
+      "success_message": "ربات شبکه اجتماعی با موفقیت از زباله دان حذف شد."
+    },
+    "restoreSocialBot": {
+      "success_message": "ربات شبکه اجتماعی با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportSocialBots": {
+      "success_message": "خروجی ربات شبکه اجتماعی با موفقیت دانلود شد."
+    },
+    "importSocialBots": {
+      "success_message": "ربات شبکه اجتماعی ، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "ربات شبکه اجتماعی",
+    "create": "ایجاد ربات شبکه اجتماعی",
+    "edit": "ویرایش ربات شبکه اجتماعی",
+    "trashed": "زباله دان ربات شبکه اجتماعی",
+    "import_excel": "import ربات شبکه اجتماعی"
+  }
+}

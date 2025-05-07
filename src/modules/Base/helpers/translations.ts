@@ -11,6 +11,8 @@ import strategyModuleConfig from "@/modules/Strategy/module.config";
 import accountStrategyModuleConfig from "@/modules/AccountStrategy/module.config";
 import accountStrategyCoinModuleConfig from "@/modules/AccountStrategyCoin/module.config";
 import versionModuleConfig from "@/modules/Version/module.config";
+import socialModuleConfig from "@/modules/Social/module.config";
+import socialBotModuleConfig from "@/modules/SocialBot/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -47,6 +49,8 @@ const translations = async (locale: string) => {
           [accountStrategyModuleConfig.name]: (await import(`../../AccountStrategy/messages/${locale}.json`)).default,
     [accountStrategyCoinModuleConfig.name]: (await import(`../../AccountStrategyCoin/messages/${locale}.json`)).default,
     [versionModuleConfig.name]: (await import(`../../Version/messages/${locale}.json`)).default,
+    [socialModuleConfig.name]: (await import(`../../Social/messages/${locale}.json`)).default,
+    [socialBotModuleConfig.name]: (await import(`../../SocialBot/messages/${locale}.json`)).default,
 // [END TRANSLATION ENTRIES]
     };
   } catch (error) {

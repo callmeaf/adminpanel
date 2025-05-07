@@ -1,0 +1,62 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات",
+      "chat_id_label": "آدرس شبکه"
+    },
+    "Form": {
+      "social_info_label": "اطلاعات شبکه اجتماعی",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "chat_id_inp_label": "آدرس شبکه"
+    },
+    "SocialsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeSocial": {
+      "success_message": "اطلاعات شبکه اجتماعی با موفقیت ذخیره شد."
+    },
+    "updateSocial": {
+      "success_message": "اطلاعات شبکه اجتماعی با موفقیت تغییر یافت."
+    },
+    "updateSocialPassword": {
+      "success_message": "رمزعبور شبکه اجتماعی با موفقیت تغییر یافت."
+    },
+    "deleteSocial": {
+      "success_message": "شبکه اجتماعی با موفقیت حذف شد."
+    },
+    "updateSocialStatus": {
+      "success_message": "وضعیت شبکه اجتماعی با موفقیت تغییر یافت"
+    },
+    "updateSocialType": {
+      "success_message": "نوع شبکه اجتماعی با موفقیت تغییر یافت"
+    },
+    "forceDeleteSocial": {
+      "success_message": "شبکه اجتماعی با موفقیت از زباله دان حذف شد."
+    },
+    "restoreSocial": {
+      "success_message": "شبکه اجتماعی با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportSocials": {
+      "success_message": "خروجی شبکه اجتماعی با موفقیت دانلود شد."
+    },
+    "importSocials": {
+      "success_message": "شبکه اجتماعی با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "شبکه اجتماعی",
+    "create": "ایجاد شبکه اجتماعی",
+    "edit": "ویرایش شبکه اجتماعی",
+    "trashed": "زباله دان شبکه اجتماعی",
+    "import_excel": "import شبکه اجتماعی"
+  }
+}
