@@ -1,5 +1,7 @@
+import toCoin, { ICoinModel } from "@/modules/Coin/models/Coin";
 import { IExchangeResponse } from "../interfaces/request-interface";
 import { IModel } from "@/modules/Base/interfaces/model-interface";
+import { IOption } from "@/modules/Base/components/forms/AutoComplete";
 
 export interface IExchangeModel extends IModel {
   slug: string;
@@ -9,6 +11,8 @@ export interface IExchangeModel extends IModel {
   makerFeePercent: string;
   takerFeePercent: string;
   content: string;
+  coins: ICoinModel[];
+  coinsArray: (coins: IOption[]) => undefined | IOption[];
 }
 
 const toExchange = <T extends IExchangeResponse>(data: T): IExchangeModel => ({
@@ -33,6 +37,11 @@ const toExchange = <T extends IExchangeResponse>(data: T): IExchangeModel => ({
   updatedAtText: data.updated_at_text,
   deletedAt: data.deleted_at,
   deletedAtText: data.deleted_at_text,
+  coins: data.coins?.map((coin) => toCoin(coin)) ?? [],
+  coinsArray: (coins) =>
+    coins.filter((coin) =>
+      data.coins?.map((coin) => coin.symbol).includes(coin.value)
+    ),
 });
 
 export default toExchange;

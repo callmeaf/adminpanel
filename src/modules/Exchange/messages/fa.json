@@ -10,6 +10,7 @@
     },
     "Form": {
       "exchange_info_label": "اطلاعات صرافی",
+      "exchange_coins_label": "کوین های صرافی",
       "status_inp_label": "وضعیت",
       "type_inp_label": "نوع",
       "name_inp_label": "صرافی",
@@ -17,7 +18,8 @@
       "api_url_inp_label": "آدرس api",
       "maker_fee_percent_inp_label": "کارمزد maker",
       "taker_fee_percent_inp_label": "کارمزد taker",
-      "content_inp_label": "محتوا"
+      "content_inp_label": "محتوا",
+      "coins_symbols_inp_label": "کوین ها"
     },
     "ExchangesImport": {
       "status_desc": " وضعیت باید یکی از {options} باشد.",
@@ -54,6 +56,9 @@
     },
     "importExchanges": {
       "success_message": "صرافی ها، با موفقیت به سیستم اضافه شدند."
+    },
+    "syncExchangeCoins": {
+      "success_message": "کوین های صرافی، با موفقیت به روزرسانی شد."
     }
   },
   "Errors": {},

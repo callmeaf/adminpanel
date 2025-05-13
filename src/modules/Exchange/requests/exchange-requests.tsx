@@ -12,6 +12,7 @@ import {
   IExchangesTrashedResponse,
   IExchangeRestoreResponse,
   IExchangeForceDeleteResponse,
+  IExchangeSyncCoinsResponse,
 } from "../interfaces/request-interface";
 import { ExportType } from "@/modules/Base/components/tables/TableExport";
 import { ImportType } from "@/modules/Base/components/imports/ImportWrapper";
@@ -286,4 +287,23 @@ export const importExchanges: TThunk<
 
   formData.append("file", data.file);
   return api.post(`exchanges/import/${extra.type}`, formData);
+};
+
+export const syncExchangeCoins: TThunk<
+  {
+    coins_symbols: string[];
+  },
+  {
+    exchangeId: string;
+  },
+  IExchangeSyncCoinsResponse
+> = async (api, data, extra) => {
+  const formData = new FormData();
+  formData.append("_method", "PATCH");
+
+  data.coins_symbols.forEach((coinSymbol) => {
+    formData.append("coins_symbols[]", coinSymbol);
+  });
+
+  return api.post(`exchanges/${extra.exchangeId}/coins`, formData);
 };

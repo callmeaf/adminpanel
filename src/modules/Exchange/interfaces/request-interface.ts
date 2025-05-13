@@ -3,6 +3,7 @@ import {
   IExporterResponse,
   IImporterResponse,
 } from "@/modules/Base/interfaces/request-interface";
+import { ICoinResponse } from "@/modules/Coin/interfaces/request-interface";
 
 /**
  * =============================
@@ -18,6 +19,7 @@ export interface IExchangeResponse extends IDataResponse {
   maker_fee_percent: string;
   taker_fee_percent: string;
   content: string;
+  coins?: ICoinResponse[];
 }
 
 export interface IExchangeStoreResponse extends IExchangeResponse {}
@@ -43,3 +45,5 @@ export interface IExchangeForceDeleteResponse extends IExchangeResponse {}
 export interface IExchangesExportResponse extends IExporterResponse {}
 
 export interface IExchangesImportResponse extends IImporterResponse {}
+
+export interface IExchangeSyncCoinsResponse extends IExchangeResponse {}

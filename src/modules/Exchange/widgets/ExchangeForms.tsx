@@ -3,11 +3,16 @@ import * as React from "react";
 import ExchangeInfoForm from "./ExchangeInfoForm";
 import { useTranslations } from "next-intl";
 import useHttp from "@/modules/Base/hooks/use-http";
-import { storeExchange, updateExchange } from "../requests/exchange-requests";
+import {
+  storeExchange,
+  syncExchangeCoins,
+  updateExchange,
+} from "../requests/exchange-requests";
 import useStepper from "@/modules/Base/hooks/use-stepper";
 import { SET_SNACKBAR } from "@/modules/UI/context/action-types";
 import toExchange, { IExchangeModel } from "@/modules/Exchange/models/Exchange";
 import moduleConfig from "../module.config";
+import ExchangeCoinsForm from "./ExchangeCoinsForm";
 
 interface IExchangeFormsProps {
   exchangeModel?: IExchangeModel;
@@ -33,6 +38,10 @@ const ExchangeForms: React.FC<IExchangeFormsProps> = ({ exchangeModel }) => {
     {
       id: "exchange_info",
       label: t("exchange_info_label"),
+    },
+    {
+      id: "exchange_coins",
+      label: t("exchange_coins_label"),
     },
   ]);
 
@@ -66,9 +75,26 @@ const ExchangeForms: React.FC<IExchangeFormsProps> = ({ exchangeModel }) => {
       },
     });
 
+  const { handle: handleSyncExchangeCoins, loading: loadingSyncExchangeCoins } =
+    useHttp(moduleConfig, syncExchangeCoins, {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: tr("syncExchangeCoins.success_message"),
+          },
+        });
+        handleNextStep();
+        setExchange(toExchange(res.data));
+      },
+    });
+
   const storeExchangeHandler = (data: any) => handleStoreExchange(data);
   const updateExchangeHandler = (data: any) =>
     handleUpdateExchange(data, { exchangeId: exchange?.id! });
+  const syncExchangeCoinsHandler = (data: any) =>
+    handleSyncExchangeCoins(data, { exchangeId: exchange.id! });
 
   const resetStepHandler = () => {
     if (exchangeModel) {
@@ -109,6 +135,11 @@ const ExchangeForms: React.FC<IExchangeFormsProps> = ({ exchangeModel }) => {
       <ExchangeInfoForm
         loading={exchange ? loadingUpdateExchange : loadingStoreExchange}
         onSubmit={exchange ? updateExchangeHandler : storeExchangeHandler}
+        exchange={exchange}
+      />
+      <ExchangeCoinsForm
+        loading={loadingSyncExchangeCoins}
+        onSubmit={syncExchangeCoinsHandler}
         exchange={exchange}
       />
     </Stepper>
