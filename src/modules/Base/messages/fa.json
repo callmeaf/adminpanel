@@ -11,6 +11,7 @@
     "starts_with": "باید با {value} شروع شود.",
     "only_digits": "فقط عدد قابل قبول میباشد.",
     "min_length": "نباید کمتر از {value} کاراکتر باشد.",
+    "max_length": "نباید بیشتر از {value} کاراکتر باشد.",
     "email": "ایمیل معتبر وارد نمایید.",
     "one_of": "باید یکی از این ها باشد. {options}",
     "uppercase": "باید با حروف بزرگ و انگلیسی باشد"
@@ -66,6 +67,12 @@
       "total_imported_data": "تعداد کل داده های شناسایی شده: {total}",
       "upload_file_same_column_label": "هدرهای فایل باید هم اسم Column باشند.",
       "export_sample_file_btn_label": "نمونه فایل"
+    },
+    "Dropzone": {
+      "drop_files_content": "فایل ها را رها کنید",
+      "drag_and_drop_files_content": "فایل ها را اینجا بکشید و رها کنید یا",
+      "choose_files_btn_label": "انتخاب فایل ها",
+      "choose_files_errors": "خطا در انتخاب فایل ها"
     }
   },
   "Widgets": {

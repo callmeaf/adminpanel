@@ -1,0 +1,68 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "sender_identifier_label": "فرستنده",
+      "receiver_identifier_label": "گیرنده",
+      "status_label": "وضعیت",
+      "type_label": "اولویت",
+      "subject_label": "موضوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "ticket_info_label": "اطلاعات تیکت",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "اولویت",
+      "title_inp_label": "عنوان",
+      "content_inp_label": "محتوا",
+      "subject_inp_label": "موضوع",
+      "attachments_inp_label": "فایل های ضمیمه ای",
+      "ticket_replies_info_label": "جواب ها"
+    },
+    "TicketsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "اولویت باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeTicket": {
+      "success_message": "اطلاعات تیکت با موفقیت ذخیره شد."
+    },
+    "updateTicket": {
+      "success_message": "اطلاعات تیکت با موفقیت تغییر یافت."
+    },
+    "updateTicketPassword": {
+      "success_message": "رمزعبور تیکت با موفقیت تغییر یافت."
+    },
+    "deleteTicket": {
+      "success_message": "تیکت با موفقیت حذف شد."
+    },
+    "updateTicketStatus": {
+      "success_message": "وضعیت تیکت با موفقیت تغییر یافت"
+    },
+    "updateTicketType": {
+      "success_message": "اولویت تیکت با موفقیت تغییر یافت"
+    },
+    "forceDeleteTicket": {
+      "success_message": "تیکت با موفقیت از زباله دان حذف شد."
+    },
+    "restoreTicket": {
+      "success_message": "تیکت با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportTickets": {
+      "success_message": "خروجی تیکت ها با موفقیت دانلود شد."
+    },
+    "importTickets": {
+      "success_message": "تیکت ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "تیکت ها",
+    "create": "ایجاد تیکت",
+    "edit": "ویرایش تیکت",
+    "trashed": "زباله دان تیکت ها",
+    "import_excel": "import تیکت ها"
+  }
+}

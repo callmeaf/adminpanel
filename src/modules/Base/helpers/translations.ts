@@ -13,6 +13,9 @@ import accountStrategyCoinModuleConfig from "@/modules/AccountStrategyCoin/modul
 import versionModuleConfig from "@/modules/Version/module.config";
 import socialModuleConfig from "@/modules/Social/module.config";
 import socialBotModuleConfig from "@/modules/SocialBot/module.config";
+import ticketModuleConfig from "@/modules/Ticket/module.config";
+import ticketReplyModuleConfig from "@/modules/TicketReply/module.config";
+import mediaModuleConfig from "@/modules/Media/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -51,6 +54,9 @@ const translations = async (locale: string) => {
     [versionModuleConfig.name]: (await import(`../../Version/messages/${locale}.json`)).default,
     [socialModuleConfig.name]: (await import(`../../Social/messages/${locale}.json`)).default,
     [socialBotModuleConfig.name]: (await import(`../../SocialBot/messages/${locale}.json`)).default,
+    [ticketModuleConfig.name]: (await import(`../../Ticket/messages/${locale}.json`)).default,
+    [ticketReplyModuleConfig.name]: (await import(`../../TicketReply/messages/${locale}.json`)).default,
+    [mediaModuleConfig.name]: (await import(`../../Media/messages/${locale}.json`)).default,
 // [END TRANSLATION ENTRIES]
     };
   } catch (error) {

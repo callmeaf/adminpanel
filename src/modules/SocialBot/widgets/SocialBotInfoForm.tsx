@@ -70,7 +70,6 @@ const SocialBotInfoForm: React.FC<ISocialBotInfoFormProps> = ({
   });
 
   const submitHandler = (data: any) => {
-    console.log({ data });
     return onSubmit({
       ...data,
       status: data.status.value,

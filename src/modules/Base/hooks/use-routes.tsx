@@ -13,6 +13,9 @@ import accountStrategyCoinRoutes from "@/modules/AccountStrategyCoin/routes/acco
 import versionRoutes from "@/modules/Version/routes/version";
 import socialRoutes from "@/modules/Social/routes/social";
 import socialBotRoutes from "@/modules/SocialBot/routes/social-bot";
+import ticketRoutes from "@/modules/Ticket/routes/ticket";
+import ticketReplyRoutes from "@/modules/TicketReply/routes/ticket-reply";
+import mediaRoutes from "@/modules/Media/routes/media";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -59,6 +62,9 @@ const useRoutes: TUseRoutes = () => {
     ...versionRoutes(t),
     ...socialRoutes(t),
     ...socialBotRoutes(t),
+    ...ticketRoutes(t),
+    ...ticketReplyRoutes(t),
+    ...mediaRoutes(t),
 // [END ROUTES ENTRIES]
   };
 

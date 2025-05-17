@@ -35,6 +35,7 @@
     "pluralize": "^8.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-dropzone": "^14.3.8",
     "react-hook-form": "^7.54.2",
     "stylis": "^4.3.6",
     "stylis-plugin-rtl": "^2.1.1",

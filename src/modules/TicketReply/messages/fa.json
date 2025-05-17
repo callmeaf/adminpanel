@@ -1,0 +1,62 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "ticket_reply_info_label": "اطلاعات جواب تیکت",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "content_inp_label": "پاسخ",
+      "attachments_inp_label": "فایل های ضمیمه ای"
+    },
+    "TicketRepliesImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeTicketReply": {
+      "success_message": "اطلاعات جواب تیکت با موفقیت ذخیره شد."
+    },
+    "updateTicketReply": {
+      "success_message": "اطلاعات جواب تیکت با موفقیت تغییر یافت."
+    },
+    "updateTicketReplyPassword": {
+      "success_message": "رمزعبور جواب تیکت با موفقیت تغییر یافت."
+    },
+    "deleteTicketReply": {
+      "success_message": "جواب تیکت با موفقیت حذف شد."
+    },
+    "updateTicketReplyStatus": {
+      "success_message": "وضعیت جواب تیکت با موفقیت تغییر یافت"
+    },
+    "updateTicketReplyType": {
+      "success_message": "نوع جواب تیکت با موفقیت تغییر یافت"
+    },
+    "forceDeleteTicketReply": {
+      "success_message": "جواب تیکت با موفقیت از زباله دان حذف شد."
+    },
+    "restoreTicketReply": {
+      "success_message": "جواب تیکت با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportTicketReplies": {
+      "success_message": "خروجی جواب تیکت ها با موفقیت دانلود شد."
+    },
+    "importTicketReplies": {
+      "success_message": "جواب تیکت ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "جواب تیکت ها",
+    "create": "ایجاد جواب تیکت",
+    "edit": "ویرایش جواب تیکت",
+    "trashed": "زباله دان جواب تیکت ها",
+    "import_excel": "import جواب تیکت ها"
+  }
+}

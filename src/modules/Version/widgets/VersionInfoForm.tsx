@@ -64,7 +64,6 @@ const VersionInfoForm: React.FC<IVersionInfoFormProps> = ({
       ...data,
     });
 
-  console.log({ defaultValues });
   return (
     <Form onSubmit={handleSubmit(submitHandler)} loading={loading}>
       <Input {...register("id")} label={t("id_inp_label")} error={errors.id} />

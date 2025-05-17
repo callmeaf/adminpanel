@@ -17,6 +17,9 @@ export enum EnumSource {
   VERSION = "version",
   SOCIAL = "social",
   SOCIAL_BOT = "social_bot",
+  TICKET = "ticket",
+  TICKET_REPLY = "ticket_reply",
+  MEDIA = "media",
 // [END ENUM ENTRIES]
 }
 
