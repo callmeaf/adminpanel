@@ -58,6 +58,7 @@ const TicketReplyInfoForm: React.FC<ITicketReplyInfoFormProps> = ({
       await onSubmit({
         ...data,
       });
+      setValue("content", "");
       setValue("attachments", []);
     } catch (e) {}
   };
