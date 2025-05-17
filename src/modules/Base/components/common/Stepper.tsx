@@ -42,7 +42,19 @@ const Stepper: React.FC<React.PropsWithChildren<IStepper>> = ({
 
   return (
     <Box sx={{ width: "100%", position: "relative" }}>
-      <StepperMUI activeStep={activeStepIndex}>
+      <StepperMUI
+        activeStep={activeStepIndex}
+        sx={{
+          flexWrap: {
+            xs: "wrap",
+            lg: "initial",
+          },
+          gap: {
+            xs: 3,
+            lg: "initial",
+          },
+        }}
+      >
         {steps.map((step) => {
           return (
             <Step key={step.id} completed={completed}>

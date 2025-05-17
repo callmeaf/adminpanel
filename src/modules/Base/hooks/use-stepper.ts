@@ -7,6 +7,7 @@ export interface IStep {
   id: string;
   label: string;
   optional?: boolean;
+  active?: boolean;
 }
 
 export type THandleGoStep = (step: IStep) => void;
@@ -35,7 +36,9 @@ const useStepper: TUseStepper = (initialSteps) => {
       label: t("final_step_label"),
     },
   ]);
-  const [activeStep, setActiveStep] = useState<IStep>(initialSteps[0]);
+  const [activeStep, setActiveStep] = useState<IStep>(
+    initialSteps.find((item) => item.active) ?? initialSteps[0]
+  );
 
   const handleNextStep = () => {
     const currentStepIndex = steps.findIndex((s) => s.id === activeStep.id);

@@ -35,7 +35,7 @@ export const validator: IValidator = {
   oneOf: (options, t) => ({
     name: "oneOf",
     message: t("one_of", {
-      options: options.map((item) => item.label).join(", "),
+      options: options?.map((item) => item.label).join(", "),
     }),
     test: (v) =>
       options.findIndex((val) => val?.toString() === v?.toString()) > -1,

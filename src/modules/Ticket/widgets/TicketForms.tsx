@@ -53,6 +53,7 @@ const TicketForms: React.FC<ITicketFormsProps> = ({ ticketModel }) => {
       id: "ticket_replies_info",
       label: t("ticket_replies_info_label"),
       optional: true,
+      active: !!ticketModel,
     },
     {
       id: "ticket_change_status_info",
@@ -215,10 +216,12 @@ const TicketForms: React.FC<ITicketFormsProps> = ({ ticketModel }) => {
         )}
       </Box>
       <Box>
-        <TicketChangeStatusForm
-          ticket={ticket}
-          onStatusUpdate={updateTicketStatusHandler}
-        />
+        {ticket && (
+          <TicketChangeStatusForm
+            ticket={ticket}
+            onStatusUpdate={updateTicketStatusHandler}
+          />
+        )}
       </Box>
     </Stepper>
   );

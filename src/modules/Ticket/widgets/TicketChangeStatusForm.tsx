@@ -24,7 +24,7 @@ const TicketChangeStatusForm: React.FC<ITicketChangeStatusFormProps> = ({
       <TableSelectOptionColumnAction
         name="status"
         defaultValue={ticket.status}
-        options={statuses}
+        options={statuses ?? []}
         onUpdate={onStatusUpdate}
         model={ticket}
         disabled={false}

@@ -33,6 +33,7 @@ const TicketInfoForm: React.FC<ITicketInfoFormProps> = ({
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
       title: yup.string().required(v("required")),
+      status: yup.object().nullable(),
       type: yup
         .object()
         .required(v("required"))
@@ -71,11 +72,19 @@ const TicketInfoForm: React.FC<ITicketInfoFormProps> = ({
         ...data,
         subject: data.subject?.value,
         type: data.type?.value,
+        status: data.status?.value,
       });
 
       setValue("attachments", []);
     } catch (e) {}
   };
+
+  React.useEffect(() => {
+    if (!ticket) {
+      return;
+    }
+    setValue("status", ticket.statusObject(statuses));
+  }, [ticket?.id]);
 
   return (
     <Form
@@ -83,6 +92,22 @@ const TicketInfoForm: React.FC<ITicketInfoFormProps> = ({
       loading={loading}
       submitBtn={ticket ? null : undefined}
     >
+      {ticket && (
+        <Controller
+          control={control}
+          name="status"
+          render={({ field }) => (
+            // @ts-ignore
+            <AutoComplete
+              {...field}
+              label={t("status_inp_label")}
+              error={errors.status}
+              options={statuses}
+              disabled={true}
+            />
+          )}
+        />
+      )}
       <Controller
         control={control}
         name="type"

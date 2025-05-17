@@ -79,7 +79,7 @@ const inputHiddenDefaultValue: TInputHiddenDefaultValue = ({
     selectedOptions = arrayArtisan.unique(selectedOptions, "value");
     return selectedOptions;
   } else {
-    if (options.length) {
+    if (options?.length) {
       return options.find(
         (option) =>
           option.label?.toString() === params.inputProps.value?.toString()
