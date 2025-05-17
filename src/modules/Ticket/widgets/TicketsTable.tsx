@@ -56,7 +56,7 @@ interface ITicketsTableProps {
   onEdit: TOnEdit<ITicketModel>;
   onStatusUpdate: TOnUpdate<ITicketModel>;
   onTypeUpdate: TOnUpdate<ITicketModel>;
-  onSubjectUpdate: TOnUpdate<ITicketModel>;
+  onSubjectUpdate?: TOnUpdate<ITicketModel>;
   onExport: TOnExport;
 }
 
@@ -101,6 +101,10 @@ const TicketsTable: React.FC<ITicketsTableProps> = ({
           label: t("no_label"),
         },
         {
+          id: "ref_code",
+          label: t("ref_code_label"),
+        },
+        {
           id: "sender_identifier",
           label: t("sender_identifier_label"),
         },
@@ -133,6 +137,10 @@ const TicketsTable: React.FC<ITicketsTableProps> = ({
         <TableSearch
           onSearch={onSearch}
           params={[
+            {
+              key: "ref_code",
+              label: t("ref_code_label"),
+            },
             {
               key: "sender_identifier",
               label: t("sender_identifier_label"),
@@ -191,6 +199,7 @@ const TicketsTable: React.FC<ITicketsTableProps> = ({
           {tickets.map((ticket, index) => (
             <TableRow key={ticket.id}>
               <TableCell>{paginate.from + index}</TableCell>
+              <TableCell>{ticket.refCode}</TableCell>
               <TableCell>{ticket.senderIdentifier}</TableCell>
               <TableCell>{ticket.receiverIdentifier}</TableCell>
               <TableCell>

@@ -22,6 +22,7 @@ export interface ITicketResponse extends IDataResponse {
   content: string;
   attachments?: IMediaResponse[];
   replies?: ITicketReplyResponse[];
+  can_answer: boolean;
 }
 
 export interface ITicketStoreResponse extends ITicketResponse {}

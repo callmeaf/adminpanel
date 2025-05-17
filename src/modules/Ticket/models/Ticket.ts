@@ -17,6 +17,7 @@ export interface ITicketModel extends IModel {
   content: string;
   attachments?: IMediaModel[];
   replies?: ITicketReplyModel[];
+  canAnswer: boolean;
 }
 
 const toTicket = <T extends ITicketResponse>(data: T): ITicketModel => ({
@@ -45,6 +46,7 @@ const toTicket = <T extends ITicketResponse>(data: T): ITicketModel => ({
   deletedAtText: data.deleted_at_text,
   attachments: data.attachments?.map((attachment) => toMedia(attachment)) ?? [],
   replies: data.replies?.map((reply) => toTicketReply(reply)) ?? [],
+  canAnswer: data.can_answer,
 });
 
 export default toTicket;

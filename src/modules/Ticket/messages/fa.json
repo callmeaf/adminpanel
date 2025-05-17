@@ -3,12 +3,13 @@
     "Table": {
       "no_label": "#",
       "sender_identifier_label": "فرستنده",
-      "receiver_identifier_label": "گیرنده",
+      "receiver_identifier_label": "گیرنده / پاسخ دهنده",
       "status_label": "وضعیت",
       "type_label": "اولویت",
       "subject_label": "موضوع",
       "created_at_label": "تاریخ ایجاد",
-      "action_label": "عملیات"
+      "action_label": "عملیات",
+      "ref_code_label": "کد رهگیری"
     },
     "Form": {
       "ticket_info_label": "اطلاعات تیکت",
@@ -18,7 +19,9 @@
       "content_inp_label": "محتوا",
       "subject_inp_label": "موضوع",
       "attachments_inp_label": "فایل های ضمیمه ای",
-      "ticket_replies_info_label": "جواب ها"
+      "ticket_replies_info_label": "جواب ها",
+      "ticket_change_status_info_label": "تغییر وضعیت",
+      "can_not_answer_to_this_ticket_alert": "نمیتوانید به این تیکت پاسخ دهید. در صورت نیاز، وضعیت آنرا به دوباره باز شده تغییر دهید."
     },
     "TicketsImport": {
       "status_desc": " وضعیت باید یکی از {options} باشد.",

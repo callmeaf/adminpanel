@@ -3,19 +3,26 @@ import * as React from "react";
 import TicketInfoForm from "./TicketInfoForm";
 import { useTranslations } from "next-intl";
 import useHttp from "@/modules/Base/hooks/use-http";
-import { storeTicket, updateTicket } from "../requests/ticket-requests";
+import {
+  storeTicket,
+  updateTicket,
+  updateTicketStatus,
+} from "../requests/ticket-requests";
 import useStepper from "@/modules/Base/hooks/use-stepper";
 import { SET_SNACKBAR } from "@/modules/UI/context/action-types";
 import toTicket, { ITicketModel } from "@/modules/Ticket/models/Ticket";
 import moduleConfig from "../module.config";
 import ticketReplyModuleConfig from "@/modules/TicketReply/module.config";
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 import TicketRepliesList from "@/modules/TicketReply/widgets/TicketRepliesList";
 import TicketReplyInfoForm from "@/modules/TicketReply/widgets/TicketReplyInfoForm";
 import { storeTicketReply } from "@/modules/TicketReply/requests/ticket-reply-requests";
 import toTicketReply, {
   ITicketReplyModel,
 } from "@/modules/TicketReply/models/TicketReply";
+import TicketChangeStatusForm from "./TicketChangeStatusForm";
+import { TOnUpdate } from "@/modules/Base/components/tables/actions/TableSelectOptionColumnAction";
+import Show from "@/modules/Base/components/common/Show";
 
 interface ITicketFormsProps {
   ticketModel?: ITicketModel;
@@ -45,6 +52,11 @@ const TicketForms: React.FC<ITicketFormsProps> = ({ ticketModel }) => {
     {
       id: "ticket_replies_info",
       label: t("ticket_replies_info_label"),
+      optional: true,
+    },
+    {
+      id: "ticket_change_status_info",
+      label: t("ticket_change_status_info_label"),
       optional: true,
     },
   ]);
@@ -135,6 +147,36 @@ const TicketForms: React.FC<ITicketFormsProps> = ({ ticketModel }) => {
       ...data,
       ticket_ref_code: ticket?.id,
     });
+
+  const { handle: handleUpdateTicketStatus } = useHttp(
+    moduleConfig,
+    updateTicketStatus,
+    {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: tr("updateTicketStatus.success_message"),
+          },
+        });
+      },
+    }
+  );
+
+  const updateTicketStatusHandler: TOnUpdate<ITicketModel> = (
+    ticket,
+    target
+  ) => {
+    handleUpdateTicketStatus(
+      {
+        status: target.value,
+      },
+      {
+        ticketId: ticket.id,
+      }
+    );
+  };
   return (
     <Stepper
       steps={steps}
@@ -156,9 +198,26 @@ const TicketForms: React.FC<ITicketFormsProps> = ({ ticketModel }) => {
       />
       <Box>
         {ticket && <TicketRepliesList ticket={ticket} replies={replies} />}
-        <TicketReplyInfoForm
-          onSubmit={storeTicketReplyHandler}
-          loading={loadingStoreTicketReply}
+        {ticket && (
+          <Show when={ticket.canAnswer}>
+            <Show.When>
+              <TicketReplyInfoForm
+                onSubmit={storeTicketReplyHandler}
+                loading={loadingStoreTicketReply}
+              />
+            </Show.When>
+            <Show.Else>
+              <Alert severity="warning">
+                {t("can_not_answer_to_this_ticket_alert")}
+              </Alert>
+            </Show.Else>
+          </Show>
+        )}
+      </Box>
+      <Box>
+        <TicketChangeStatusForm
+          ticket={ticket}
+          onStatusUpdate={updateTicketStatusHandler}
         />
       </Box>
     </Stepper>

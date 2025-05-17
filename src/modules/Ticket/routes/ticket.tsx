@@ -2,6 +2,7 @@ import { TRoute } from "@/modules/Base/hooks/use-routes";
 import {
   AddComment as AddCommentIcon,
   Forum as ForumIcon,
+  Person as PersonIcon,
 } from "@mui/icons-material";
 import moduleConfig from "../module.config";
 
@@ -26,18 +27,18 @@ const ticketRoutes: TRoute = (t) => ({
           href: "/tickets/:ticketId/edit",
           showInNavbar: false,
         },
-        // {
-        //   name: "tickets_trashed",
-        //   label: t("Ticket.Routes.trashed"),
-        //   href: "/tickets/trashed",
-        //   icon: <PersonIcon />,
-        // },
-        // {
-        //   name: "tickets_import_excel",
-        //   label: t("Ticket.Routes.import_excel"),
-        //   href: "/tickets/import/excel",
-        //   icon: <PublishIcon />,
-        // },
+        {
+          name: "tickets_trashed",
+          label: t("Ticket.Routes.trashed"),
+          href: "/tickets/trashed",
+          icon: <PersonIcon />,
+        },
+        {
+          name: "tickets_import_excel",
+          label: t("Ticket.Routes.import_excel"),
+          href: "/tickets/import/excel",
+          icon: <PersonIcon />,
+        },
       ]
     : [],
 });

@@ -21,6 +21,9 @@ export const getTickets: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
+    ref_code?: string;
+    receiver_identifier: string;
+    sender_identifier: string;
     subject?: string;
     created_from?: string;
     created_to?: string;
@@ -38,6 +41,9 @@ export const getTickets: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            ref_code: data.ref_code,
+            receiver_identifier: data.receiver_identifier,
+            sender_identifier: data.sender_identifier,
             subject: data.subject,
             created_from: data.created_from,
             created_to: data.created_to,
