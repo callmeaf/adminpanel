@@ -44,6 +44,7 @@ const TicketReplyInfoForm: React.FC<ITicketReplyInfoFormProps> = ({
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -52,10 +53,14 @@ const TicketReplyInfoForm: React.FC<ITicketReplyInfoFormProps> = ({
     },
   });
 
-  const submitHandler = (data: any) =>
-    onSubmit({
-      ...data,
-    });
+  const submitHandler = async (data: any) => {
+    try {
+      await onSubmit({
+        ...data,
+      });
+      setValue("attachments", []);
+    } catch (e) {}
+  };
 
   return (
     <Form onSubmit={handleSubmit(submitHandler)} loading={loading}>
