@@ -1,0 +1,76 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "log_name_label": "نام لاگ",
+      "subject_type_label": "اعمال شونده",
+      "causer_type_label": "اعمال کننده",
+      "event_label": "رویداد",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "log_info_label": "اطلاعات لاگ ها",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "example_inp_label": "لاگ ها"
+    },
+    "LogsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    },
+    "LogSingle": {
+      "title": "جزئیات فعالیت",
+      "log_group_label": "گروه بندی",
+      "event_label": "رویداد",
+      "description_label": "توضیحات",
+      "subject_id_label": "آی دی اعمال شونده",
+      "subject_type_label": "نوع اعمال شونده",
+      "causer_id_label": "آی دی اعمال کننده",
+      "causer_type_label": "نوع اعمال کننده",
+      "changes_label": "تغییرات"
+    }
+  },
+  "Requests": {
+    "storeLog": {
+      "success_message": "اطلاعات لاگ ها با موفقیت ذخیره شد."
+    },
+    "updateLog": {
+      "success_message": "اطلاعات لاگ ها با موفقیت تغییر یافت."
+    },
+    "updateLogPassword": {
+      "success_message": "رمزعبور لاگ ها با موفقیت تغییر یافت."
+    },
+    "deleteLog": {
+      "success_message": "لاگ ها با موفقیت حذف شد."
+    },
+    "updateLogStatus": {
+      "success_message": "وضعیت لاگ ها با موفقیت تغییر یافت"
+    },
+    "updateLogType": {
+      "success_message": "نوع لاگ ها با موفقیت تغییر یافت"
+    },
+    "forceDeleteLog": {
+      "success_message": "لاگ ها با موفقیت از زباله دان حذف شد."
+    },
+    "restoreLog": {
+      "success_message": "لاگ ها با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportLogs": {
+      "success_message": "خروجیلاگ ها  با موفقیت دانلود شد."
+    },
+    "importLogs": {
+      "success_message": "لاگ ها ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "لاگ ها ها",
+    "create": "ایجاد لاگ ها",
+    "edit": "ویرایش لاگ ها",
+    "trashed": "زباله دانلاگ ها ",
+    "import_excel": "importلاگ ها "
+  }
+}

@@ -20,6 +20,7 @@ export enum EnumSource {
   TICKET = "ticket",
   TICKET_REPLY = "ticket_reply",
   MEDIA = "media",
+  LOG = "log",
 // [END ENUM ENTRIES]
 }
 

@@ -16,6 +16,7 @@ import socialBotRoutes from "@/modules/SocialBot/routes/social-bot";
 import ticketRoutes from "@/modules/Ticket/routes/ticket";
 import ticketReplyRoutes from "@/modules/TicketReply/routes/ticket-reply";
 import mediaRoutes from "@/modules/Media/routes/media";
+import logRoutes from "@/modules/Log/routes/log";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -65,6 +66,7 @@ const useRoutes: TUseRoutes = () => {
     ...ticketRoutes(t),
     ...ticketReplyRoutes(t),
     ...mediaRoutes(t),
+    ...logRoutes(t),
 // [END ROUTES ENTRIES]
   };
 
