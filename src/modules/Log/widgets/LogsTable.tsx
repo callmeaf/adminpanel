@@ -106,8 +106,16 @@ const LogsTable: React.FC<ILogsTableProps> = ({
           label: t("event_label"),
         },
         {
+          id: "subject_id",
+          label: t("subject_id_label"),
+        },
+        {
           id: "subject_type",
           label: t("subject_type_label"),
+        },
+        {
+          id: "causer_id",
+          label: t("causer_id_label"),
         },
         {
           id: "causer_type",
@@ -131,12 +139,20 @@ const LogsTable: React.FC<ILogsTableProps> = ({
               label: t("log_name_label"),
             },
             {
+              key: "subject_id",
+              label: t("subject_id_label"),
+            },
+            {
               key: "subject_type",
               label: t("subject_type_label"),
             },
             {
               key: "event",
               label: t("event_label"),
+            },
+            {
+              key: "causer_id",
+              label: t("causer_id_label"),
             },
             {
               key: "causer_type",
@@ -192,7 +208,9 @@ const LogsTable: React.FC<ILogsTableProps> = ({
               <TableCell>{paginate.from + index}</TableCell>
               <TableCell>{log.logName}</TableCell>
               <TableCell>{log.event}</TableCell>
+              <TableCell>{log.subjectId}</TableCell>
               <TableCell>{log.subjectType}</TableCell>
+              <TableCell>{log.causerId}</TableCell>
               <TableCell>{log.causerType}</TableCell>
               <TableCell>{log.createdAtText}</TableCell>
               <TableCell width={300}>

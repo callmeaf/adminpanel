@@ -24,7 +24,6 @@ const TicketRepliesListItem: React.FC<ITicketRepliesListItemProps> = ({
   const isDesktopDevice = useMediaQuery(theme.breakpoints.up("md"));
   const isDarkMode = theme.palette.mode === "dark";
 
-  console.log({ authUserIsSender }, reply.content);
   return (
     <Box
       key={reply.id}

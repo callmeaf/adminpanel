@@ -21,6 +21,12 @@ export const getLogs: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
+    causer_id?: string;
+    causer_type?: string;
+    subject_id?: string;
+    subject_type?: string;
+    event?: string;
+    log_name?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -37,6 +43,12 @@ export const getLogs: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
+            causer_id: data.causer_id,
+            causer_type: data.causer_type,
+            subject_id: data.subject_id,
+            subject_type: data.subject_type,
+            event: data.event,
+            log_name: data.log_name,
             created_from: data.created_from,
             created_to: data.created_to,
           },

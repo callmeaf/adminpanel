@@ -5,8 +5,10 @@
       "status_label": "وضعیت",
       "type_label": "نوع",
       "log_name_label": "نام لاگ",
-      "subject_type_label": "اعمال شونده",
-      "causer_type_label": "اعمال کننده",
+      "subject_id_label": "شناسه اعمال شونده",
+      "subject_type_label": "نوع اعمال شونده",
+      "causer_id_label": "شناسه اعمال کننده",
+      "causer_type_label": "نوع اعمال کننده",
       "event_label": "رویداد",
       "created_at_label": "تاریخ ایجاد",
       "action_label": "عملیات"
@@ -26,11 +28,12 @@
       "log_group_label": "گروه بندی",
       "event_label": "رویداد",
       "description_label": "توضیحات",
-      "subject_id_label": "آی دی اعمال شونده",
+      "subject_id_label": "شناسه اعمال شونده",
       "subject_type_label": "نوع اعمال شونده",
-      "causer_id_label": "آی دی اعمال کننده",
+      "causer_id_label": "شناسه اعمال کننده",
       "causer_type_label": "نوع اعمال کننده",
-      "changes_label": "تغییرات"
+      "changes_label": "تغییرات",
+      "go_to_logs_list_btn_label": "لیست لاگ ها"
     }
   },
   "Requests": {
@@ -62,12 +65,12 @@
       "success_message": "خروجیلاگ ها  با موفقیت دانلود شد."
     },
     "importLogs": {
-      "success_message": "لاگ ها ها، با موفقیت به سیستم اضافه شدند."
+      "success_message": "لاگ ها، با موفقیت به سیستم اضافه شدند."
     }
   },
   "Errors": {},
   "Routes": {
-    "index": "لاگ ها ها",
+    "index": "لاگ ها",
     "create": "ایجاد لاگ ها",
     "edit": "ویرایش لاگ ها",
     "trashed": "زباله دانلاگ ها ",

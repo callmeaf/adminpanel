@@ -1,8 +1,10 @@
 import * as React from "react";
-import { Box, Card, CardContent, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { ILogModel } from "../models/Log";
 import { useTranslations } from "next-intl";
 import { jsonArtisan } from "@/modules/Base/helpers/json-artisan";
+import { useRouter } from "@/i18n/routing";
+import useRoutes from "@/modules/Base/hooks/use-routes";
 
 interface ILogSingleProps {
   log: ILogModel;
@@ -100,8 +102,25 @@ const LogSingle: React.FC<ILogSingleProps> = ({ log }) => {
     });
   };
 
+  const router = useRouter();
+  const { getRouteByName } = useRoutes();
+  const handleGoToLogsList = () => {
+    const route = getRouteByName("logs_index");
+    if (route) {
+      router.push(route.href);
+    }
+  };
+
   return (
     <Box>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={handleGoToLogsList}
+        sx={{ mb: 5 }}
+      >
+        {t("go_to_logs_list_btn_label")}
+      </Button>
       <Typography variant="body1">
         {t("log_group_label")}: <strong>{logName}</strong>
       </Typography>

@@ -23,25 +23,30 @@ export default function AppDrawer({ open, onClose }: IAppDrawer) {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={onClose}>
-      {Object.entries(routes).map(([group, items]) => (
-        <React.Fragment key={group}>
-          <List>
-            {items
-              .filter((item) => item.showInNavbar !== false)
-              .map((item) => (
-                <ListItem key={`${group}_${item.href}`} disablePadding>
-                  <ListItemButton
-                    onClick={handleNavigate.bind(null, item.href)}
-                  >
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.label} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-          </List>
-          <Divider />
-        </React.Fragment>
-      ))}
+      {Object.entries(routes)
+        .filter(
+          ([_, items]) =>
+            items.filter((item) => item.showInNavbar !== false).length
+        )
+        .map(([group, items]) => (
+          <React.Fragment key={group}>
+            <List>
+              {items
+                .filter((item) => item.showInNavbar !== false)
+                .map((item) => (
+                  <ListItem key={`${group}_${item.href}`} disablePadding>
+                    <ListItemButton
+                      onClick={handleNavigate.bind(null, item.href)}
+                    >
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.label} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+            </List>
+            <Divider />
+          </React.Fragment>
+        ))}
     </Box>
   );
 
