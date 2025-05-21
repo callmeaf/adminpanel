@@ -179,7 +179,7 @@ const UsersWrapper: React.FC<IUsersWrapperProps> = ({ trashed = false }) => {
           status: target.value,
         },
         {
-          userId: model.id,
+          userId: model.email,
         }
       );
     } else {
@@ -188,7 +188,7 @@ const UsersWrapper: React.FC<IUsersWrapperProps> = ({ trashed = false }) => {
           type: target.value,
         },
         {
-          userId: model.id,
+          userId: model.email,
         }
       );
     }
