@@ -1,6 +1,7 @@
 import valueArtisan from "@/modules/Base/helpers/value-artisan";
 import { IUserResponse } from "../interfaces/request-interface";
 import { IModel } from "@/modules/Base/interfaces/model-interface";
+import toMedia, { IMediaModel } from "@/modules/Media/models/Media";
 
 export interface IUserModel extends IModel {
   firstName: string;
@@ -8,6 +9,7 @@ export interface IUserModel extends IModel {
   fullName: string;
   mobile: string;
   email: string;
+  image?: IMediaModel;
 }
 
 const toUser = <T extends IUserResponse>(data: T): IUserModel => ({
@@ -30,6 +32,7 @@ const toUser = <T extends IUserResponse>(data: T): IUserModel => ({
   updatedAtText: data.updated_at_text,
   deletedAt: data.deleted_at,
   deletedAtText: data.deleted_at_text,
+  image: data.image ? toMedia(data.image) : undefined,
 });
 
 export default toUser;

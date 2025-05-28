@@ -1,0 +1,64 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "avatar_label": "آواتار",
+      "author_identifier_label": "نویسنده",
+      "is_parent_label": "کامنت اصلی",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "comment_info_label": "اطلاعات نظرات  من",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "content_inp_label": "نظر شما"
+    },
+    "CommentsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeComment": {
+      "success_message": "اطلاعات نظرات با موفقیت ذخیره شد."
+    },
+    "updateComment": {
+      "success_message": "اطلاعات نظرات با موفقیت تغییر یافت."
+    },
+    "updateCommentPassword": {
+      "success_message": "رمزعبور نظرات با موفقیت تغییر یافت."
+    },
+    "deleteComment": {
+      "success_message": "نظرات با موفقیت حذف شد."
+    },
+    "updateCommentStatus": {
+      "success_message": "وضعیت نظرات با موفقیت تغییر یافت"
+    },
+    "updateCommentType": {
+      "success_message": "نوع نظرات با موفقیت تغییر یافت"
+    },
+    "forceDeleteComment": {
+      "success_message": "نظرات با موفقیت از زباله دان حذف شد."
+    },
+    "restoreComment": {
+      "success_message": "نظرات با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportComments": {
+      "success_message": "خروجی نظرات با موفقیت دانلود شد."
+    },
+    "importComments": {
+      "success_message": "نظرات ، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "نظرات ",
+    "create": "ایجاد نظرات",
+    "edit": "ویرایش نظرات",
+    "trashed": "زباله دان نظرات ",
+    "import_excel": "import نظرات "
+  }
+}

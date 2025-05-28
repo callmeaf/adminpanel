@@ -3,6 +3,7 @@ import {
   IExporterResponse,
   IImporterResponse,
 } from "@/modules/Base/interfaces/request-interface";
+import { IMediaResponse } from "@/modules/Media/interfaces/request-interface";
 
 /**
  * =============================
@@ -15,6 +16,7 @@ export interface IUserResponse extends IDataResponse {
   last_name: string;
   email: string;
   mobile: string;
+  image?: IMediaResponse;
 }
 
 export interface IUserStoreResponse extends IUserResponse {}
