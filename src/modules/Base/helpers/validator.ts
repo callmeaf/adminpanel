@@ -38,7 +38,9 @@ export const validator: IValidator = {
       options: options?.map((item) => item.label).join(", "),
     }),
     test: (v) =>
-      options.findIndex((val) => val?.toString() === v?.toString()) > -1,
+      v
+        ? options.findIndex((val) => val?.toString() === v?.toString()) > -1
+        : true,
   }),
   uppercase: (t) => ({
     name: "uppercase",

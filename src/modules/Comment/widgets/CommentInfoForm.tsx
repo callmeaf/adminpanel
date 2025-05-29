@@ -33,10 +33,7 @@ const CommentInfoForm: React.FC<ICommentInfoFormProps> = ({
         .object()
         .required(v("required"))
         .test(validator.oneOf(statuses, v)),
-      type: yup
-        .object()
-        .required(v("required"))
-        .test(validator.oneOf(types, v)),
+      type: yup.object().nullable().test(validator.oneOf(types, v)),
       content: yup
         .string()
         .required(v("required"))
@@ -95,6 +92,7 @@ const CommentInfoForm: React.FC<ICommentInfoFormProps> = ({
             label={t("type_inp_label")}
             error={errors.type}
             options={types}
+            disabled={!!comment?.parentId}
           />
         )}
       />

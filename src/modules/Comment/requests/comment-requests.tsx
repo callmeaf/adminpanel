@@ -73,7 +73,7 @@ export const getCommentByKey: TThunk<
 export const updateComment: TThunk<
   {
     status: string;
-    type: string;
+    type?: string;
   },
   {
     commentId: string;
@@ -83,7 +83,9 @@ export const updateComment: TThunk<
   const formData = new FormData();
   formData.append("_method", "PATCH");
   formData.append("status", data.status);
-  formData.append("type", data.type);
+  if (data.type) {
+    formData.append("type", data.type);
+  }
 
   return api.post(`comments/${extra.commentId}`, formData);
 };
