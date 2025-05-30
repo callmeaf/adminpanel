@@ -1,0 +1,61 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "permission_info_label": "اطلاعات نمونه",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "example_inp_label": "نمونه"
+    },
+    "PermissionsImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storePermission": {
+      "success_message": "اطلاعات نمونه با موفقیت ذخیره شد."
+    },
+    "updatePermission": {
+      "success_message": "اطلاعات نمونه با موفقیت تغییر یافت."
+    },
+    "updatePermissionPassword": {
+      "success_message": "رمزعبور نمونه با موفقیت تغییر یافت."
+    },
+    "deletePermission": {
+      "success_message": "نمونه با موفقیت حذف شد."
+    },
+    "updatePermissionStatus": {
+      "success_message": "وضعیت نمونه با موفقیت تغییر یافت"
+    },
+    "updatePermissionType": {
+      "success_message": "نوع نمونه با موفقیت تغییر یافت"
+    },
+    "forceDeletePermission": {
+      "success_message": "نمونه با موفقیت از زباله دان حذف شد."
+    },
+    "restorePermission": {
+      "success_message": "نمونه با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportPermissions": {
+      "success_message": "خروجی نمونه ها با موفقیت دانلود شد."
+    },
+    "importPermissions": {
+      "success_message": "نمونه ها، با موفقیت به سیستم اضافه شدند."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "نمونه ها",
+    "create": "ایجاد نمونه",
+    "edit": "ویرایش نمونه",
+    "trashed": "زباله دان نمونه ها",
+    "import_excel": "import نمونه ها"
+  }
+}

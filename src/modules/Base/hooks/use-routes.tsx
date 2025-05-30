@@ -18,6 +18,8 @@ import ticketReplyRoutes from "@/modules/TicketReply/routes/ticket-reply";
 import mediaRoutes from "@/modules/Media/routes/media";
 import logRoutes from "@/modules/Log/routes/log";
 import commentRoutes from "@/modules/Comment/routes/comment";
+import roleRoutes from "@/modules/Role/routes/role";
+import permissionRoutes from "@/modules/Permission/routes/permission";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -69,6 +71,8 @@ const useRoutes: TUseRoutes = () => {
     ...mediaRoutes(t),
     ...logRoutes(t),
     ...commentRoutes(t),
+    ...roleRoutes(t),
+    ...permissionRoutes(t),
 // [END ROUTES ENTRIES]
   };
 

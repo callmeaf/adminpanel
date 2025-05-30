@@ -22,6 +22,8 @@ export enum EnumSource {
   MEDIA = "media",
   LOG = "log",
   COMMENT = "comment",
+  ROLE = "role",
+  PERMISSION = "permission",
 // [END ENUM ENTRIES]
 }
 

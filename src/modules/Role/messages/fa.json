@@ -1,0 +1,69 @@
+{
+  "Widgets": {
+    "Table": {
+      "no_label": "#",
+      "status_label": "وضعیت",
+      "type_label": "نوع",
+      "name_label": "نام",
+      "name_fa_label": "نام فارسی",
+      "created_at_label": "تاریخ ایجاد",
+      "action_label": "عملیات"
+    },
+    "Form": {
+      "role_info_label": "اطلاعات نقش ها",
+      "status_inp_label": "وضعیت",
+      "type_inp_label": "نوع",
+      "name_inp_label": "نام",
+      "name_fa_inp_label": "نام فارسی",
+      "role_permissions_label": "سطح دسترسی ها",
+      "permissions_ids_inp_label": "سطح دسترسی ها"
+    },
+    "RolesImport": {
+      "status_desc": " وضعیت باید یکی از {options} باشد.",
+      "type_desc": "نوع باید یکی از {options} باشد."
+    }
+  },
+  "Requests": {
+    "storeRole": {
+      "success_message": "اطلاعات نقش ها با موفقیت ذخیره شد."
+    },
+    "updateRole": {
+      "success_message": "اطلاعات نقش ها با موفقیت تغییر یافت."
+    },
+    "updateRolePassword": {
+      "success_message": "رمزعبور نقش ها با موفقیت تغییر یافت."
+    },
+    "deleteRole": {
+      "success_message": "نقش ها با موفقیت حذف شد."
+    },
+    "updateRoleStatus": {
+      "success_message": "وضعیت نقش ها با موفقیت تغییر یافت"
+    },
+    "updateRoleType": {
+      "success_message": "نوع نقش ها با موفقیت تغییر یافت"
+    },
+    "forceDeleteRole": {
+      "success_message": "نقش ها با موفقیت از زباله دان حذف شد."
+    },
+    "restoreRole": {
+      "success_message": "نقش ها با موفقیت از زباله دان بازگردانی شد."
+    },
+    "exportRoles": {
+      "success_message": "خروجی نقش ها با موفقیت دانلود شد."
+    },
+    "importRoles": {
+      "success_message": "نقش ها، با موفقیت به سیستم اضافه شدند."
+    },
+    "syncRolePermissions": {
+      "success_message": "سطح دسترسی های نقش با موفقیت به روزرسانی شد."
+    }
+  },
+  "Errors": {},
+  "Routes": {
+    "index": "نقش ها",
+    "create": "ایجاد نقش ها",
+    "edit": "ویرایش نقش ها",
+    "trashed": "زباله دان نقش ها",
+    "import_excel": "import نقش ها"
+  }
+}

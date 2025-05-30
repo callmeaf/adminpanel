@@ -18,6 +18,8 @@ import ticketReplyModuleConfig from "@/modules/TicketReply/module.config";
 import mediaModuleConfig from "@/modules/Media/module.config";
 import logModuleConfig from "@/modules/Log/module.config";
 import commentModuleConfig from "@/modules/Comment/module.config";
+import roleModuleConfig from "@/modules/Role/module.config";
+import permissionModuleConfig from "@/modules/Permission/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -61,6 +63,8 @@ const translations = async (locale: string) => {
     [mediaModuleConfig.name]: (await import(`../../Media/messages/${locale}.json`)).default,
     [logModuleConfig.name]: (await import(`../../Log/messages/${locale}.json`)).default,
     [commentModuleConfig.name]: (await import(`../../Comment/messages/${locale}.json`)).default,
+    [roleModuleConfig.name]: (await import(`../../Role/messages/${locale}.json`)).default,
+    [permissionModuleConfig.name]: (await import(`../../Permission/messages/${locale}.json`)).default,
 // [END TRANSLATION ENTRIES]
     };
   } catch (error) {
