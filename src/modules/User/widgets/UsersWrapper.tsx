@@ -76,7 +76,7 @@ const UsersWrapper: React.FC<IUsersWrapperProps> = ({ trashed = false }) => {
   const router = useRouter();
   const handleEdit: TOnEdit<IUserModel> = (user) => {
     const usersEditRoute = getRouteByName("users_edit", {
-      userId: user.id,
+      userId: user.email,
     });
     if (usersEditRoute) {
       router.push(usersEditRoute.href);

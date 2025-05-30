@@ -12,6 +12,7 @@ import {
   IUsersTrashedResponse,
   IUserRestoreResponse,
   IUserForceDeleteResponse,
+  IUserSyncRolesResponse,
 } from "../interfaces/request-interface";
 import { ExportType } from "@/modules/Base/components/tables/TableExport";
 import { ImportType } from "@/modules/Base/components/imports/ImportWrapper";
@@ -302,4 +303,23 @@ export const importUsers: TThunk<
 
   formData.append("file", data.file);
   return api.post(`users/import/${extra.type}`, formData);
+};
+
+export const syncUserRoles: TThunk<
+  {
+    roles_ids: string[];
+  },
+  {
+    userId: string;
+  },
+  IUserSyncRolesResponse
+> = async (api, data, extra) => {
+  const formData = new FormData();
+  formData.append("_method", "PATCH");
+
+  data.roles_ids.forEach((roleId) => {
+    formData.append("roles_ids[]", roleId);
+  });
+
+  return api.post(`users/${extra.userId}/roles`, formData);
 };

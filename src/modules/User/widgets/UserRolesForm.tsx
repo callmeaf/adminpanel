@@ -1,6 +1,6 @@
 import * as React from "react";
 import useHttp from "@/modules/Base/hooks/use-http";
-import permissionModuleConfig from "@/modules/Permission/module.config";
+import roleModuleConfig from "@/modules/Role/module.config";
 import AutoComplete, {
   IOption,
 } from "@/modules/Base/components/forms/AutoComplete";
@@ -10,24 +10,24 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Form, { IForm } from "@/modules/Base/components/forms/Form";
 import { useTranslations } from "next-intl";
 import { Grid2 } from "@mui/material";
-import { IRoleModel } from "../models/Role";
-import { getPermissions } from "@/modules/Permission/requests/permission-requests";
-import toPermission from "@/modules/Permission/models/Permission";
+import { getRoles } from "@/modules/Role/requests/role-requests";
+import toRole from "@/modules/Role/models/Role";
+import { IUserModel } from "../models/User";
 
-interface IRolePermissionsFormProps extends IForm {
-  role: IRoleModel;
+interface IUserRolesFormProps extends IForm {
+  user: IUserModel;
 }
 
-const RolePermissionsForm: React.FC<IRolePermissionsFormProps> = ({
-  role,
+const UserRolesForm: React.FC<IUserRolesFormProps> = ({
+  user,
   loading,
   onSubmit,
 }) => {
-  const t = useTranslations("Role.Widgets.Form");
+  const t = useTranslations("User.Widgets.Form");
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      permissions_ids: yup.array().required(v("required")),
+      roles_ids: yup.array().required(v("required")),
     })
   );
 
@@ -39,17 +39,19 @@ const RolePermissionsForm: React.FC<IRolePermissionsFormProps> = ({
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      permissions_ids: [],
+      roles_ids: [],
     },
   });
 
-  const [permissions, setPermissions] = React.useState<IOption[]>([]);
-  const { handle: handleGetPermissions, loading: loadingGetPermissions } =
-    useHttp(permissionModuleConfig, getPermissions, {
+  const [roles, setRoles] = React.useState<IOption[]>([]);
+  const { handle: handleGetRoles, loading: loadingGetRoles } = useHttp(
+    roleModuleConfig,
+    getRoles,
+    {
       onSuccess: (res) => {
-        setPermissions(
+        setRoles(
           res.data
-            .map((item) => toPermission(item))
+            .map((item) => toRole(item))
             .map((item) => ({
               id: item.id,
               label: item.name,
@@ -57,24 +59,25 @@ const RolePermissionsForm: React.FC<IRolePermissionsFormProps> = ({
             }))
         );
       },
-    });
+    }
+  );
 
   React.useEffect(() => {
-    handleGetPermissions({
+    handleGetRoles({
       per_page: 100,
     });
   }, []);
 
   React.useEffect(() => {
-    if (role && permissions.length) {
-      setValue("permissions_ids", role.permissionsArray(permissions) ?? []);
+    if (user && roles.length) {
+      setValue("roles_ids", user.rolesArray(roles) ?? []);
     }
-  }, [permissions.length]);
+  }, [roles.length]);
 
   const submitHandler = (data: any) =>
     onSubmit({
       ...data,
-      permissions_ids: data.permissions_ids.map((item: IOption) => item.value),
+      roles_ids: data.roles_ids.map((item: IOption) => item.value),
     });
 
   return (
@@ -82,14 +85,14 @@ const RolePermissionsForm: React.FC<IRolePermissionsFormProps> = ({
       <Grid2 size={12}>
         <Controller
           control={control}
-          name="permissions_ids"
+          name="roles_ids"
           render={({ field }) => (
             <AutoComplete
               {...field}
-              label={t("permissions_ids_inp_label")}
-              error={errors.permissions_ids}
-              options={permissions}
-              loading={loadingGetPermissions}
+              label={t("roles_ids_inp_label")}
+              error={errors.roles_ids}
+              options={roles}
+              loading={loadingGetRoles}
               multiple
             />
           )}
@@ -99,4 +102,4 @@ const RolePermissionsForm: React.FC<IRolePermissionsFormProps> = ({
   );
 };
 
-export default RolePermissionsForm;
+export default UserRolesForm;

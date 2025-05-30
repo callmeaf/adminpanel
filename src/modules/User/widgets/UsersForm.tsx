@@ -6,6 +6,7 @@ import UserPasswordForm from "./UserPasswordForm";
 import useHttp from "@/modules/Base/hooks/use-http";
 import {
   storeUser,
+  syncUserRoles,
   updateUser,
   updateUserPassword,
 } from "../requests/user-requests";
@@ -13,6 +14,7 @@ import useStepper from "@/modules/Base/hooks/use-stepper";
 import { SET_SNACKBAR } from "@/modules/UI/context/action-types";
 import toUser, { IUserModel } from "@/modules/User/models/User";
 import moduleConfig from "../module.config";
+import UserRolesForm from "./UserRolesForm";
 
 interface IUsersFormProps {
   userModel?: IUserModel;
@@ -40,6 +42,11 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
     {
       id: "user_password",
       label: t("user_password_label"),
+    },
+    {
+      id: "roles",
+      label: t("roles_label"),
+      optional: true,
     },
   ]);
 
@@ -95,11 +102,28 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
     },
   });
 
+  const { handle: handleSyncUserRoles, loading: loadingSyncUserRoles } =
+    useHttp(moduleConfig, syncUserRoles, {
+      onSuccess: (res, { uiDispatch, tr }) => {
+        uiDispatch({
+          type: SET_SNACKBAR,
+          payload: {
+            type: "success",
+            message: tr("syncUserRoles.success_message"),
+          },
+        });
+        handleNextStep();
+        setUser(toUser(res.data));
+      },
+    });
+
   const storeUserHandler = (data: any) => handleStoreUser(data);
   const updateUserHandler = (data: any) =>
-    handleUpdateUser(data, { userId: user?.id! });
+    handleUpdateUser(data, { userId: user?.email! });
   const updateUserPasswordHandler = (data: any) =>
-    handleUpdateUserPassword(data, { userId: user?.id! });
+    handleUpdateUserPassword(data, { userId: user?.email! });
+  const syncUserRolesHandler = (data: any) =>
+    handleSyncUserRoles(data, { userId: user?.email! });
 
   return (
     <Stepper
@@ -129,6 +153,11 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
       <UserPasswordForm
         loading={loadingUpdateUserPassword}
         onSubmit={updateUserPasswordHandler}
+      />
+      <UserRolesForm
+        loading={loadingSyncUserRoles}
+        onSubmit={syncUserRolesHandler}
+        user={user}
       />
     </Stepper>
   );

@@ -22,7 +22,9 @@
       "email_inp_label": "ایمیل",
       "user_password_label": "رمز حساب کاربر",
       "password_inp_label": "رمز عبور",
-      "password_confirmation_inp_label": "تایید رمزعبور"
+      "password_confirmation_inp_label": "تایید رمزعبور",
+      "roles_label": "نقش ها",
+      "roles_ids_inp_label": "نقش های کاربر"
     },
     "UsersImport": {
       "status_desc": " وضعیت باید یکی از {options} باشد.",
@@ -63,6 +65,9 @@
     },
     "importUsers": {
       "success_message": "کاربران، با موفقیت به سیستم اضافه شدند."
+    },
+    "syncUserRoles": {
+      "success_message": "نقش های کاربر با موفقیت به روزرسانی شدند."
     }
   },
   "Errors": {},

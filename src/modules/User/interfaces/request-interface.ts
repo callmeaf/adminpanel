@@ -4,6 +4,7 @@ import {
   IImporterResponse,
 } from "@/modules/Base/interfaces/request-interface";
 import { IMediaResponse } from "@/modules/Media/interfaces/request-interface";
+import { IRoleResponse } from "@/modules/Role/interfaces/request-interface";
 
 /**
  * =============================
@@ -17,6 +18,7 @@ export interface IUserResponse extends IDataResponse {
   email: string;
   mobile: string;
   image?: IMediaResponse;
+  roles?: IRoleResponse[];
 }
 
 export interface IUserStoreResponse extends IUserResponse {}
@@ -42,3 +44,4 @@ export interface IUserForceDeleteResponse extends IUserResponse {}
 export interface IUsersExportResponse extends IExporterResponse {}
 
 export interface IUsersImportResponse extends IImporterResponse {}
+export interface IUserSyncRolesResponse extends IUserResponse {}
