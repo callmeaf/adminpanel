@@ -3,7 +3,6 @@ import Input from "@/modules/Base/components/forms/Input";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validator } from "@/modules/Base/helpers/validator";
 import useValidation from "@/modules/Base/hooks/use-validation";
 import { useTranslations } from "next-intl";
 import { Grid2 } from "@mui/material";
@@ -15,7 +14,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ onSubmit, loading }) => {
 
   const { schema } = useValidation((yup, v) =>
     yup.object().shape({
-      identifier: yup.string().required(v("required")).email(v("email")),
+      identifier: yup.string().required(v("required")),
     })
   );
 

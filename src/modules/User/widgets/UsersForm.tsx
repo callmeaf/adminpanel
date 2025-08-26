@@ -125,6 +125,28 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
   const syncUserRolesHandler = (data: any) =>
     handleSyncUserRoles(data, { userId: user?.email! });
 
+  const resetStepHandler = () => {
+    if (userModel) {
+      handleGoToRoute("users_create");
+    } else {
+      handleResetStep();
+      setUser(undefined);
+    }
+  };
+
+  const goToListRouteHandler = () => {
+    handleGoToRoute("users_index");
+  };
+
+  const goToEditRouteHandler = () => {
+    if (userModel) {
+      handleResetStep();
+    } else if (user) {
+      handleGoToRoute("users_edit", {
+        userId: user.email,
+      });
+    }
+  };
   return (
     <Stepper
       steps={steps}
@@ -133,14 +155,10 @@ const UsersForm: React.FC<IUsersFormProps> = ({ userModel }) => {
       completed={completed}
       handleNextStep={handleNextStep}
       handleBackStep={handleBackStep}
-      handleResetStep={handleResetStep}
-      handleGoToList={handleGoToRoute.bind(null, "users_index")}
+      handleResetStep={resetStepHandler}
+      handleGoToList={goToListRouteHandler}
       handleGoToEdit={
-        user
-          ? handleGoToRoute.bind(null, "users_edit", {
-              userId: user.id,
-            })
-          : undefined
+        goToEditRouteHandler
       }
       handleGoStep={handleGoStep}
       clickableStep={!!user}
