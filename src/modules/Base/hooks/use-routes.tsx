@@ -56,13 +56,7 @@ const useRoutes: TUseRoutes = () => {
     // [ROUTES ENTRIES]
     ...dashboardRoutes(t),
     ...userRoutes(t),
-    ...exchangeRoutes(t),
-    ...coinRoutes(t),
         ...settingRoutes(t),
-    ...accountRoutes(t),
-    ...strategyRoutes(t),
-    ...accountStrategyRoutes(t),
-    ...accountStrategyCoinRoutes(t),
     ...versionRoutes(t),
     ...socialRoutes(t),
     ...socialBotRoutes(t),

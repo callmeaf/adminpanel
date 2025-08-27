@@ -104,7 +104,7 @@ const UsersWrapper: React.FC<IUsersWrapperProps> = ({ trashed = false }) => {
     await handleDeleteUser(
       {},
       {
-        userId: user.id,
+        userId: user.email,
       }
     );
     handleGetUsers();
@@ -130,7 +130,7 @@ const UsersWrapper: React.FC<IUsersWrapperProps> = ({ trashed = false }) => {
     await handleRestoreUser(
       {},
       {
-        userId: model.id,
+        userId: model.email,
       }
     );
     handleGetUsers();
