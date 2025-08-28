@@ -190,6 +190,9 @@ const ProductCategoriesTable: React.FC<IProductCategoriesTableProps> = ({
                   disabled={trashed}
                 />
               </TableCell>
+                <TableCell>
+                    {productCategory.createdAtText}
+              </TableCell>
               <TableCell width={300}>
                 <TableAction
                   model={productCategory}

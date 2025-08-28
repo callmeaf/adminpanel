@@ -8,9 +8,10 @@
       "action_label": "عملیات"
     },
     "Form": {
+      "product_category_info_label": "اطلاعات دسته بندی محصول",
       "status_inp_label": "وضعیت",
       "type_inp_label": "نوع",
-      "example_inp_label": "نمونه"
+      "example_inp_label": "دسته بندی محصول"
     },
     "ProductCategoriesImport": {
       "status_desc": " وضعیت باید یکی از {options} باشد.",
@@ -19,42 +20,42 @@
   },
   "Requests": {
     "storeProductCategory": {
-      "success_message": "اطلاعات نمونه با موفقیت ذخیره شد."
+      "success_message": "اطلاعات دسته بندی محصول با موفقیت ذخیره شد."
     },
     "updateProductCategory": {
-      "success_message": "اطلاعات نمونه با موفقیت تغییر یافت."
+      "success_message": "اطلاعات دسته بندی محصول با موفقیت تغییر یافت."
     },
     "updateProductCategoryPassword": {
-      "success_message": "رمزعبور نمونه با موفقیت تغییر یافت."
+      "success_message": "رمزعبور دسته بندی محصول با موفقیت تغییر یافت."
     },
     "deleteProductCategory": {
-      "success_message": "نمونه با موفقیت حذف شد."
+      "success_message": "دسته بندی محصول با موفقیت حذف شد."
     },
     "updateProductCategoryStatus": {
-      "success_message": "وضعیت نمونه با موفقیت تغییر یافت"
+      "success_message": "وضعیت دسته بندی محصول با موفقیت تغییر یافت"
     },
     "updateProductCategoryType": {
-      "success_message": "نوع نمونه با موفقیت تغییر یافت"
+      "success_message": "نوع دسته بندی محصول با موفقیت تغییر یافت"
     },
     "forceDeleteProductCategory": {
-      "success_message": "نمونه با موفقیت از زباله دان حذف شد."
+      "success_message": "دسته بندی محصول با موفقیت از زباله دان حذف شد."
     },
     "restoreProductCategory": {
-      "success_message": "نمونه با موفقیت از زباله دان بازگردانی شد."
+      "success_message": "دسته بندی محصول با موفقیت از زباله دان بازگردانی شد."
     },
     "exportProductCategories": {
-      "success_message": "خروجی نمونه ها با موفقیت دانلود شد."
+      "success_message": "خروجی دسته بندی محصول ها با موفقیت دانلود شد."
     },
     "importProductCategories": {
-      "success_message": "نمونه ها، با موفقیت به سیستم اضافه شدند."
+      "success_message": "دسته بندی محصول ها، با موفقیت به سیستم اضافه شدند."
     }
   },
   "Errors": {},
   "Routes": {
-    "index": "نمونه ها",
-    "create": "ایجاد نمونه",
-    "edit": "ویرایش نمونه",
-    "trashed": "زباله دان نمونه ها",
-    "import_excel": "import نمونه ها"
+    "index": "دسته بندی محصول ها",
+    "create": "ایجاد دسته بندی محصول",
+    "edit": "ویرایش دسته بندی محصول",
+    "trashed": "زباله دان دسته بندی محصول ها",
+    "import_excel": "import دسته بندی محصول ها"
   }
 }

@@ -97,6 +97,17 @@ const files = [
 
 // تبدیل محتوای stub به متن نهایی
 function renderStub(content: string, page: string = ""): string {
+  console.log({
+    moduleName,
+    lowerModuleName,
+    plurarModuleName,
+    plurarCamelModuleName,
+    plurarSnakeModuleName,
+    upperSnakeModuleName,
+    snakeModuleName,
+    camelModuleName,
+    kebabModuleName
+  })
   return content
     .replace(/{{moduleName}}/g, moduleName)
     .replace(/{{lowerModuleName}}/g, lowerModuleName)

@@ -4,7 +4,6 @@ import {
   IProductCategoryGetByKeyResponse,
   IProductCategoriesResponse,
   IProductCategoryStoreResponse,
-  IProductCategoryPasswordUpdateResponse,
   IProductCategoryStatusUpdateResponse,
   IProductCategoryTypeUpdateResponse,
   IProductCategoriesExportResponse,
@@ -22,10 +21,6 @@ export const getProductCategories: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
-    first_name?: string;
-    last_name?: string;
-    mobile?: string;
-    email?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -42,10 +37,6 @@ export const getProductCategories: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            mobile: data.mobile,
-            email: data.email,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -58,10 +49,6 @@ export const storeProductCategory: TThunk<
   {
     status: string;
     type: string;
-    first_name: string;
-    last_name: string;
-    mobile: string;
-    email: string;
   },
   {},
   IProductCategoryStoreResponse
@@ -69,10 +56,6 @@ export const storeProductCategory: TThunk<
   const formData = new FormData();
   formData.append("status", data.status);
   formData.append("type", data.type);
-  formData.append("first_name", data.first_name);
-  formData.append("last_name", data.last_name);
-  formData.append("mobile", data.mobile);
-  formData.append("email", data.email);
 
   return api.post("product_categories", formData);
 };
@@ -91,10 +74,6 @@ export const updateProductCategory: TThunk<
   {
     status: string;
     type: string;
-    first_name: string;
-    last_name: string;
-    mobile: string;
-    email: string;
   },
   {
     productCategoryId: string;
@@ -105,30 +84,8 @@ export const updateProductCategory: TThunk<
   formData.append("_method", "PATCH");
   formData.append("status", data.status);
   formData.append("type", data.type);
-  formData.append("first_name", data.first_name);
-  formData.append("last_name", data.last_name);
-  formData.append("mobile", data.mobile);
-  formData.append("email", data.email);
 
   return api.post(`product_categories/${extra.productCategoryId}`, formData);
-};
-
-export const updateProductCategoryPassword: TThunk<
-  {
-    password: string;
-    password_confirmation: string;
-  },
-  {
-    productCategoryId: string;
-  },
-  IProductCategoryPasswordUpdateResponse
-> = (api, data, extra) => {
-  const formData = new FormData();
-  formData.append("_method", "PATCH");
-  formData.append("password", data.password);
-  formData.append("password_confirmation", data.password_confirmation);
-
-  return api.post(`product_categories/${extra.productCategoryId}/password`, formData);
 };
 
 export const deleteProductCategory: TThunk<
@@ -175,10 +132,6 @@ export const getProductCategoriesTrashed: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
-    first_name?: string;
-    last_name?: string;
-    mobile?: string;
-    email?: string;
     created_from?: string;
     created_to?: string;
   },
@@ -195,10 +148,6 @@ export const getProductCategoriesTrashed: TThunk<
             per_page: data.per_page,
             status: data.status,
             type: data.type,
-            first_name: data.first_name,
-            last_name: data.last_name,
-            mobile: data.mobile,
-            email: data.email,
             created_from: data.created_from,
             created_to: data.created_to,
           },
@@ -233,10 +182,6 @@ export const exportProductCategories: TThunk<
     per_page?: number;
     status?: string;
     type?: string;
-    first_name?: string;
-    last_name?: string;
-    mobile?: string;
-    email?: string;
     created_from?: string;
     created_to?: string;
     trashed: boolean;
@@ -253,10 +198,6 @@ export const exportProductCategories: TThunk<
       per_page: data.per_page,
       status: data.status,
       type: data.type,
-      first_name: data.first_name,
-      last_name: data.last_name,
-      mobile: data.mobile,
-      email: data.email,
       created_from: data.created_from,
       created_to: data.created_to,
       trashed: data.trashed,

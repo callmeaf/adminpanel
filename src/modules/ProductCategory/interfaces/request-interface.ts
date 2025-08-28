@@ -11,17 +11,12 @@ import {
  */
 
 export interface IProductCategoryResponse extends IDataResponse {
-  first_name: string;
-  last_name: string;
-  email: string;
-  mobile: string;
+  example: string;
 }
 
 export interface IProductCategoryStoreResponse extends IProductCategoryResponse {}
 
 export interface IProductCategoryGetByKeyResponse extends IProductCategoryResponse {}
-
-export interface IProductCategoryPasswordUpdateResponse extends IProductCategoryResponse {}
 
 export interface IProductCategoryStatusUpdateResponse extends IProductCategoryResponse {}
 

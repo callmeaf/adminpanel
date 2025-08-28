@@ -1,6 +1,6 @@
 "use client";
 
-import ProductCategoriesForm from "../widgets/ProductCategoriesForm";
+import ProductCategoryForms from "../widgets/ProductCategoryForms";
 import * as React from "react";
 import DashboardLayout from "@/modules/Dashboard/widgets/DashboardLayout";
 import usePage from "@/modules/Base/hooks/use-page";
@@ -42,7 +42,7 @@ const ProductCategoryEditPage: React.FC<IProductCategoryEditPageProps> = ({}) =>
     <DashboardLayout>
       <Show when={!!productCategory}>
         <Show.When>
-          <ProductCategoriesForm productCategoryModel={productCategory} />
+            <ProductCategoryForms productCategoryModel={productCategory}/>
         </Show.When>
         <Show.Else>
           <FormLoading open={loadingGetProductCategoryByKey} />

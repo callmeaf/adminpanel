@@ -1,6 +1,6 @@
 "use client";
 
-import ProductCategoriesForm from "../widgets/ProductCategoriesForm";
+import ProductCategoryForms from "../widgets/ProductCategoryForms";
 import * as React from "react";
 import DashboardLayout from "@/modules/Dashboard/widgets/DashboardLayout";
 import usePage from "@/modules/Base/hooks/use-page";
@@ -13,7 +13,7 @@ const ProductCategoryCreatePage: React.FC<IProductCategoryCreatePageProps> = ({}
 
   return (
     <DashboardLayout>
-      <ProductCategoriesForm />
+        <ProductCategoryForms/>
     </DashboardLayout>
   );
 };

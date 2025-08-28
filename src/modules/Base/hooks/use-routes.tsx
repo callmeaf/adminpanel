@@ -1,15 +1,9 @@
 // [IMPORT MODULE ROUTES]
-import coinRoutes from "@/modules/Coin/routes/coin";
 import dashboardRoutes from "@/modules/Dashboard/routes/dashboard";
-import exchangeRoutes from "@/modules/Exchange/routes/exchange";
 import userRoutes from "@/modules/User/routes/user";
 import { useTranslations } from "next-intl";
 import { ReactNode, useEffect } from "react";
 import settingRoutes from "@/modules/Setting/routes/setting";
-import accountRoutes from "@/modules/Account/routes/account";
-import strategyRoutes from "@/modules/Strategy/routes/strategy";
-import accountStrategyRoutes from "@/modules/AccountStrategy/routes/account-strategy";
-import accountStrategyCoinRoutes from "@/modules/AccountStrategyCoin/routes/account-strategy-coin";
 import versionRoutes from "@/modules/Version/routes/version";
 import socialRoutes from "@/modules/Social/routes/social";
 import socialBotRoutes from "@/modules/SocialBot/routes/social-bot";
@@ -20,6 +14,7 @@ import logRoutes from "@/modules/Log/routes/log";
 import commentRoutes from "@/modules/Comment/routes/comment";
 import roleRoutes from "@/modules/Role/routes/role";
 import permissionRoutes from "@/modules/Permission/routes/permission";
+import productCategoryRoutes from "@/modules/ProductCategory/routes/product-category";
 // [END IMPORT MODULE ROUTES]
 
 interface IRoute {
@@ -67,6 +62,7 @@ const useRoutes: TUseRoutes = () => {
     ...commentRoutes(t),
     ...roleRoutes(t),
     ...permissionRoutes(t),
+    ...productCategoryRoutes(t),
 // [END ROUTES ENTRIES]
   };
 

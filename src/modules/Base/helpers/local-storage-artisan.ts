@@ -24,6 +24,7 @@ export enum EnumSource {
   COMMENT = "comment",
   ROLE = "role",
   PERMISSION = "permission",
+  PRODUCT_CATEGORY = "product_category",
 // [END ENUM ENTRIES]
 }
 

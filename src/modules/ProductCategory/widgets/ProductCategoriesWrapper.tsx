@@ -75,7 +75,7 @@ const ProductCategoriesWrapper: React.FC<IProductCategoriesWrapperProps> = ({ tr
   const { getRouteByName } = useRoutes();
   const router = useRouter();
   const handleEdit: TOnEdit<IProductCategoryModel> = (productCategory) => {
-    const productCategoryEditRoute = getRouteByName("product_category_edit", {
+      const productCategoryEditRoute = getRouteByName("product_categories_edit", {
       productCategoryId: productCategory.id,
     });
     if (productCategoryEditRoute) {
@@ -227,7 +227,7 @@ const ProductCategoriesWrapper: React.FC<IProductCategoriesWrapperProps> = ({ tr
   return (
     <ProductCategoriesTable
       tableId={TABLE_ID}
-      productCategory={responseGetProductCategories?.data.map((item) => toProductCategory(item)) ?? []}
+      productCategories={responseGetProductCategories?.data.map((item) => toProductCategory(item)) ?? []}
       paginate={toPaginate({
         links: responseGetProductCategories?.links,
         meta: responseGetProductCategories?.meta,

@@ -1,3 +1,0 @@
-import AccountStrategyCoinsTrashedPage from "@/modules/AccountStrategyCoin/pages/AccountStrategyCoinsTrashedPage";
-
-export default AccountStrategyCoinsTrashedPage;

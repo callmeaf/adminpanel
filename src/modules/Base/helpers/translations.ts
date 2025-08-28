@@ -3,13 +3,7 @@ import userModuleConfig from "@/modules/User/module.config";
 import baseModuleConfig from "../module.config";
 import authModuleConfig from "@/modules/Auth/module.config";
 import dashboardModuleConfig from "@/modules/Dashboard/module.config";
-import exchangeModuleConfig from "@/modules/Exchange/module.config";
-import coinModuleConfig from "@/modules/Coin/module.config";
 import settingModuleConfig from "@/modules/Setting/module.config";
-import accountModuleConfig from "@/modules/Account/module.config";
-import strategyModuleConfig from "@/modules/Strategy/module.config";
-import accountStrategyModuleConfig from "@/modules/AccountStrategy/module.config";
-import accountStrategyCoinModuleConfig from "@/modules/AccountStrategyCoin/module.config";
 import versionModuleConfig from "@/modules/Version/module.config";
 import socialModuleConfig from "@/modules/Social/module.config";
 import socialBotModuleConfig from "@/modules/SocialBot/module.config";
@@ -20,6 +14,7 @@ import logModuleConfig from "@/modules/Log/module.config";
 import commentModuleConfig from "@/modules/Comment/module.config";
 import roleModuleConfig from "@/modules/Role/module.config";
 import permissionModuleConfig from "@/modules/Permission/module.config";
+import productCategoryModuleConfig from "@/modules/ProductCategory/module.config";
 // [END IMPORT MODULE CONFIGS]
 
 const translations = async (locale: string) => {
@@ -38,23 +33,9 @@ const translations = async (locale: string) => {
       [dashboardModuleConfig.name]: (
         await import(`@/modules/Dashboard/messages/${locale}.json`)
       ).default,
-      [exchangeModuleConfig.name]: (
-        await import(`@/modules/Exchange/messages/${locale}.json`)
-      ).default,
-      [coinModuleConfig.name]: (
-        await import(`@/modules/Coin/messages/${locale}.json`)
-      ).default,
       [settingModuleConfig.name]: (
         await import(`@/modules/Setting/messages/${locale}.json`)
       ).default,
-      [accountModuleConfig.name]: (
-        await import(`@/modules/Account/messages/${locale}.json`)
-      ).default,
-      [strategyModuleConfig.name]: (
-        await import(`@/modules/Strategy/messages/${locale}.json`)
-      ).default,
-          [accountStrategyModuleConfig.name]: (await import(`../../AccountStrategy/messages/${locale}.json`)).default,
-    [accountStrategyCoinModuleConfig.name]: (await import(`../../AccountStrategyCoin/messages/${locale}.json`)).default,
     [versionModuleConfig.name]: (await import(`../../Version/messages/${locale}.json`)).default,
     [socialModuleConfig.name]: (await import(`../../Social/messages/${locale}.json`)).default,
     [socialBotModuleConfig.name]: (await import(`../../SocialBot/messages/${locale}.json`)).default,
@@ -65,6 +46,7 @@ const translations = async (locale: string) => {
     [commentModuleConfig.name]: (await import(`../../Comment/messages/${locale}.json`)).default,
     [roleModuleConfig.name]: (await import(`../../Role/messages/${locale}.json`)).default,
     [permissionModuleConfig.name]: (await import(`../../Permission/messages/${locale}.json`)).default,
+      [productCategoryModuleConfig.name]: (await import(`../../ProductCategory/messages/${locale}.json`)).default,
 // [END TRANSLATION ENTRIES]
     };
   } catch (error) {
