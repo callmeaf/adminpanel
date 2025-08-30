@@ -2,11 +2,18 @@ import { IProductCategoryResponse } from "../interfaces/request-interface";
 import { IModel } from "@/modules/Base/interfaces/model-interface";
 
 export interface IProductCategoryModel extends IModel {
-  
+  slug: string;
+  parentId?: string;
+  title: string;
+  content: string;
 }
 
 const toProductCategory = <T extends IProductCategoryResponse>(data: T): IProductCategoryModel => ({
-  id: data.id,
+  id: data.slug,
+  slug: data.slug,
+  parentId: data.parent_id,
+  title: data.title,
+  content: data.content,
   status: data.status,
   statusText: data.status_text,
   statusObject: (statuses) =>

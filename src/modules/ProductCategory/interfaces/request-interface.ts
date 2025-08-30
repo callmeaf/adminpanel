@@ -11,7 +11,10 @@ import {
  */
 
 export interface IProductCategoryResponse extends IDataResponse {
-  example: string;
+  slug: string;
+  parent_id: ?string;
+  title: string;
+  content: string;
 }
 
 export interface IProductCategoryStoreResponse extends IProductCategoryResponse {}

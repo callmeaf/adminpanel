@@ -4,6 +4,9 @@
       "no_label": "#",
       "status_label": "وضعیت",
       "type_label": "نوع",
+      "slug_label": "اسلاگ",
+      "title_label": "عنوان",
+      "parent_id_label": "والد",
       "created_at_label": "تاریخ ایجاد",
       "action_label": "عملیات"
     },

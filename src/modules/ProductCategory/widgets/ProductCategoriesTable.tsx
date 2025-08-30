@@ -98,6 +98,18 @@ const ProductCategoriesTable: React.FC<IProductCategoriesTableProps> = ({
           label: t("no_label"),
         },
         {
+          id: "slug",
+          label: t("slug_label"),
+        },
+        {
+          id: "title",
+          label: t("title_label"),
+        },
+        {
+          id: "parent_id",
+          label: t("parent_id_label"),
+        },
+        {
           id: "status",
           label: t("status_label"),
         },
@@ -118,10 +130,18 @@ const ProductCategoriesTable: React.FC<IProductCategoriesTableProps> = ({
         <TableSearch
           onSearch={onSearch}
           params={[
-          // {
-          //   key: "key",
-          //   label: t("key_label"),
-          // },
+            {
+              key: "slug",
+              label: t("slug_label"),
+            },
+            {
+              key: "title",
+              label: t("title_label"),
+            },
+            {
+              key: "parent_id",
+              label: t("parent_id_label"),
+            },
           ]}
           tableId={tableId}
           defaultValue={config.term}
@@ -170,6 +190,9 @@ const ProductCategoriesTable: React.FC<IProductCategoriesTableProps> = ({
           {productCategories.map((productCategory, index) => (
             <TableRow key={productCategory.id}>
               <TableCell>{paginate.from + index}</TableCell>
+              <TableCell>{productCategory.slug}</TableCell>
+              <TableCell>{productCategory.title}</TableCell>
+              <TableCell>{productCategory.parentId}</TableCell>
               <TableCell>
                 <TableSelectOptionColumnAction
                   name="status"
@@ -187,7 +210,7 @@ const ProductCategoriesTable: React.FC<IProductCategoriesTableProps> = ({
                   options={types}
                   onUpdate={onTypeUpdate}
                   model={productCategory}
-                  disabled={trashed}
+                  disabled={true}
                 />
               </TableCell>
                 <TableCell>
